@@ -17,6 +17,9 @@ body {
   text-align: center;
 }
 
+header {
+    background-image: url("https://za.dynabook.com/images/local/en_EU/Toshibytes/images/future_of_business.jpeg");
+}
 
 #header {
     height: 27rem;
@@ -32,8 +35,7 @@ body {
     width: 100%;
     font-size: 4rem;
     letter-spacing: 10px;
-    color: white;
-    background-color: var(--black):
+    color: black;
 }
 
 .hero-img {
@@ -213,6 +215,7 @@ img {
 .sign {
     position: absolute;
     right: 0px;
+    margin-right: 1em;
 }
 
 #login {
@@ -223,3 +226,4 @@ img {
 #login:hover {
     background-color: blue;
 }
+

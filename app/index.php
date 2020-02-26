@@ -6,15 +6,13 @@
     <title>Welcome!</title>
   </head>
   <body>
-
     <header class="centered" id="header">
-       <img class="hero-img" src="https://za.dynabook.com/images/local/en_EU/Toshibytes/images/future_of_business.jpeg">
+       <h1 class="header-h1">Man-A-Biz</h1>
         <section class="sign">
           <a class="a" href="register.php">Register</a>
           <a class="a" id="login" href="login.php">Login</a>
-       </section>
-     <h1 class="header-h1">Man-A-Biz</h1>
-          </header>
+        </section>
+    </header>
 
      <nav>
          <ul>
