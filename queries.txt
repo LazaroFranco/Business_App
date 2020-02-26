@@ -1,0 +1,128 @@
+CREATE TABLE Users(
+    ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Company_ID Bigint NOT NULL,
+    Fname Varchar(30) NOT NULL,
+    Lname Varchar(30) NOT NULL,
+    Phone INT(10),
+    Email Varchar(30),
+    Password Varchar(30) NOT NULL,
+    DoB Date NOT NULL,
+    Company_Code Varchar(4) NOT NULL,
+    Approved boolean NOT NULL);
+
+
+CREATE TABLE Company(
+    ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Company_ID Bigint NOT NULL,
+    Business_Name Varchar(30) NOT NULL,
+    Business_Address Varchar(30) NOT NULL,
+    Phone INT(10),
+    Email Varchar(30),
+    City Varchar(30) NOT NULL,
+    State Date NOT NULL,
+    Company_Code Varchar(4) NOT NULL);
+
+CREATE TABLE Vac_Req_Form(
+    ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Company_ID Bigint NOT NULL,
+    Fname Varchar(30) NOT NULL,
+    Lname Varchar(30) NOT NULL,
+    Type_of_Request Varchar(30),
+    Comments Varchar(30) NOT NULL,
+    Start_Date_Requested Date NOT NULL,
+    End_Date_Requested Date NOT NULL,
+    Approved boolean NOT NULL);
+
+CREATE TABLE Buss_Schedule(
+    ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Company_ID Bigint NOT NULL,
+    Fname Varchar(30) NOT NULL,
+    Lname Varchar(30) NOT NULL,
+    Phone INT(10),
+    Email Varchar(30),
+    Password Varchar(30) NOT NULL,
+    DoB Date NOT NULL,
+    Company_Code Varchar(4) NOT NULL,
+    Approved boolean NOT NULL);
+
+CREATE TABLE Work_Schedule(
+    ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Company_ID Bigint NOT NULL,
+    Date Date NOT NULL,
+    Emp_ID Bigint,
+    Time Time(0) NOT NULL);
+
+CREATE TABLE Employee_Access(
+    ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Company_ID Bigint NOT NULL,
+    Emp_ID Bigint NOT NULL,
+	Employee_Hours boolean NOT NULL,
+	Vacation_Request_Forms boolean NOT NULL,
+	Vacation_Request_Forms_Acceptance boolean NOT NULL,
+	Modify_Schedule boolean NOT NULL,
+	Employee_Approval boolean NOT NULL,
+	Employee_Access boolean NOT NULL,
+	Employees_Page boolean NOT NULL,
+	Wages boolean NOT NULL,
+	Expenses boolean NOT NULL,
+	Pricing boolean NOT NULL,
+	Inventory boolean NOT NULL,
+	Orders boolean NOT NULL,
+	Profile boolean NOT NULL,
+	Personal_Messaging boolean NOT NULL,
+	Newsfeed boolean NOT NULL);
+
+CREATE TABLE Employees(
+	ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	Company_ID Bigint NOT NULL,
+	Emp_ID Bigint NOT NULL,
+	Position Varchar(25),
+	Wage Bigint,
+	Picture varbinary(1024));
+
+CREATE TABLE Expenses(
+	ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	Company_ID Bigint NOT NULL,
+	Expense Bigint,
+	Exp_Name varchar(255),
+	Type varchar(255));
+
+CREATE TABLE Inventory(
+	ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	Company_ID Bigint NOT NULL,
+	Item_Name Varchar(255),
+	Price Bigint,
+	Quantity Bigint);
+
+CREATE TABLE Orders(
+	ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	Company_ID Bigint NOT NULL,
+	Order_Name Varchar(255),
+	Date_Ordered Date,
+	Due_Date Date,
+	Order_Details Varchar(255));
+
+CREATE TABLE Messages(
+	ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	Company_ID Bigint NOT NULL,
+	Message Varchar(255),
+	Sender_ID Bigint,
+	Reciever_ID Bigint,
+	Time Time(0));
+
+CREATE TABLE Newsfeed(
+	ID Bigint AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	Company_ID Bigint NOT NULL,
+	Emp_ID Bigint NOT NULL,
+	Status Varchar(255),
+	Time Time(0));
+
+	
+
+
+
+
+
+
+
+    
