@@ -1,0 +1,225 @@
+/* --------VARIABLES */
+:root{
+  --burg: rgb(139,15,61);
+  --white: rgb(224,220,214);
+  --black: rgb(43,43,43);
+}
+/* --------PAGE */
+html {
+  background-color: white;
+}
+body {
+  --white: rgb(224,220,214);
+}
+*{
+  box-sizing: border-box;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+
+#header {
+    height: 27rem;
+    width: 100%;
+}
+
+.hero-img {
+           background: rgba(70, 72, 82, 0.3);
+}
+
+.header-h1 {
+    margin: auto;
+    width: 100%;
+    font-size: 4rem;
+    letter-spacing: 10px;
+    color: white;
+    background-color: var(--black):
+}
+
+.hero-img {
+    width: 100%;
+}
+
+h1{
+  color: var(--burg);
+      background-color: var(--black):
+
+}
+h2{
+  color: var(--burg);
+  font-style: italic;
+}
+h1, h2, h3, h4{
+    font-weight: bold;
+}
+th{
+  background-color: var(--burg);
+  border: 1px solid black;
+  color: white;
+}
+tr, td{
+  border: 1px solid grey;
+}
+
+.main-h2 {
+    margin-top: 30px;
+}
+
+input[type=submit]{
+  border-radius: 0 5px 0 0;
+}
+table {
+  width: 75vw;
+  margin: 0 auto;
+  border-spacing: 1px;
+}
+
+.whitebg{
+  background-color: var(--burg);
+}
+
+.logindiv>input[type=submit], a, .burgbox{
+  color: black;
+  border-style: groove;
+  border-color: black;
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  margin: 3px;
+}
+
+.a {
+    color: white;
+    border-color: white;
+}
+
+.burgbordered, input[type=text], input[type=tel], input[type=number], input[type=email], input[type=password], input[type=date]{
+  border: 3px solid var(--burg);
+  display: inline-block;
+  padding: 10px;
+  background-color: white;
+  margin: 3px;
+}
+
+.flexbox{
+  margin: 20px;
+  display: flex;
+  justify-content: flex-start;
+  width: 200px;
+  /* border: 1px solid black; */
+  flex-wrap: wrap;
+  flex-shrink: 1 0 auto;
+}
+.flexchild{
+  /* flex: 1 0 21%; */
+  flex-shrink: 1 0 auto;
+}
+.centered{
+  width: 75vw;
+  margin: 0 auto;
+  display: flex;
+    justify-content: space-around;
+}
+
+input[type=checkbox]{
+  border: 2px solid var(--burg);
+}
+
+/* --------FOOTER */
+  footer {
+    width: 100%;
+    margin-top: 16rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--black);
+    text-align: center;
+    color: var(--white);
+    border-top: solid 20px var(--white);
+  }
+  footer h2,
+  footer address {
+    width: 40%;
+
+  }
+  footer address a {
+    color: white;
+  }
+
+  .container {
+    margin-top: 15%;
+    width: 100%;
+    height: 405px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 50rem;
+}
+
+.right-container {
+    text-align: right;
+}
+
+.left-container {
+    text-align: left;
+}
+.footer-h1 {
+    color: var(--white);
+}
+
+/* --------NAV BAR */
+nav {
+    font-size: 1.5rem;
+    width: 100%;
+
+}
+
+ul li {
+   float: left;
+   list-style-type: none;X
+   margin-right: 3rem;
+   margin-left: 3rem;
+   background-color: none;
+}
+
+ul {
+       display: inline-block;
+   }
+
+li a:hover {
+  background-color: lightblue;
+}
+
+.a:hover {
+  background-color: blue;
+}
+
+img {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.info {
+    margin-top: 15em;
+    margin-bottom: 15em;
+}
+
+.home {
+   margin-top: 7rem;
+}
+
+.sign {
+    position: absolute;
+    right: 0px;
+}
+
+#login {
+    background-color: black;
+    color white;
+}
+
+#login:hover {
+    background-color: blue;
+}
