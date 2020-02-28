@@ -7,6 +7,8 @@
 /* --------PAGE */
 html {
   background-color: white;
+  color: black;
+  scroll-behavior: smooth;
 }
 body {
   --white: rgb(224,220,214);
@@ -18,24 +20,38 @@ body {
 }
 
 header {
-    background-image: url("https://za.dynabook.com/images/local/en_EU/Toshibytes/images/future_of_business.jpeg");
 }
+
+div.bg {
+  background-image: url("https://lalorattorneys.com/wp-content/uploads/2019/08/business-3224643__340.jpg");
+  border: 2px solid black;
+  background-blend-mode: overlay;
+  background-size: cover;
+    width: 100%;
+    height: 30em;
+    opacity: 0.5;
+}}
 
 #header {
     height: 27rem;
     width: 100%;
 }
 
+
+
 .hero-img {
-           background: rgba(70, 72, 82, 0.3);
+      background: rgba(70, 72, 82, 0.3);
 }
 
 .header-h1 {
     margin: auto;
     width: 100%;
-    font-size: 4rem;
-    letter-spacing: 10px;
+    font-size: 7rem;
+    letter-spacing: 2rem;
     color: black;
+    font-weight: bolder;
+    position: absolute;
+    top: 1.5em;
 }
 
 .hero-img {
@@ -44,7 +60,7 @@ header {
 
 h1{
   color: var(--burg);
-      background-color: var(--black):
+  background-color: var(--black):
 
 }
 h2{
@@ -130,13 +146,13 @@ input[type=checkbox]{
 /* --------FOOTER */
   footer {
     width: 100%;
-    margin-top: 16rem;
+    margin-top: 7rem;
     display: flex;
     justify-content: space-between;
-    background-color: var(--black);
+    background-color: white;
     text-align: center;
-    color: var(--white);
-    border-top: solid 20px var(--white);
+    color: black;
+    border-top: solid 20px black;
   }
   footer h2,
   footer address {
@@ -144,7 +160,9 @@ input[type=checkbox]{
 
   }
   footer address a {
-    color: white;
+      text-align: right;
+
+    color: black;
   }
 
   .container {
@@ -154,7 +172,6 @@ input[type=checkbox]{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    margin-bottom: 50rem;
 }
 
 .right-container {
@@ -165,34 +182,38 @@ input[type=checkbox]{
     text-align: left;
 }
 .footer-h1 {
-    color: var(--white);
+    font-size: 3em;
+    color: var(--burg);
 }
 
 /* --------NAV BAR */
 nav {
     font-size: 1.5rem;
     width: 100%;
-
+    position: absolute;
+    top: 20em;
+    color: var(--burg);
 }
 
 ul li {
+   font-size: 1.7em;
    float: left;
    list-style-type: none;X
    margin-right: 3rem;
    margin-left: 3rem;
-   background-color: none;
+
 }
+
 
 ul {
        display: inline-block;
    }
 
 li a:hover {
-  background-color: lightblue;
-}
 
-.a:hover {
-  background-color: blue;
+  background-color: black;
+  color: white;
+  font-weight: bold;
 }
 
 img {
@@ -204,26 +225,57 @@ img {
 }
 
 .info {
-    margin-top: 15em;
-    margin-bottom: 15em;
+    margin-top: 4em;
+    margin-bottom: 8em;
 }
 
 .home {
-   margin-top: 7rem;
+   margin-top: 14rem;
 }
 
 .sign {
     position: absolute;
     right: 0px;
     margin-right: 1em;
-}
+    top: 2em;
+ }
 
-#login {
+ .a {
+    color: black;
+    border-color: black;
+ }
+
+.a:hover {
     background-color: black;
-    color white;
+    color: white;
 }
 
-#login:hover {
-    background-color: blue;
+.nav {
+  width: 100%;
+  background-color: black;
+  height: 100px;
+  scroll
 }
 
+.nav a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: auto; /* Four links of equal widths */
+  text-align: center;
+  font-size: 1.2em;
+  align-content: centered;
+}
+
+.nav a:hover {
+  border-style: groove;
+  border-color: white;
+  border-bottom-style: none;
+  border-top-style: none;
+}
+
+.ul {
+    margin: auto;
+}

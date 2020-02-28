@@ -2,26 +2,32 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css" type="text/css">
+
     <title>Welcome!</title>
   </head>
   <body>
+       <div class="bg" ></div>
 
-    <section class="centered" id="header">
-        <h1 class="header-h1">Man-A-Biz</h1>
+    <header class="centered" id="header">
+       <h1 class="header-h1">Man-A-Biz</h1>
         <section class="sign">
-            <a href="register.php">Register</a>
-            <a href="login.php">Login</a>
+          <a class="a" href="register.php">Register</a>
+          <a class="a" id="login" href="login.php">Login</a>
         </section>
-    </section>
-     <nav>
-         <ul>
-             <li><a href="/Man-A-Biz/app/index.php">Home</a></li>
-             <li><a href="">PAGE 1</a></li>
-             <li><a href="">PAGE 2</a></li>
-             <li><a href="/Man-A-Biz/app/about.php">About Us</a></li>
-         </ul>
+    </header>
+
+     <nav class="nav">
+        <div class="ul">
+             <a href="/Man-A-Biz/app/index.php">Home</a>
+             <a href="">PAGE 1</a>
+             <a href="">PAGE 2</a>
+             <a href="/Man-A-Biz/app/about.php">About Us</a>
+          </div>
      </nav>
+
+     <section class="hero-img"></section>
 
     <section class="container">
 
