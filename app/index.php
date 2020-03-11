@@ -20,7 +20,7 @@ include_once 'db.php';
             }
   } else {
     // They ain't even logged in.
-    header("Location: index.php");
+    header("Location: home.html");
   }
 
  ?>
