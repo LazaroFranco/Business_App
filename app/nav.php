@@ -13,17 +13,16 @@ if (!isset($_SESSION)){
     <li><a class="bluebox" href="/Man-A-Biz/app/logout.php">Logout</a></li>
 
     <?php
-        $role= $_SESSION['role'];
+        $role = $_SESSION['role'];
         if ($role == 'admin'){
           echo "<li><a href=\"/Man-A-Biz/app/newpage.php\">New Page</a></li>";
         } else if ($role == 'owner'){
-          echo "<li><a href=\"/Man-A-Biz/app/newpage.php\">New Page</a></li>";
+          echo "<li><a href=\"/Man-A-Biz/app/employeeApproval.php\">Employee Approval</a></li>";
         } else if ($role == 'supervisor'){
           echo "<li><a href=\"/Man-A-Biz/app/newpage.php\">New Page</a></li>";
         } else if ($role == 'employee'){
           echo "<li><a href=\"/Man-A-Biz/app/newpage.php\">New Page</a></li>";
-        }
-        }
+        }g
      ?>
   </ul>
 </nav>
