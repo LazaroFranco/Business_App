@@ -14,7 +14,7 @@ if (!$conn) {
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" type="text/css">
-    <title> Employee Registration Approval</title>
+    <title>Employee Registration Approval</title>
   </head>
   <body>
     <div class="bg" ></div>
