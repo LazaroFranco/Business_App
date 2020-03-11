@@ -2,12 +2,13 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css" type="text/css">
     <title>Welcome!</title>
   </head>
   <body>
+
        <div class="bg" ></div>
 
     <header class="centered" id="header">
@@ -28,8 +29,6 @@
      <nav class="nav">
         <div class="ul">
              <a href="/Man-A-Biz/app/index.php">Home</a>
-             <a href="">PAGE 1</a>
-             <a href="">PAGE 2</a>
              <a href="/Man-A-Biz/app/about.php">About Us</a>
           </div>
      </nav>
@@ -40,19 +39,24 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <h3>Column 1</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        <img src="./images/connect.jpeg" alt="Connect image" height="250" width="325">
+       <br>
+      <h3>Connect</h3>
+      <p>A Connection will be the first step to any system!</p>
+      <p>From company administrator to contractors, you will be able to keep everyone in touch. </p>
     </div>
     <div class="col-sm-4">
-      <h3>Column 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+       <img src="https://www.janbaskdigitaldesign.com/assets/frontend/img/img2/responsive-BannerodPatch.png" height="250" width="350">
+      <h3>Personalize</h3>
+      <p>See what you want to see!</p>
+      <p>With this application you will be able to add or remove any operating system that will help you run your business!</p>
     </div>
     <div class="col-sm-4">
-      <h3>Column 3</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+       <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F49131482%2F261103918272%2F1%2Foriginal.jpg?auto=compress&s=343edf3d16fa73337d4073e9231bbd8e" height="250" width="350">
+
+      <h3>Manage</h3>
+      <p>Manage your team with a click of a button!</p>
+      <p>Our graphical user interface(GUI) will allow you to use every feature without a problem.</p>
     </div>
   </div>
 </div>
@@ -77,16 +81,10 @@
       if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
         y.style.visibility='hidden';
-
       } else {
         x.className = x.className.replace(" w3-show", "");
-
       }
-
     }
-
-
-
-        </script>
+    </script>
   </body>
 </html>
