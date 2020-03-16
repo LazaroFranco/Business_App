@@ -24,7 +24,7 @@ include_once 'db.php';
 
     }
     if (emp.value == "0"){
-        document.getElementById("basic").style.display = "none";
+        document.getElementById("basic").style.display = "block";
         document.getElementById("buss_owner").style.display = "block";
 
     }
@@ -79,14 +79,6 @@ include_once 'db.php';
 
 </div>
 <div style="display: none;" id="buss_owner" class="show-forms-employee">
-      <label for="Fname">First Name</label><input class="" type="text" name="Fname"><br>
-      <label for="Lname">Last Name</label><input class="" type="text" name="Lname"><br>
-      <label for="Email">Email</label><input class="" type="text" name="Email"><br>
-      <label for="Phone" class="">Phone (Format: 000-000-0000)</label><input class="" type="tel" name="Phone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
-      <label for="Birth" class="">Date Of Birth</label><input class="" type="date" name="Birth"><br>
-      <label for="Uname">Username</label><input class="" type="text" name="Uname"><br>
-      <label for="Pword">Password</label><input class="" type="text" name="Pword"><br>
-      <label for="Ccode" class="">Company Code</label><input class="" type="text" name="Ccode"><br>
       <label for="CompName">Company Name</label><input class="" type="text" name="CompName"><br>
       <label for="BAddress">Business Address</label><input class="" type="text" name="BAddress"><br>
       <label for="City">City</label><input class="" type="text" name="City"><br>
@@ -115,14 +107,20 @@ if(isset($_GET['submit'])){
   $bphone = $_GET['BPhone'];
   $Ccode = $_GET['Ccode'];
 
-if($role == "1"){
-  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User) VALUES ('$fname','$lname','$phone','$email','$password','$birth','0','$role')";
+if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != "" & $uname != "" ){
+  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
   mysqli_query($conn,$sql);
 
 
-  header("Location:index.php");
+  ?>
+  <script type="text/javascript">
+  window.location.href = 'http://localhost/Man-A-Biz/app/';
+  </script>
+  <?php
 }
-elseif(($role == "0" )){
+
+if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
+& $password != "" & $birth != "" & $uname != "" & $compName != "" & $baddress != "" & $city != "" & $state != "" & $bphone != "" & $Ccode != "")){
   $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Type_Of_User) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0','$role')";
   mysqli_query($conn,$sql);
   $sql = "INSERT INTO `Company`(Business_Name, Business_Address, Phone, Email, City, State, Company_Code) VALUES ('$compName','$baddress','$bphone','$email','$city','$state','$Ccode')";
