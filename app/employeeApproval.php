@@ -1,5 +1,5 @@
 <?php
-include './nav.php';
+//include './nav.php';
 include_once 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
@@ -17,13 +17,13 @@ if (!$conn) {
     </head>
     <body>
         <?php
-            include_once 'db.php';
-            include 'nav.php';
+        /*
             $currentFileInfo = pathinfo(__FILE__);
             $requestInfo = pathinfo($_SERVER['REQUEST_URI']);
             if($currentFileInfo['basename'] == $requestInfo['basename']){
                 die();
             }
+        */
         ?>
         <div class="bg" ></div>
         <h1 class="header-h1">Employee Registration Approval</h1>
