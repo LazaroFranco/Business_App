@@ -254,7 +254,7 @@ img {
   width: 100%;
   background-color: black;
   height: 100px;
-  scroll
+  scroll: smooth;
 }
 
 .nav a {
@@ -280,6 +280,10 @@ img {
     margin: auto;
 }
 
+
+/* Register */
+.show-forms-employee{
+}
 .col-sm-4 {
     margin-left: auto;
 }
