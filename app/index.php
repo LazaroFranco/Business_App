@@ -22,17 +22,21 @@ if(isset($_GET['login'])) {
         }
           }
             }
+<<<<<<< HEAD
               }
                 }
 
   if(isset($_GET['logout'])) {
     var_dump($_SESSION);
+=======
+  }
+>>>>>>> ad166fa179d77ced1cb3f2d3b6468b7c1288eaba
 
     session_destroy();
     header("location: index.php");
 }
  ?>
- 
+
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
 

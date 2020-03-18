@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once 'db.php';
 
 ?>
@@ -39,8 +39,8 @@ include_once 'db.php';
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="styles.css" type="text/css">
     <title>Register</title>
   </head>
   <body>
@@ -90,8 +90,8 @@ include_once 'db.php';
   <form>
 <?php
 if(isset($_GET['submit'])){
-  $role = $_GET['type-of-user']; 
-  
+  $role = $_GET['type-of-user'];
+
   $fname = $_GET['Fname'];
   $lname = $_GET['Lname'];
   $email = $_GET['Email'];
@@ -131,7 +131,7 @@ if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
 
 }
 
-  
+
 
 }
 ?>

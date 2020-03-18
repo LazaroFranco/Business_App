@@ -18,6 +18,8 @@
   }
   body {
     --white: rgb(224,220,214);
+    font-size: 2rem;
+
   }
   h1{
     color: var(--burg);
@@ -26,6 +28,7 @@
   h2{
     color: var(--burg);
     font-style: italic;
+    font-size: 3rem;
   }
   h1, h2, h3, h4{
       font-weight: bold;
@@ -40,6 +43,13 @@
   }
   .main-h2 {
       margin-top: 30px;
+  }
+  .header-h1 {
+    font-size: 4em;
+  }
+  header {
+    border-bottom-color: black;
+    border-bottom-style: groove;
   }
   input[type=submit]{
     border-radius: 0 5px 0 0;
@@ -78,7 +88,8 @@
   /* --------FOOTER */
     footer {
       width: 100%;
-      margin-top: 7rem;
+      position: absolute;
+      bottom: 0;
       display: flex;
       justify-content: space-between;
       background-color: white;
@@ -140,29 +151,16 @@
       background-color: black;
       color: white;
   }
-  .nav {
-    width: 100%;
-    background-color: black;
-    height: 100px;
-    scroll
+  .php {
+    margin-top: 10rem;
   }
-  .nav a {
-    float: left;
-    padding: 12px;
+  ul {
+    list-style: none;
     color: white;
-    text-decoration: none;
-    font-size: 17px;
-    width: auto; /* Four links of equal widths */
-    text-align: center;
-    font-size: 1.2em;
-    align-content: centered;
   }
-  .nav a:hover {
-    border-style: groove;
-    border-color: white;
-    border-bottom-style: none;
-    border-top-style: none;
-  }
-  .ul {
-      margin: auto;
+
+  ul li {
+    display: inline;
+    color: white;
+
   }
