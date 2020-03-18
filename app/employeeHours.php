@@ -22,7 +22,7 @@ if (!$conn) {
 
 <?php
 
-    $userQuery = "SELECT ID, Fname, Lname, Employee_Hours, Wages FROM `Users` JOIN `Employee_Access` WHERE Approved=TRUE ORDER BY ID DESC";
+    $userQuery = "SELECT Emp_ID, Fname, Lname, Employee_Hours, Wages FROM `Users` JOIN `Employee_Access` WHERE Approved=TRUE ORDER BY Emp_ID DESC";
     $userResult = mysqli_query($conn, $userQuery);
     $i = 1; // counter for checkboxes
     echo "<h2>Employee Hours</h2>";
