@@ -34,7 +34,6 @@ div.bg {
 }
 
 #header {
-    height: 27rem;
     width: 100%;
 }
 
@@ -61,7 +60,6 @@ div.bg {
 
 h1{
   color: var(--burg);
-  background-color: var(--black);
 }
 h2{
   color: var(--burg);
@@ -229,9 +227,7 @@ img {
     margin-bottom: 8em;
 }
 
-.home {
-   margin-top: 14rem;
-}
+
 
 .sign {
     position: absolute;
