@@ -1,6 +1,16 @@
 <?php
 session_start();
 include_once 'db.php';
+
+if(isset($_GET['login'])) {
+  $search = "SELECT * From Users;";
+  $result = mysqli_query($conn, $search);
+  while($row = mysqli_fetch_row($result)) {
+    if ($row[9] == 1) {
+      if ($row[5] == $_GET['uname'] ?? '') {
+        if ($row[6] == $_GET['psw'] ?? ''){
+          $_SESSION['role'] = $row[10];
+        }}}}}
   if (isset($_SESSION['ID'])){
     // Start looking for roles.
     $role= $_SESSION['role'];
@@ -18,11 +28,11 @@ include_once 'db.php';
             // Create the employee Home.
               include("./employee/employee_home.php");
             }
-  } else {
-    // They ain't even logged in.
-    header("Location: index.php");
+  // } else {
+  //   // They ain't even logged in.
+  //   header("Location: index.php");
+  // }
   }
-
  ?>
  
  <!DOCTYPE html>
@@ -48,7 +58,7 @@ include_once 'db.php';
          <input type="text" placeholder="Enter Username" name="uname" required>
          <label for="psw"><b>Password</b></label>
          <input type="password" placeholder="Enter Password" name="psw" required>
-         <a class="a" onclick="myFunction('Demo1')" class="w3-btn w3-block w3-black w3-left-align" id="login" href="login.php">Login</a>
+         <a class="a" onclick="myFunction('Demo1')" class="w3-btn w3-block w3-black w3-left-align" id="login"  name="login" href="login.php">Login</a>
        </div>
    </header>
    <nav class="nav">

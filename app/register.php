@@ -73,7 +73,6 @@ include_once 'db.php';
       <label for="Email">Email</label><input class="" type="text" name="Email"><br>
       <label for="Phone" class="">Phone (Format: 000-000-0000)</label><input class="" type="tel" name="Phone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
       <label for="Birth" class="">Date Of Birth</label><input class="" type="date" name="Birth"><br>
-      <label for="Uname">Username</label><input class="" type="text" name="Uname"><br>
       <label for="Pword">Password</label><input class="" type="text" name="Pword"><br>
       <label for="Ccode" class="">Company Code</label><input class="" type="text" name="Ccode"><br>
 
@@ -98,7 +97,6 @@ if(isset($_GET['submit'])){
   $email = $_GET['Email'];
   $phone = $_GET['Phone'];
   $birth = $_GET['Birth'];
-  $uname = $_GET['Uname'];
   $password = $_GET['Pword'];
   $compName = $_GET['CompName'];
   $baddress = $_GET['BAddress'];
@@ -107,7 +105,7 @@ if(isset($_GET['submit'])){
   $bphone = $_GET['BPhone'];
   $Ccode = $_GET['Ccode'];
 
-if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != "" & $uname != "" ){
+if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != "" ){
   $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
   mysqli_query($conn,$sql);
 
@@ -120,7 +118,7 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
 }
 
 if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
-& $password != "" & $birth != "" & $uname != "" & $compName != "" & $baddress != "" & $city != "" & $state != "" & $bphone != "" & $Ccode != "")){
+& $password != "" & $birth != "" & $compName != "" & $baddress != "" & $city != "" & $state != "" & $bphone != "" & $Ccode != "")){
   $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Type_Of_User) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0','$role')";
   mysqli_query($conn,$sql);
   $sql = "INSERT INTO `Company`(Business_Name, Business_Address, Phone, Email, City, State, Company_Code) VALUES ('$compName','$baddress','$bphone','$email','$city','$state','$Ccode')";
