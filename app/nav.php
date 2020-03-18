@@ -22,7 +22,7 @@ if (!isset($_SESSION)){
           echo "<li><a href=\"/Man-A-Biz/app/newpage.php\">New Page</a></li>";
         } else if ($role == 'employee'){
           echo "<li><a href=\"/Man-A-Biz/app/newpage.php\">New Page</a></li>";
-        }g
+        }
      ?>
   </ul>
 </nav>
