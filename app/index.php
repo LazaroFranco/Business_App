@@ -18,13 +18,10 @@ include_once 'db.php';
             // Create the employee Home.
               include("./employee/employee_home.php");
             }
-  } else {
-    // They ain't even logged in.
-    header("Location: index.php");
   }
 
  ?>
- 
+
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
 
