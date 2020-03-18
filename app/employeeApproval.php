@@ -46,8 +46,8 @@ if (!$conn) {
             while ($row = mysqli_fetch_array($userResult)) {
                 echo "<tr>";
                     echo "<td name='id'>" . $row['ID'] . "</td>";
-                    echo "<td name='fname'>" . $row['FName'] . "</td>";
-                    echo "<td name='lname'>" . $row['LName'] . "</td>";
+                    echo "<td name='fname'>" . $row['Fname'] . "</td>";
+                    echo "<td name='lname'>" . $row['Lname'] . "</td>";
                     echo "<td name='role'>" . $row['Type_Of_User'] . "</td>";
                     echo "<td><input type='checkbox' name='check[$i]' value='".$row['ID']."'</td>";
                 echo "</tr>";
