@@ -1,9 +1,12 @@
 <?php
+session_start();
 //include './nav.php';
 include_once 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
+var_dump($_SESSION);
+
 ?>
 
 <!DOCTYPE html>

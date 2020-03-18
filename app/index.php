@@ -1,38 +1,36 @@
 <?php
-session_start();
 include_once 'db.php';
 
+
+
 if(isset($_GET['login'])) {
+  echo'poop';
   $search = "SELECT * From Users;";
   $result = mysqli_query($conn, $search);
   while($row = mysqli_fetch_row($result)) {
-    if ($row[9] == 1) {
+    if ($row[9] == 0) {
       if ($row[5] == $_GET['uname'] ?? '') {
         if ($row[6] == $_GET['psw'] ?? ''){
+          session_start();
+
           $_SESSION['role'] = $row[10];
-        }}}}}
-  if (isset($_SESSION['ID'])){
-    // Start looking for roles.
-    $role= $_SESSION['role'];
-    // echo "Hello, " . $_SESSION['firstName'] . "! You are a " . $role . ".";
-    if ($role == "admin"){
-      // Create the Admin Home.
-        include("./admin/admin_home.php");
-      } else if ($role == "owner"){
-        // Create the Owner Home.
-          include("./owner/owner.php");
-        } else if ($role == "supervisor"){
-          // Create the supervisor Home.
-            include("./supervisor/supervisor_home.php");
-          } else if ($role == "employee"){
-            // Create the employee Home.
-              include("./employee/employee_home.php");
+          $_SESSION['loggedIn'] = true;
+          var_dump($_SESSION);
+          echo($_SESSION['loggedIn']);
+          header( 'Location: employeeApproval.php');
+        break;
+        }
+          }
             }
-  // } else {
-  //   // They ain't even logged in.
-  //   header("Location: index.php");
-  // }
-  }
+              }
+                }
+
+  if(isset($_GET['logout'])) {
+    var_dump($_SESSION);
+
+    session_destroy();
+    header("location: index.php");
+}
  ?>
  
  <!DOCTYPE html>
@@ -47,19 +45,38 @@ if(isset($_GET['login'])) {
  </head>
 
  <body>
-   <div class="bg"></div>
-   <header class="centered" id="header">
-     <h1 class="header-h1">Man-A-Biz</h1>
-     <section class="sign">
-       <a class="a" href="register.php">Register</a>
-       <a class="a" onclick="myFunction('Demo1')" class="w3-btn w3-block w3-black w3-left-align" id="hide">Login</a>
-       <div id="Demo1" class="w3-container w3-hide">
-         <label for="uname"><b>Username</b></label>
-         <input type="text" placeholder="Enter Username" name="uname" required>
-         <label for="psw"><b>Password</b></label>
-         <input type="password" placeholder="Enter Password" name="psw" required>
-         <a class="a" onclick="myFunction('Demo1')" class="w3-btn w3-block w3-black w3-left-align" id="login"  name="login" href="login.php">Login</a>
-       </div>
+  
+        <div class="bg"></div>
+        <header class="centered" id="header">
+          <h1 class="header-h1">Man-A-Biz</h1>
+          <section class="sign">
+          <?php
+
+      if(session_id() != '' || isset($_SESSION)) {
+        echo'<form class = "logout">
+            <button type="submit" class="w3-btn w3-block w3-black w3-left-align" name="logout">Logout</button>
+        </form>';
+      }
+      else if(session_id() == '' || !isset($_SESSION)) {
+        // session isn't started
+              
+        echo' 
+            <a class="a" href="register.php">Register</a>
+            <a class="a" onclick="myFunction(\'Demo1\')" class="w3-btn w3-block w3-black w3-left-align" id="hide">Login</a>
+            <form>
+            <div id="Demo1" class="w3-container w3-hide">
+              <label for="uname"><b>Username</b></label>
+              <input type="text" placeholder="Enter Username" name="uname" required>
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" required>
+              <button class="a" onclick="myFunction(\'Demo1\')" class="w3-btn w3-block w3-black w3-left-align" id="login"  name="login">Login</button>
+            </div>
+              </form>';}
+
+
+
+
+              ?>
    </header>
    <nav class="nav">
      <div class="ul">
