@@ -1,6 +1,7 @@
 <?php
 include_once 'db.php';
 
+session_start();
 
 
 if(isset($_GET['login'])) {
@@ -11,7 +12,6 @@ if(isset($_GET['login'])) {
     if ($row[9] == 0) {
       if ($row[5] == $_GET['uname'] ?? '') {
         if ($row[6] == $_GET['psw'] ?? ''){
-          session_start();
 
           $_SESSION['role'] = $row[10];
           $_SESSION['loggedIn'] = true;
@@ -22,18 +22,12 @@ if(isset($_GET['login'])) {
         }
           }
             }
-<<<<<<< HEAD
               }
                 }
 
   if(isset($_GET['logout'])) {
-    var_dump($_SESSION);
-=======
-  }
->>>>>>> ad166fa179d77ced1cb3f2d3b6468b7c1288eaba
+    header( 'Location: logout.php');
 
-    session_destroy();
-    header("location: index.php");
 }
  ?>
 
@@ -56,13 +50,7 @@ if(isset($_GET['login'])) {
           <section class="sign">
           <?php
 
-      if(session_id() != '' || isset($_SESSION)) {
-        echo'<form class = "logout">
-            <button type="submit" class="w3-btn w3-block w3-black w3-left-align" name="logout">Logout</button>
-        </form>';
-      }
-      else if(session_id() == '' || !isset($_SESSION)) {
-        // session isn't started
+
               
         echo' 
             <a class="a" href="register.php">Register</a>
@@ -75,7 +63,7 @@ if(isset($_GET['login'])) {
               <input type="password" placeholder="Enter Password" name="psw" required>
               <button class="a" onclick="myFunction(\'Demo1\')" class="w3-btn w3-block w3-black w3-left-align" id="login"  name="login">Login</button>
             </div>
-              </form>';}
+              </form>';
 
 
 
