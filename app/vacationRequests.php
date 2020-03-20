@@ -46,7 +46,8 @@ if (!$conn) {
         $endDate = $_POST['endDate'];
 
         if (($currentDate != '') && ($firstName != '') && ($lastName != '') && ($typeOfRequest != '') && ($paidOrUnpaid != '') && ($startDate != '') && ($endDate !='')) {
-            $insertRequest = "INSERT INTO `Vac_Req_Form` (Current_Date, Fname, Lname, Type_Of_Request, Paid, Comments, Start_Date_Requested, End_Date_Requested, Approved) VALUES ('$currentDate', '$firstName', '$lastName', '$typeOfRequest', '$paidOrUnpaid', '$comments', '$startDate', '$endDate')";
+            // NEED TO DEFINE VARIABLE FOR ID AND COMANPY_ID
+            $insertRequest = "INSERT INTO `Vac_Req_Form` (ID, Company_ID, Current_Date, Fname, Lname, Type_Of_Request, Paid, Comments, Start_Date_Requested, End_Date_Requested, Approved) VALUES ('$currentDate', '$firstName', '$lastName', '$typeOfRequest', '$paidOrUnpaid', '$comments', '$startDate', '$endDate')";
             if (mysqli_query($conn, $insertRequest)) {
                 echo "You have submitted a request for time off.";
             } else {
