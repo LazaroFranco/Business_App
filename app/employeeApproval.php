@@ -88,5 +88,3 @@ if (!$conn) {
             </address>
         </footer>";
 ?>
-
-   
