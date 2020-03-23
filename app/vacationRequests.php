@@ -46,14 +46,28 @@ if (!$conn) {
         $endDate = $_POST['endDate'];
 
         if (($currentDate != '') && ($firstName != '') && ($lastName != '') && ($typeOfRequest != '') && ($paidOrUnpaid != '') && ($startDate != '') && ($endDate !='')) {
-            // NEED TO DEFINE VARIABLE FOR ID AND COMANPY_ID
-            $insertRequest = "INSERT INTO `Vac_Req_Form` (ID, Company_ID, Current_Date, Fname, Lname, Type_Of_Request, Paid, Comments, Start_Date_Requested, End_Date_Requested, Approved) VALUES ('$currentDate', '$firstName', '$lastName', '$typeOfRequest', '$paidOrUnpaid', '$comments', '$startDate', '$endDate')";
-            if (mysqli_query($conn, $insertRequest)) {
-                echo "You have submitted a request for time off.";
-            } else {
-                echo "Error with submitting request." . mysqli_error($conn);
+            $getCompany_ID = "SELECT Company_ID FROM `Users` WHERE Fname='$firstName' AND Lname='$lastName'";
+            $resultCompany_ID = mysqli_query($conn, $getCompany_ID);
+            $resultCompIDCheck = mysqli_num_rows($resultCompany_ID);
+            if ($resultCompIDCheck > 0) {
+                while ($row = mysqli_fetch_assoc($resultCompany_ID)) {
+                    $Company_ID = $row['Company_ID'];
+                }
+                $getUserID = "SELECT ID FROM `Users` WHERE Fname='$firstName' AND Lname='$lastName'";
+                $resultUserID = mysqli_query($conn, $getUserID);
+                $resultUserIDCheck = mysqli_num_rows($resultUserID);
+                if ($resultUserIDCheck > 0) {
+                    while ($row = mysqli_fetch_assoc($resultUserID)) {
+                        $ID = $row['ID'];
+                    }
+                }
+                $insertVacRequest = "INSERT INTO `Vac_Req_Form` (Company_ID, Current_Date, Fname, Lname, Type_Of_Request, Paid, Comments, Start_Date_Requested, End_Date_Requested, Approved) VALUES ($Company_ID', $currentDate', '$firstName', '$lastName', '$typeOfRequest', '$paidOrUnpaid', '$comments', '$startDate', '$endDate', 0)";
+                if (mysqli_query($conn, $insertVacRequest)) {
+                    echo "You have submitted a request for time off.";
+                } else {
+                    echo "Error with submitting request." . mysqli_error($conn);
+                }
             }
         }
     }
-
 ?>
