@@ -5,7 +5,6 @@ session_start();
 
 
 if(isset($_GET['login'])) {
-  echo'poop';
   $search = "SELECT * From Users;";
   $result = mysqli_query($conn, $search);
   while($row = mysqli_fetch_row($result)) {
@@ -15,8 +14,7 @@ if(isset($_GET['login'])) {
 
           $_SESSION['role'] = $row[10];
           $_SESSION['loggedIn'] = true;
-          var_dump($_SESSION);
-          echo($_SESSION['loggedIn']);
+
           header( 'Location: employeeApproval.php');
         break;
         }

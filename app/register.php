@@ -1,4 +1,4 @@
-<?php
+<?php 
 include_once 'db.php';
 
 ?>
@@ -39,8 +39,8 @@ include_once 'db.php';
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="styles.css" type="text/css">
     <title>Register</title>
   </head>
   <body>
@@ -90,8 +90,8 @@ include_once 'db.php';
   <form>
 <?php
 if(isset($_GET['submit'])){
-  $role = $_GET['type-of-user'];
-
+  $role = $_GET['type-of-user']; 
+  
   $fname = $_GET['Fname'];
   $lname = $_GET['Lname'];
   $email = $_GET['Email'];
@@ -104,25 +104,79 @@ if(isset($_GET['submit'])){
   $state = $_GET['State'];
   $bphone = $_GET['BPhone'];
   $Ccode = $_GET['Ccode'];
+$compID = "No";
 
-if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != "" ){
-  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
-  mysqli_query($conn,$sql);
-
-
-  ?>
-  <script type="text/javascript">
-  window.location.href = 'http://localhost/Man-A-Biz/app/';
-  </script>
-  <?php
-}
-
-if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
+  if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
 & $password != "" & $birth != "" & $compName != "" & $baddress != "" & $city != "" & $state != "" & $bphone != "" & $Ccode != "")){
-  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Type_Of_User) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0','$role')";
-  mysqli_query($conn,$sql);
   $sql = "INSERT INTO `Company`(Business_Name, Business_Address, Phone, Email, City, State, Company_Code) VALUES ('$compName','$baddress','$bphone','$email','$city','$state','$Ccode')";
   mysqli_query($conn,$sql);
+  
+  $UserCompanyID = "SELECT ID FROM `Company` WHERE Company_Code = '$Ccode'";
+  $result = mysqli_query($conn, $UserCompanyID);
+
+  $resultCheck = mysqli_num_rows($result);
+  echo $resultCheck;
+  if($resultCheck > 0){
+    while($row = mysqli_fetch_assoc($result)){
+    $compID = $row['ID'];
+  }
+  }
+  
+
+  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Type_Of_User, Company_ID) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0','$role','$compID')";
+  mysqli_query($conn,$sql);
+
+  $EmpID = "SELECT ID FROM `Users` WHERE Email = '$email'";
+  $result = mysqli_query($conn, $EmpID);
+
+  $resultCheck = mysqli_num_rows($result);
+  echo $resultCheck;
+  if($resultCheck > 0){
+    while($row = mysqli_fetch_assoc($result)){
+    $employID = $row['ID'];
+  }
+  } 
+  
+
+  $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID) VALUES ('$compID', '$employID')";
+  mysqli_query($conn,$sql);
+  ?>
+  <script type="text/javascript">
+  window.location.href = 'http://localhost/Man-A-Biz/app/';
+  </script>
+  <?php
+}
+if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != ""){
+
+  $UserCompanyID = "SELECT ID FROM `Company` WHERE Company_Code = '$Ccode'";
+  $result = mysqli_query($conn, $UserCompanyID);
+
+  $resultCheck = mysqli_num_rows($result);
+  echo $resultCheck;
+  if($resultCheck > 0){
+    while($row = mysqli_fetch_assoc($result)){
+    $compID = $row['ID'];
+  }
+  } 
+
+
+  $sql = "INSERT INTO `Users`(Company_ID, Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$compID', '$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
+  mysqli_query($conn,$sql);
+
+  $EmpID = "SELECT ID FROM `Users` WHERE Email = '$email'";
+  $result = mysqli_query($conn, $EmpID);
+
+  $resultCheck = mysqli_num_rows($result);
+  echo $resultCheck;
+  if($resultCheck > 0){
+    while($row = mysqli_fetch_assoc($result)){
+    $employID = $row['ID'];
+  }
+  } 
+
+  $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID) VALUES ('$compID', '$employID')";
+  mysqli_query($conn,$sql);
+
   ?>
   <script type="text/javascript">
   window.location.href = 'http://localhost/Man-A-Biz/app/';
@@ -131,7 +185,7 @@ if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
 
 }
 
-
+  
 
 }
 ?>
