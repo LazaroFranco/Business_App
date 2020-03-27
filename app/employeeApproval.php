@@ -31,6 +31,8 @@ if (!$conn) {
 </html>
 
 <?php
+    include 'nav.php';
+
     $userQuery = "SELECT ID, Fname, Lname, Type_Of_User FROM Users Where Approved=FALSE ORDER BY ID DESC";
     $userResult = mysqli_query($conn, $userQuery);
     $i = 1; // counter for checkboxes
@@ -57,7 +59,7 @@ if (!$conn) {
         echo "<input type='submit' name='approve' value='Approve'/>";
         echo "<input type='submit' name='remove' value='Remove'/>";
     echo "</form>";
-    
+
     if(isset($_POST['approve'])) {
         if (isset($_POST['check'])) {
             foreach ($_POST['check'] as $value) {
