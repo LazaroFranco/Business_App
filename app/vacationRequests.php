@@ -20,7 +20,7 @@ if (!$conn) {
         <h2 class="header-h1">Vacation Request Form</h1>
 
         <form action="vacationRequests.php" name="vacReq" method="POST">
-            <label>Today's Date:</label><input type="date" name="todayDate"/><br>
+            <label>Today's Date:</label><input type="date" name="todayDate" value="<?php echo date('Y-m-d')?>"/><br>
             <label>Employee First Name:</label><input type="text" name="fname"/><br>
             <label>Employee Last Name:</label><input type="text" name="lname"/><br>
             <label>Type of Request (Vacation/Sick):</label><input type="text" name="typeOfReq"/><br>
