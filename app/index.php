@@ -5,7 +5,6 @@ session_start();
 
 
 if(isset($_GET['login'])) {
-  echo'poop';
   $search = "SELECT * From Users;";
   $result = mysqli_query($conn, $search);
   while($row = mysqli_fetch_row($result)) {
@@ -15,8 +14,24 @@ if(isset($_GET['login'])) {
 
           $_SESSION['role'] = $row[10];
           $_SESSION['loggedIn'] = true;
-          var_dump($_SESSION);
-          echo($_SESSION['loggedIn']);
+          $_SESSION['ID'] = $row[0];
+          $_SESSION['companyID'] = $row[1];
+          $_SESSION['Fname'] = $row[2];
+          $_SESSION['Lname'] = $row[3];
+          $_SESSION['Phone'] = $row[4];
+          $_SESSION['email'] = $row[5];
+          $_SESSION['DoB'] = $row[7];
+          $_SESSION['CompanyCode'] = $row[8];
+          $_SESSION['Approved'] = $row[9];
+          $_SESSION['type_of_User'] = $row[10];
+
+
+
+
+
+
+
+
           header( 'Location: employeeApproval.php');
         break;
         }

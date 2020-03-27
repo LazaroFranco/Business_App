@@ -196,7 +196,7 @@ nav {
 ul li {
    font-size: 1.7em;
    float: left;
-   list-style-type: none;X
+   list-style-type: none;
    margin-right: 3rem;
    margin-left: 3rem;
 
@@ -289,3 +289,5 @@ img {
        margin: 30em;
    }
 }
+
+
