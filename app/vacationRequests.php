@@ -30,45 +30,13 @@ if (!$conn) {
             <label>End Date:</label><input type="date" name="endDate"/><br>
             <input type="submit" name="submit" value="Submit Request">
         </form>
-
-        <input type="submit" name="vacReqForms" value="View Employee Requests">
+        <form action="vacationRequests.php" name="viewReqs" method="POST">
+            <input type="submit" name="vacReqForms" value="View Employee Requests">
+        </form>
     </body>
 </html>
 
 <?php
-    if (isset($_POST['vacReqForms'])) {
-        $getRequestList = "SELECT * FROM Vac_Req_Form WHERE Approved=0";
-        $resultList = mysqli_query($conn, $getRequestList);
-        $resultListCheck = mysqli_num_rows($resultList);
-        if ($resultListCheck > 0) {
-            echo "
-                    <h1>Employee Requests for Time Off</h1>
-                    <tr>
-                        <th>Submission Date</th>
-                        <th>Employee Name</th>
-                        <th>Type of Request</th>
-                        <th>Paid Status</th>
-                        <th>Comments</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                    </tr>
-                ";
-            $i = 1;
-            while ($row = mysqli_fetch_assoc($resultList)) {
-                echo "
-                    <tr>
-                        <td>" . $row['Today_Date'] . "</td>
-                        <td>" . $row['Fname'] . ' ' . $row['Lname'] . "</td>
-                        <td>" . $row['Type_of_Request'] . "</td>
-                        <td>" . $row['Comments'] . "</td>
-                        <td>" . $row['Start_Date_Requested'] . "</td>
-                        <td>" . $row['End_Date_Requested'] . "</td>
-                    </tr>
-                ";
-                
-            }
-        }
-    }
 //if (isset($_GET['login'])) {
     if (isset($_POST['submit'])) {
         $todayDate = $_POST['todayDate'];
@@ -86,10 +54,6 @@ if (!$conn) {
             } else if ($paid == "unpaid") {
                 $paid = 0;
             }
-
-            $currentDate = date('d-m-Y', strtotime(str_replace('-', '/', $todayDate)));
-            $startDate = date('d-m-Y', strtotime(str_replace('-', '/', $startDate)));
-            $endDate = date('d-m-Y', strtotime(str_replace('-', '/', $endDate)));
 
             $getUserData = "SELECT ID, Company_ID FROM `Users` WHERE Fname='$firstName' AND Lname='$lastName'";
             $result = mysqli_query($conn, $getUserData);
@@ -110,5 +74,57 @@ if (!$conn) {
         }
     }
 //}
+if (isset($_POST['vacReqForms'])) {
+    $getRequestList = mysqli_query($conn, "SELECT * FROM Vac_Req_Form WHERE Approved=0");
+    $i = 1;
+    echo "<form action='vacationRequests.php' method='POST'>";
+        echo "<h1>Employee Requests for Time Off</h1>";
+            echo "<table>";
+                echo "<tr>";
+                    echo "<th>Submission Date</th>";
+                    echo "<th>Employee Name</th>";
+                    echo "<th>Type of Request</th>";
+                    echo "<th>Paid Status</th>";
+                    echo "<th>Comments</th>";
+                    echo "<th>Start Date</th>";
+                    echo "<th>End Date</th>";
+                echo "</tr>";
+        while ($row = mysqli_fetch_array($getRequestList)) {
+            echo "<tr>";
+                echo "<td>" . $row['Today_Date'] . "</td>";
+                echo "<td>" . $row['Fname'] . ' ' . $row['Lname'] . "</td>";
+                echo "<td>" . $row['Type_of_Request'] . "</td>";
+                echo "<td>" . $row['Paid'] . "</td>";
+                echo "<td>" . $row['Comments'] ?? '' . "</td>";
+                echo "<td>" . $row['Start_Date_Requested'] . "</td>";
+                echo "<td>" . $row['End_Date_Requested'] . "</td>";
+                echo "<td><input type='checkbox' name='check[$i]' value='".$row['ID']."'/></td>";
+            echo "</tr>";
+            $i++;
+        }
+        echo "</table>";
+        echo "<input type='submit' name='approve' value='Approve'/>";
+        echo "<input type='submit' name='deny' value='Deny'/>";
+    echo "</form>";
 
+    if (isset($_POST['approve'])) {
+        if (isset($_POST['check'])) {
+            foreach ($_POST['check'] as $value) {
+                $approveRequest = "UPDATE `Vac_Req_Form` SET Approved=1 WHERE ID='$value'";
+                mysqli_query($conn, $approveRequest);
+            }
+        }
+        header('Location: vacationRequests.php');
+    }
+    if (isset($_POST['deny'])) {
+        if (isset($_POST['check'])) {
+            foreach ($_POST['check'] as $value) {
+                $deleteRequest = "DELETE FROM `Vac_Req_Form` WHERE ID='$value'";
+                mysqli_query($conn, $deleteRequest);
+            }
+        }
+        header('Location: vacationRequests.php');
+    }
+}
+mysqli_close($conn);
 ?>
