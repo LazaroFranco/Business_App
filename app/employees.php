@@ -94,7 +94,7 @@ $compID = $_SESSION['companyID'];
             echo '<tr>';
             echo "<th>" . $row[2] ." ". $row[3] . "</th>";
             echo "<th>" . $row[14] . "<input name='position'type='text'>" ."</th>";
-            echo "<th>" . $row[15] . "<input name='wage'type='text'>" . "</th>";
+            echo "<th>" . $row[15] . "<input name='wage'type='number'>" . "</th>";
             echo "<th>" . '<input type="submit" name="submit" value=' ."$row[0]" .'>' . "</th>";
 
             echo "</tr>";
