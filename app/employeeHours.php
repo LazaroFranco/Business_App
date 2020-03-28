@@ -16,11 +16,11 @@ if (!$conn) {
         <title>Employee Hours</title>
     </head>
     <body>
-        <div class="bg" ></div>
-        <h1 class="header-h1">Employee Hours</h1>
-        <?php
-        include 'nav.php';
-        ?>
+      <?php
+      include 'nav.php';
+      ?>
+      <h1 class="header-h1">Employee Hours</h1>
+
         <section class="php">
           <?php
               $userQuery = "SELECT Emp_ID, FName, LName, Employee_Hours, Wages FROM `Users` JOIN `Employee_Access` WHERE Approved=TRUE ORDER BY Emp_ID DESC";

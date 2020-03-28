@@ -9,30 +9,21 @@ if (!$conn) {
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css" type="text/css">
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="style.css">
         <title>Employee Registration Approval</title>
     </head>
     <body>
-        <?php
-        /*
-            $currentFileInfo = pathinfo(__FILE__);
-            $requestInfo = pathinfo($_SERVER['REQUEST_URI']);
-            if($currentFileInfo['basename'] == $requestInfo['basename']){
-                die();
-            }
-        */
-        ?>
-        <div class="bg" ></div>
-        <h1 class="header-h1">Employee Registration Approval</h1>
+
     </body>
 </html>
 
 <?php
     include 'nav.php';
-
+    echo "<h1 class='header-h1'>Employee Approval</h1>";
     $userQuery = "SELECT ID, Fname, Lname, Type_Of_User FROM Users Where Approved=FALSE ORDER BY ID DESC";
     $userResult = mysqli_query($conn, $userQuery);
     $i = 1; // counter for checkboxes
@@ -81,12 +72,5 @@ if (!$conn) {
     }
     mysqli_close($conn);
 
-    echo "<footer>
-            <h2 class='footer-h1'>Man-A-Biz</h2>
-            <address>
-                <p>750 E King St</p>
-                <p>Lancaster, PA 17602</p>
-                <p><a href='tel:1-717-299-7701' class='phone'>717.299.7701</a></p>
-            </address>
-        </footer>";
+    include 'footer.php';
 ?>

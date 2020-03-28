@@ -8,15 +8,19 @@ if (!$conn) {
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css" type="text/css">
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="style.css">
         <title>Vacation Request</title>
     </head>
     <body>
+      <?php
+      include 'nav.php';
+
+       ?>
         <div class="bg" ></div>
-        <h1 class="header-h1">Company Name</h1>
         <h2 class="header-h1">Vacation Request Form</h1>
 
         <form action="vacationRequests.php" name="vacReq" method="POST">
@@ -126,5 +130,6 @@ if (isset($_POST['vacReqForms'])) {
         header('Location: vacationRequests.php');
     }
 }
+include 'footer.php';
 mysqli_close($conn);
 ?>

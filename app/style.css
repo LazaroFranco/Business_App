@@ -1,242 +1,301 @@
 /* --------VARIABLES */
-:root{
-    --burg: rgb(139,15,61);
-    --white: rgb(224,220,214);
-    --black: rgb(43,43,43);
-  }
-  * {
-      box-sizing: border-box;
-      font-family: sans-serif;
-      text-align: center;
-  }
-  /* --------PAGE */
-  html {
-    background-color: white;
-    color: black;
-    scroll-behavior: smooth;
-    text-align: center;
-  }
-  body {
-    --white: rgb(224,220,214);
-    font-size: 2rem;
-
-  }
-  h1{
-    color: var(--burg);
-    background-color: var(--black);
-  }
-  h2{
-    color: var(--burg);
-    font-style: italic;
-    font-size: 3rem;
-  }
-  h1, h2, h3, h4{
-      font-weight: bold;
-  }
-  th{
-    background-color: var(--burg);
-    border: 1px solid black;
-    color: white;
-  }
-  tr, td{
-    border: 1px solid grey;
-  }
-  .main-h2 {
-      margin-top: 30px;
-  }
-  .header-h1 {
-    font-size: 4em;
-  }
-  header {
-    border-bottom-color: black;
-    border-bottom-style: groove;
-  }
-  input[type=submit]{
-    border-radius: 0 5px 0 0;
-  }
-  table {
-    width: 75vw;
-    margin: 0 auto;
-    border-spacing: 1px;
-  }
-  .whitebg{
-    background-color: var(--burg);
-  }
-  .logindiv>input[type=submit], a, .burgbox{
-    color: black;
-    border-style: groove;
-    border-color: black;
-    padding: 10px;
-    display: inline-block;
-    text-decoration: none;
-    margin: 3px;
-  }
-  .a {
-      color: white;
-      border-color: white;
-  }
-  .burgbordered, input[type=text], input[type=tel], input[type=number], input[type=email], input[type=password], input[type=date]{
-    border: 3px solid var(--burg);
-    display: inline-block;
-    padding: 10px;
-    background-color: white;
-    margin: 3px;
-  }
-  input[type=checkbox]{
-    border: 2px solid var(--burg);
-  }
-  /* --------FOOTER */
-    footer {
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      display: flex;
-      justify-content: space-between;
-      background-color: white;
-      text-align: center;
-      color: black;
-      border-top: solid 20px black;
-    }
-    footer h2,
-    footer address {
-      width: 40%;
-    }
-    footer address a {
-        text-align: right;
-      color: black;
-    }
-    .container {
-      margin-top: 15%;
-      width: 100%;
-      height: 405px;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-  }
-  .right-container {
-      text-align: right;
-  }
-  .left-container {
-      text-align: left;
-  }
-  .footer-h1 {
-      font-size: 3em;
-      color: var(--burg);
-  }
-  /* --------NAV BAR */
-  img {
-      float: left;
-  }
-  .right {
-      float: right;
-  }
-  .info {
-      margin-top: 4em;
-      margin-bottom: 8em;
-  }
-  .home {
-     margin-top: 14rem;
-  }
-  .sign {
-      position: absolute;
-      right: 0px;
-      margin-right: 1em;
-      top: 2em;
-   }
-   .a {
-      color: black;
-      border-color: black;
-   }
-  .a:hover {
-      background-color: black;
-      color: white;
-  }
-  .php {
-    margin-top: 10rem;
-  }
-  ul {
-    list-style: none;
-    color: white;
-  }
-
-  ul li {
-    display: inline;
-    color: white;
-
-  }
-
-  #leftbox { 
-    float:left;  
-    background:rgb(212, 212, 212);
-    width:100%; 
-    height:100%; 
-  } 
-
-
-  .slider.round:before{
-    border-radius: 50%;
-  }
-  .slider.round{
-    border-radius: 34px;
-  }
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-
-  input:focus + .slider{
-    box-shadow: 0 0 1px #2196F3;
-  }
-
-  input:checked + .slider{
-    background-color: #2196F3;
-  }
-
-  .slider:before{
-    position: absolute;
-    content: "Edit";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-
-  .switch input{
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  .slider{
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-.Theader{
-  color: Black;
+:root {
+  --burg: rgb(139, 15, 61);
+  --white: rgb(224, 220, 214);
+  --black: rgb(43, 43, 43);
 }
-th{
+
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
   text-align: center;
 }
 
-th input{
+/* --------PAGE */
+html {
+  background-color: white;
   color: black;
+  scroll-behavior: smooth;
+  text-align: center;
+}
+
+body {
+  --white: rgb(224, 220, 214);
+
+  font-size: 2rem;
+}
+
+h1 {
+  color: var(--burg);
+  font-size: 300%;
+}
+
+h2 {
+  color: var(--burg);
+  font-style: italic;
+  font-size: 3rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: bold;
+}
+
+th {
+  background-color: var(--burg);
+  border: 1px solid black;
+  color: white;
+}
+
+tr,
+td {
+  border: 1px solid grey;
+}
+
+.main-h2 {
+  margin-top: 30px;
+}
+
+.header-h1 {
+  font-size: 4em;
+}
+
+header {
+  border-bottom-color: black;
+  border-bottom-style: groove;
+}
+
+input[type=submit] {
+  border-radius: 0 5px 0 0;
+}
+
+table {
+  width: 75vw;
+  margin: 0 auto;
+  border-spacing: 1px;
+}
+
+.whitebg {
+  background-color: var(--burg);
+}
+
+.logindiv > input[type=submit],
+a,
+.burgbox {
+  color: black;
+  border-style: groove;
+  border-color: black;
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  margin: 3px;
+}
+
+.a {
+  color: black;
+  border-color: black;
+}
+
+.burgbordered,
+input[type=text],
+input[type=tel],
+input[type=number],
+input[type=email],
+input[type=password],
+input[type=date] {
+  border: 3px solid var(--burg);
+  display: inline-block;
+  padding: 10px;
+  background-color: white;
+  margin: 3px;
+}
+
+input[type=checkbox] {
+  border: 2px solid var(--burg);
+}
+
+/* --------FOOTER */
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  text-align: center;
+  color: black;
+  border-top: solid 20px black;
+}
+
+footer h2,
+footer address {
+  width: 40%;
+}
+
+footer address a {
+  text-align: right;
+  color: black;
+}
+
+.container {
+  margin-top: 15%;
+  width: 100%;
+  height: 405px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.right-container {
+  text-align: right;
+}
+
+.left-container {
+  text-align: left;
+}
+
+.footer-h2 {
+  font-size: 3em;
+  color: var(--burg);
+}
+
+/* --------NAV BAR */
+img {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.info {
+  margin-top: 4em;
+  margin-bottom: 8em;
+}
+
+.home {
+  margin-top: 14rem;
+}
+
+.sign {
+  position: absolute;
+  right: 0;
+  margin-right: 1em;
+  top: 2em;
+}
+
+.a:hover {
+  background-color: black;
+  color: white;
+}
+
+.php {
+  margin-top: 10rem;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  list-style: none;
+  color: white;
+}
+
+ul li {
+  display: inline;
+  color: white;
+}
+
+.switch {
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+#leftbox {
+  float: left;
+  background: rgb(212, 212, 212);
+  width: 100%;
+  height: 100%;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "Edit";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider::before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+th input {
+  color: black;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.Theader {
+  color: Black;
+}
+
+.row {
+  width: 100%;
+}
+
+.column {
+  float: left;
+  width: calc(100% / 3);
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
 }

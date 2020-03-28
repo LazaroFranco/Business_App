@@ -19,12 +19,11 @@ $compID = $_SESSION['companyID'];
 
     </head>
     <body>
-
-        <div class="bg" ></div>
+      <?php
+      include 'nav.php';
+      ?>
         <h1 class="header-h1">Employees</h1>
-        <?php
-        include 'nav.php';
-        ?>
+
         <section class="php">
         <script type="text/javascript">
               function editButton(edit){
@@ -56,7 +55,7 @@ $compID = $_SESSION['companyID'];
         <th><h2 class="Theader">Position</h2></th>
         <th><h2 class="Theader">Wage</h2></th>
         </tr>
-        <?php 
+        <?php
 
         $sql = "SELECT * FROM Users JOIN Employees ON Users.ID = Employees.Emp_ID WHERE Employees.Company_ID = $compID";
         $result = mysqli_query($conn, $sql);
@@ -73,7 +72,7 @@ $compID = $_SESSION['companyID'];
     }
     echo "</table>";
      ?>
-        
+
         </div>
 <div id="nonemployee" style="display: none;">
 
@@ -85,7 +84,7 @@ $compID = $_SESSION['companyID'];
         <th><h2 class="Theader">Edit</h2></th>
 
         </tr>
-<?php 
+<?php
         $sql = "SELECT * FROM Users JOIN Employees ON Users.ID = Employees.Emp_ID WHERE Employees.Company_ID = $compID";
         $result = mysqli_query($conn, $sql);
         if($result){
@@ -109,12 +108,12 @@ $compID = $_SESSION['companyID'];
 </div>
           <?php
 if(isset($_GET['submit'])){
-    $UsrID = $_GET['submit']; 
-    
+    $UsrID = $_GET['submit'];
+
     $position = $_GET['position'];
     $wage = $_GET['wage'];
-    
-  
+
+
     if(($position != '')){
     $sql = "UPDATE `Employees` SET `Position` = '$position' WHERE Emp_ID = '$UsrID'";
     mysqli_query($conn,$sql);
@@ -129,7 +128,7 @@ if(isset($_GET['submit'])){
     </script>
     <?php
 }
-    
+
             include 'footer.php';
           ?>
 
