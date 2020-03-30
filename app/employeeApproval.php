@@ -21,7 +21,7 @@ if (!$conn) {
       <?php
           include 'nav.php';
           echo "<h1 class='header-h1'>Employee Approval</h1>";
-          $userQuery = "SELECT ID, Fname, image, Lname, Type_Of_User FROM Users Where Approved=FALSE ORDER BY ID DESC";
+          $userQuery = "SELECT ID, position, Fname, image, Lname, Type_Of_User FROM Users Where Approved=FALSE ORDER BY ID DESC";
           $userResult = mysqli_query($conn, $userQuery);
           $i = 1; // counter for checkboxes
           echo "<form action='' method='POST'>";
@@ -34,6 +34,7 @@ if (!$conn) {
                       <th>First Name</th>
                       <th>Last Name</th>
                       <th>Role</th>
+                      <th>Position</th>
                       <th>✅</th>
                   </tr>
                   </thead>";
@@ -51,6 +52,7 @@ if (!$conn) {
                           echo "<td name='fname'>" . $row['Fname'] . "</td>";
                           echo "<td name='lname'>" . $row['Lname'] . "</td>";
                           echo "<td name='role'>" . $row['Type_Of_User'] . "</td>";
+                          echo "<td name='position'>" . $row['position'] . "</td>";
                           echo "<td><input type='checkbox' name='check[$i]' value='".$row['ID']."'</td>";
                       echo "</tr>";
                       $i++;
