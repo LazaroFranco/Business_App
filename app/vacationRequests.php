@@ -8,17 +8,20 @@ if (!$conn) {
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css" type="text/css">
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="style.css">
         <title>Vacation Request</title>
     </head>
     <body>
-        <div class="bg" ></div>
-        <h1 class="header-h1">Company Name</h1>
-        <h2 class="header-h1">Vacation Request Form</h1>
+      <?php
+      include 'nav.php';
 
+       ?>
+        <h2 class="header-h1">Vacation Request Form</h1>
+      <div class="boxed">
         <form action="vacationRequests.php" name="vacReq" method="POST">
             <label>Today's Date:</label><input type="date" name="todayDate" value="<?php echo date('Y-m-d')?>"/><br>
             <label>Employee First Name:</label><input type="text" name="fname"/><br>
@@ -41,9 +44,9 @@ if (!$conn) {
         <form action="vacationRequests.php" name="viewReqs" method="POST">
             <input type="submit" name="vacReqForms" value="View Employee Requests">
         </form>
-    </body>
-</html>
+      </div>
 
+<<<<<<< HEAD
 <?php
 //if (isset($_GET['login'])) {
     if (isset($_POST['submit'])) {
@@ -121,25 +124,28 @@ if (isset($_POST['vacReqForms'])) {
         echo "<input type='submit' name='approve' value='Approve'/>";
         echo "<input type='submit' name='deny' value='Deny'/>";
     echo "</form>";
-
-    if (isset($_POST['approve'])) {
-        if (isset($_POST['check'])) {
-            foreach ($_POST['check'] as $value) {
-                $approveRequest = "UPDATE `Vac_Req_Form` SET Approved=1 WHERE ID='$value'";
-                mysqli_query($conn, $approveRequest);
+    
+            if (isset($_POST['approve'])) {
+                if (isset($_POST['check'])) {
+                    foreach ($_POST['check'] as $value) {
+                        $approveRequest = "UPDATE `Vac_Req_Form` SET Approved=1 WHERE ID='$value'";
+                        mysqli_query($conn, $approveRequest);
+                    }
+                }
+                header('Location: vacationRequests.php');
+            }
+            if (isset($_POST['deny'])) {
+                if (isset($_POST['check'])) {
+                    foreach ($_POST['check'] as $value) {
+                        $deleteRequest = "DELETE FROM `Vac_Req_Form` WHERE ID='$value'";
+                        mysqli_query($conn, $deleteRequest);
+                    }
+                }
+                header('Location: vacationRequests.php');
             }
         }
-        header('Location: vacationRequests.php');
-    }
-    if (isset($_POST['deny'])) {
-        if (isset($_POST['check'])) {
-            foreach ($_POST['check'] as $value) {
-                $deleteRequest = "DELETE FROM `Vac_Req_Form` WHERE ID='$value'";
-                mysqli_query($conn, $deleteRequest);
-            }
-        }
-        header('Location: vacationRequests.php');
-    }
-}
-mysqli_close($conn);
-?>
+        include 'footer.php';
+        mysqli_close($conn);
+        ?>
+    </body>
+</html>

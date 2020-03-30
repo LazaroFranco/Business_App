@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css" type="text/css">
-
     <title>Welcome!</title>
   </head>
   <body>
@@ -61,11 +60,7 @@ This app will support, improve, and automate business processes. It will simplif
   This program is being developed by a small team.  We look forward to helping business owners with one-on-one advice and tech support to make this as effective as it can be.
 </p>
 </section
-
-    </section>
-<?php
-
-?>
+</section>
     <footer>
       <h2 class="footer-h1">Man-A-Biz</h2>
       <address>

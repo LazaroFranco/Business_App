@@ -19,12 +19,15 @@ $compID = $_SESSION['companyID'];
 
     </head>
     <body>
+      <?php
+      include 'nav.php';
+      ?>
+      <div id="main">
 
-        <div class="bg" ></div>
+</div>
         <h1 class="header-h1">Employees</h1>
-        <?php
-        include 'nav.php';
-        ?>
+
+        <div class="row">
         <section class="php">
         <script type="text/javascript">
               function editButton(edit){
@@ -50,71 +53,75 @@ $compID = $_SESSION['companyID'];
 
 
         <div id="employee">
-        <table>
+        <table class="content-table">
+          <thead>
             <tr>
-        <th><h2 class="Theader">List of employees</h2></th>
-        <th><h2 class="Theader">Position</h2></th>
-        <th><h2 class="Theader">Wage</h2></th>
-        </tr>
-        <?php 
-
+        <th>List of employees</th>
+        <th>Position</th>
+        <th>Wage</th>
+      </tr>
+    </thead>
+        <?php
         $sql = "SELECT * FROM Users JOIN Employees ON Users.ID = Employees.Emp_ID WHERE Employees.Company_ID = $compID";
         $result = mysqli_query($conn, $sql);
         if($result){
         while($row = mysqli_fetch_row($result)) {
+          echo '<tbody>';
             echo '<tr>';
 
-            echo "<th>" . $row[2] ." ". $row[3] . "</th>";
-            echo "<th>" . $row[14] . "</th>";
-            echo "<th>" . $row[15] . "</th>";
+            echo "<td>" . $row[2] ." ". $row[3] . "</td>";
+            echo "<td>" . $row[14] . "</td>";
+            echo "<td>" . $row[15] . "</td>";
 
             echo "</tr>";
        }
     }
+    echo "</tbody>";
     echo "</table>";
      ?>
-        
+
         </div>
 <div id="nonemployee" style="display: none;">
 
-<table>
+<table class="content-table">
+  <thead>
             <tr>
-        <th><h2 class="Theader">List of employees</h2></th>
-        <th><h2 class="Theader">Position</h2></th>
-        <th><h2 class="Theader">Wage</h2></th>
-        <th><h2 class="Theader">Edit</h2></th>
+        <th>List of employees</th>
+        <th>Position</th>
+        <th>Wage</th>
+        <th>Edit</th>
 
         </tr>
-<?php 
+      </thead>
+<?php
         $sql = "SELECT * FROM Users JOIN Employees ON Users.ID = Employees.Emp_ID WHERE Employees.Company_ID = $compID";
         $result = mysqli_query($conn, $sql);
         if($result){
         while($row = mysqli_fetch_row($result)) {
-            echo '<form>';
+            echo '<tbody>';
             echo '<tr>';
-            echo "<th>" . $row[2] ." ". $row[3] . "</th>";
-            echo "<th>" . $row[14] . "<input name='position'type='text'>" ."</th>";
-            echo "<th>" . $row[15] . "<input name='wage'type='number'>" . "</th>";
-            echo "<th>" . '<input type="submit" name="submit" value=' ."$row[0]" .'>' . "</th>";
-
+            echo "<td>" . $row[2] ." ". $row[3] . "</td>";
+            echo "<td>" . $row[14] . "<input name='position'type='text' placeholder='New Position'>" ."</th>";
+            echo "<td>" . $row[15] . "<input name='wage'type='number' placeholder='New Wage'>" . "</td>";
+            echo "<td>" . '<input type="submit" name="submit" value=' ."$row[0]" .'>' . "</td>";
             echo "</tr>";
+            echo "</tbody>";
             echo '</form>';
 
        }
     }
      ?>
           </table>
-
      </div>
 </div>
           <?php
 if(isset($_GET['submit'])){
-    $UsrID = $_GET['submit']; 
-    
+    $UsrID = $_GET['submit'];
+
     $position = $_GET['position'];
     $wage = $_GET['wage'];
-    
-  
+
+
     if(($position != '')){
     $sql = "UPDATE `Employees` SET `Position` = '$position' WHERE Emp_ID = '$UsrID'";
     mysqli_query($conn,$sql);
@@ -129,10 +136,12 @@ if(isset($_GET['submit'])){
     </script>
     <?php
 }
-    
+
             include 'footer.php';
           ?>
 
         </section>
+      </div>
+
     </body>
 </html>

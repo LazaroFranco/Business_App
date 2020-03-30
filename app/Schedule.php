@@ -19,12 +19,12 @@ if (!$conn) {
 
     </head>
     <body>
-
+      <?php
+      include 'nav.php';
+      ?>
         <div class="bg" ></div>
         <h1 class="header-h1">Schedule</h1>
-        <?php
-        include 'nav.php';
-        ?>
+
         <section class="php">
           <?php
               // INSERT YOUR QUERIES HERE!!
