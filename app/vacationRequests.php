@@ -18,7 +18,7 @@ if (!$conn) {
     <body>
 
     <?php
-        //include 'nav.php';
+        include 'nav.php';
     ?>
     <h2 class="header-h1">Vacation Request Form</h1>
       <div class="boxed">
@@ -59,13 +59,13 @@ if (!$conn) {
         $endDate = $_POST['endDate'];
 
         if (($todayDate != '') && ($firstName != '') && ($lastName != '') && ($typeOfRequest != '') && ($paidStatus != '') && ($startDate != '') && ($endDate != '')) {
-            
+
             if ($typeOfRequest == "vacation") {
                 $typeOfRequest = "vacation";
             } else if ($typeOfRequest == "sick") {
                 $typeOfRequest = "sick";
             }
-            
+
             if ($paidStatus == "paid") {
                 $paid = 1;
             } else if ($paidStatus == "unpaid") {
@@ -143,7 +143,7 @@ if (isset($_POST['vacReqForms'])) {
                 header('Location: vacationRequests.php');
             }
         }
-        //include 'footer.php';
+        include 'footer.php';
         mysqli_close($conn);
         ?>
     </body>

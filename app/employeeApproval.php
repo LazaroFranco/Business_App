@@ -121,19 +121,6 @@ if (!$conn) {
           </div>
         </div>
         <div class="column">
-
-<<<<<<< HEAD
-    /*echo "<footer>
-            <h2 class='footer-h1'>Man-A-Biz</h2>
-            <address>
-                <p>750 E King St</p>
-                <p>Lancaster, PA 17602</p>
-                <p><a href='tel:1-717-299-7701' class='phone'>717.299.7701</a></p>
-            </address>
-        </footer>";
-        */
-?>
-=======
           <div class="boxx">
               <h3>Total Number Of Users</h3>
               <?php
@@ -154,4 +141,3 @@ include 'footer.php';
 
  ?>
 </html>
->>>>>>> 6b42498c9f664167d0356adc855dfab12c6dd16d
