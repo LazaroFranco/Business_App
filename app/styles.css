@@ -10,17 +10,15 @@ html {
   color: black;
   scroll-behavior: smooth;
 }
+
 body {
   --white: rgb(224,220,214);
 }
 
-*{
+* {
   box-sizing: border-box;
   font-family: sans-serif;
   text-align: center;
-}
-
-header {
 }
 
 div.bg {
@@ -28,73 +26,82 @@ div.bg {
   border: 2px solid black;
   background-blend-mode: overlay;
   background-size: cover;
-    width: 100%;
-    height: 30em;
-    opacity: 0.5;
+  width: 100%;
+  height: 30em;
+  opacity: 0.5;
 }
 
 #header {
-    width: 100%;
+  width: 100%;
 }
 
-
-
 .hero-img {
-      background: rgba(70, 72, 82, 0.3);
+   background: rgba(70, 72, 82, 0.3);
 }
 
 .header-h1 {
-    margin: auto;
-    width: 100%;
-    font-size: 7rem;
-    letter-spacing: 2rem;
-    color: black;
-    font-weight: bolder;
-    position: absolute;
-    top: 1.5em;
+  margin: auto;
+  width: 100%;
+  font-size: 7rem;
+  letter-spacing: 2rem;
+  color: black;
+  font-weight: bolder;
+  position: absolute;
+  top: 1.5em;
 }
 
 .hero-img {
-    width: 100%;
+  width: 100%;
 }
 
-h1{
+h1 {
   color: var(--burg);
 }
-h2{
+
+h2 {
   color: var(--burg);
   font-style: italic;
 }
-h1, h2, h3, h4{
-    font-weight: bold;
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: bold;
 }
-th{
+
+th {
   background-color: var(--burg);
   border: 1px solid black;
   color: white;
 }
-tr, td{
+
+tr,
+td {
   border: 1px solid grey;
 }
 
 .main-h2 {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
-input[type=submit]{
+input[type=submit] {
   border-radius: 0 5px 0 0;
 }
+
 table {
   width: 75vw;
   margin: 0 auto;
   border-spacing: 1px;
 }
 
-.whitebg{
+.whitebg {
   background-color: var(--burg);
 }
 
-.logindiv>input[type=submit], a, .burgbox{
+.logindiv > input[type=submit],
+a,
+.burgbox {
   color: black;
   border-style: groove;
   border-color: black;
@@ -105,11 +112,17 @@ table {
 }
 
 .a {
-    color: white;
-    border-color: white;
+  color: white;
+  border-color: white;
 }
 
-.burgbordered, input[type=text], input[type=tel], input[type=number], input[type=email], input[type=password], input[type=date]{
+.burgbordered,
+input[type=text],
+input[type=tel],
+input[type=number],
+input[type=email],
+input[type=password],
+input[type=date] {
   border: 3px solid var(--burg);
   display: inline-block;
   padding: 10px;
@@ -117,140 +130,136 @@ table {
   margin: 3px;
 }
 
-.flexbox{
+.flexbox {
   margin: 20px;
   display: flex;
   justify-content: flex-start;
   width: 200px;
-  /* border: 1px solid black; */
   flex-wrap: wrap;
   flex-shrink: 1 0 auto;
 }
-.flexchild{
+
+.flexchild {
   /* flex: 1 0 21%; */
   flex-shrink: 1 0 auto;
 }
-.centered{
+
+.centered {
   width: 75vw;
   margin: 0 auto;
   display: flex;
-    justify-content: space-around;
+  justify-content: space-around;
 }
 
-input[type=checkbox]{
+input[type=checkbox] {
   border: 2px solid var(--burg);
 }
 
 /* --------FOOTER */
-  footer {
-    width: 100%;
-    margin-top: 7rem;
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-    text-align: center;
-    color: black;
-    border-top: solid 20px black;
-  }
-  footer h2,
-  footer address {
-    width: 40%;
+footer {
+  width: 100%;
+  margin-top: 7rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  text-align: center;
+  color: black;
+  border-top: solid 20px black;
+}
 
-  }
-  footer address a {
-      text-align: right;
+footer h2,
+footer address {
+  width: 40%;
+}
 
-    color: black;
-  }
+footer address a {
+  text-align: right;
+  color: black;
+}
 
-  .container {
-    margin-top: 15%;
-    width: 100%;
-    height: 405px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.container {
+  margin-top: 15%;
+  width: 100%;
+  height: 405px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .right-container {
-    text-align: right;
+  text-align: right;
 }
 
 .left-container {
-    text-align: left;
+  text-align: left;
 }
+
 .footer-h1 {
-    font-size: 3em;
-    color: var(--burg);
+  font-size: 3em;
+  color: var(--burg);
 }
 
 /* --------NAV BAR */
 nav {
-    font-size: 1.5rem;
-    width: 100%;
-    position: absolute;
-    top: 20em;
-    color: var(--burg);
+  font-size: 1.5rem;
+  width: 100%;
+  position: absolute;
+  top: 20em;
+  color: var(--burg);
 }
 
 ul li {
-   font-size: 1.7em;
-   float: left;
-   list-style-type: none;
-   margin-right: 3rem;
-   margin-left: 3rem;
-
+  font-size: 1.7em;
+  float: left;
+  list-style-type: none;
+  margin-right: 3rem;
+  margin-left: 3rem;
 }
 
-
 ul {
-       display: inline-block;
-   }
+  display: inline-block;
+}
 
 li a:hover {
-
   background-color: black;
   color: white;
   font-weight: bold;
 }
 
 img {
-    float: left;
+  float: left;
 }
 
 .right {
-    float: right;
+  float: right;
 }
 
 .info {
-    margin-top: 4em;
-    margin-bottom: 8em;
+  margin-top: 4em;
+  margin-bottom: 8em;
 }
 
-
-
 .sign {
-    position: absolute;
-    right: 0px;
-    margin-right: 1em;
-    top: 2em;
- }
+  position: absolute;
+  right: 0;
+  margin-right: 1em;
+  top: 2em;
+}
 
- .a {
-    color: black;
-    border-color: black;
- }
+.a {
+  color: black;
+  border-color: black;
+}
 
 .a:hover {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .nav {
   width: 100%;
   background-color: black;
   height: 100px;
-  scroll: smooth;
 }
 
 .nav a {
@@ -258,7 +267,6 @@ img {
   padding: 12px;
   color: white;
   text-decoration: none;
-  font-size: 17px;
   width: auto; /* Four links of equal widths */
   text-align: center;
   font-size: 1.2em;
@@ -273,21 +281,15 @@ img {
 }
 
 .ul {
-    margin: auto;
+  margin: auto;
 }
 
-
-/* Register */
-.show-forms-employee{
-}
 .col-sm-4 {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 @media only screen and (max-width: 800px) {
-   .col-sm-4 {
-       margin: 30em;
-   }
+  .col-sm-4 {
+    margin: 30em;
+  }
 }
-
-

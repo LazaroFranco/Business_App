@@ -5,7 +5,7 @@ session_start();
 
 
 if(isset($_GET['login'])) {
-  $search = "SELECT * From Users;";
+  $search = "SELECT * From Users, Company WHERE Users.Company_Code = Company.Company_Code;";
   $result = mysqli_query($conn, $search);
   while($row = mysqli_fetch_row($result)) {
     if ($row[9] == 0) {
@@ -24,15 +24,17 @@ if(isset($_GET['login'])) {
           $_SESSION['CompanyCode'] = $row[8];
           $_SESSION['Approved'] = $row[9];
           $_SESSION['type_of_User'] = $row[10];
+          $_SESSION['image'] = $row[11];
+          $_SESSION['position'] = $row[12];
+          $_SESSION['bio'] = $row[13];
+          $_SESSION['Business_Name'] = $row[15];
+          $_SESSION['Business_Address'] = $row[16];
+          $_SESSION['Business_Phone'] = $row[17];
+          $_SESSION['Business_City'] = $row[19];
+          $_SESSION['Business_State'] = $row[20];
 
 
-
-
-
-
-
-
-          header( 'Location: employeeApproval.php');
+          header( 'Location: profile.php');
         break;
         }
           }
@@ -58,7 +60,7 @@ if(isset($_GET['login'])) {
  </head>
 
  <body>
-  
+
         <div class="bg"></div>
         <header class="centered" id="header">
           <h1 class="header-h1">Man-A-Biz</h1>
@@ -66,8 +68,8 @@ if(isset($_GET['login'])) {
           <?php
 
 
-              
-        echo' 
+
+        echo'
             <a class="a" href="register.php">Register</a>
             <a class="a" onclick="myFunction(\'Demo1\')" class="w3-btn w3-block w3-black w3-left-align" id="hide">Login</a>
             <form>
