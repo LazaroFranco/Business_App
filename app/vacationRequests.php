@@ -71,7 +71,7 @@ if (!$conn) {
                 $paid = 0;
             }
 
-            $getUserData = "SELECT ID, Company_ID FROM `Users` WHERE Fname='$firstName' AND Lname='$lastName'";
+            $getUserData = "SELECT ID, Company_ID FROM `Users` WHERE Fname='$firstName' AND Lname='$lastName' AND Approved=0";
             $result = mysqli_query($conn, $getUserData);
             $resultCheck = mysqli_num_rows($result);
             if ($resultCheck > 0) {
