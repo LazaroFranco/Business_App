@@ -143,10 +143,9 @@ input[type=checkbox] {
 
 /* --------FOOTER */
 footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
+  margin-top: 3rem;
   display: flex;
+  width: 100%;
   justify-content: space-between;
   background-color: #262626;
   text-align: center;
