@@ -16,11 +16,11 @@ if (!$conn) {
         <title>Vacation Request</title>
     </head>
     <body>
-      <?php
-      include 'nav.php';
 
-       ?>
-        <h2 class="header-h1">Vacation Request Form</h1>
+    <?php
+        //include 'nav.php';
+    ?>
+    <h2 class="header-h1">Vacation Request Form</h1>
       <div class="boxed">
         <form action="vacationRequests.php" name="vacReq" method="POST">
             <label>Today's Date:</label><input type="date" name="todayDate" value="<?php echo date('Y-m-d')?>"/><br>
@@ -46,7 +46,6 @@ if (!$conn) {
         </form>
       </div>
 
-<<<<<<< HEAD
 <?php
 //if (isset($_GET['login'])) {
     if (isset($_POST['submit'])) {
@@ -124,7 +123,7 @@ if (isset($_POST['vacReqForms'])) {
         echo "<input type='submit' name='approve' value='Approve'/>";
         echo "<input type='submit' name='deny' value='Deny'/>";
     echo "</form>";
-    
+
             if (isset($_POST['approve'])) {
                 if (isset($_POST['check'])) {
                     foreach ($_POST['check'] as $value) {
@@ -144,7 +143,7 @@ if (isset($_POST['vacReqForms'])) {
                 header('Location: vacationRequests.php');
             }
         }
-        include 'footer.php';
+        //include 'footer.php';
         mysqli_close($conn);
         ?>
     </body>
