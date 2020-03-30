@@ -40,7 +40,7 @@ if (!$conn) {
                           echo "<td name='id'>" . $row['ID'] . "</td>";
                           echo "<td name='fname'>" . $row['FName'] . "</td>";
                           echo "<td name='lname'>" . $row['LName'] . "</td>";
-                          echo "<td name='role'>" . $row['Employee_Hours'] . "</td>";
+                          echo "<td name='hours'>" . $row['Employee_Hours'] . "</td>";
                           echo "<td name='Wages>" . $row['Wages'] . "</td>";
                           echo "<td><input type='checkbox' name='check[$i]' value='".$row['ID']."'</td>";
                       echo "</tr>";

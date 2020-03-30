@@ -23,8 +23,16 @@ if (!$conn) {
             <label>Today's Date:</label><input type="date" name="todayDate" value="<?php echo date('Y-m-d')?>"/><br>
             <label>Employee First Name:</label><input type="text" name="fname"/><br>
             <label>Employee Last Name:</label><input type="text" name="lname"/><br>
-            <label>Type of Request (Vacation/Sick):</label><input type="text" name="typeOfReq"/><br>
-            <label>Paid/Unpaid </label><input type="text" name="paidStatus"/><br>
+            <label>Type of Request (Vacation/Sick):</label><br>
+                <input type="radio" id="vacation" name="vacType" value="vacation"/>
+                <label>Vacation</label><br>
+                <input type="radio" id="sick" name="vacType" value="sick"/>
+                <label>Sick</label><br>
+            <label>Paid/Unpaid: </label><br>
+                <input type="radio" id="paid" name="paidStatus" value="paid"/>
+                <label>Paid</label><br>
+                <input type="radio" id= "unpaid" name="paidStatus" value="unpaid"/>
+                <label>Unpaid</label><br>
             <label>Comments:</label><input type="text" name="comments"/><br>
             <label>Start Date:</label><input type="date" name="startDate"/><br>
             <label>End Date:</label><input type="date" name="endDate"/><br>
@@ -42,16 +50,23 @@ if (!$conn) {
         $todayDate = $_POST['todayDate'];
         $firstName = $_POST['fname'];
         $lastName = $_POST['lname'];
-        $typeOfRequest = $_POST['typeOfReq'];
-        $paid = $_POST['paidStatus'];
+        $typeOfRequest = $_POST['vacType'];
+        $paidStatus = $_POST['paidStatus'];
         $comments = $_POST['comments'];
         $startDate = $_POST['startDate'];
         $endDate = $_POST['endDate'];
 
-        if (($todayDate != '') && ($firstName != '') && ($lastName != '') && ($typeOfRequest != '') && ($paid != '') && ($startDate != '') && ($endDate != '')) {
-            if ($paid == "paid") {
+        if (($todayDate != '') && ($firstName != '') && ($lastName != '') && ($typeOfRequest != '') && ($paidStatus != '') && ($startDate != '') && ($endDate != '')) {
+            
+            if ($typeOfRequest == "vacation") {
+                $typeOfRequest = "vacation";
+            } else if ($typeOfRequest == "sick") {
+                $typeOfRequest = "sick";
+            }
+            
+            if ($paidStatus == "paid") {
                 $paid = 1;
-            } else if ($paid == "unpaid") {
+            } else if ($paidStatus == "unpaid") {
                 $paid = 0;
             }
 
@@ -64,7 +79,7 @@ if (!$conn) {
                     $company_ID = $row['Company_ID'];
                 }
                 $insertVacRequest = "INSERT INTO `Vac_Req_Form` (Company_ID, Employee_ID, Today_Date, Fname, Lname, Type_of_Request, Paid, Comments, Start_Date_Requested, End_Date_Requested, Approved)
-                                     VALUES ('$company_ID', '$user_ID', '$todayDate', '$firstName', '$lastName', '$typeOfRequest', '$paid', '$comments', '$startDate', '$endDate', 0)";
+                                     VALUES ('$company_ID', '$user_ID', '$todayDate', '$firstName', '$lastName', '$typeOfRequest', '$paidStatus', '$comments', '$startDate', '$endDate', 0)";
                 if (mysqli_query($conn, $insertVacRequest)) {
                     echo "You have submitted a request for time off.";
                 } else {
@@ -95,7 +110,7 @@ if (isset($_POST['vacReqForms'])) {
                 echo "<td>" . $row['Fname'] . ' ' . $row['Lname'] . "</td>";
                 echo "<td>" . $row['Type_of_Request'] . "</td>";
                 echo "<td>" . $row['Paid'] . "</td>";
-                echo "<td>" . $row['Comments'] ?? '' . "</td>";
+                echo "<td>" . $row['Comments'] . "</td>";
                 echo "<td>" . $row['Start_Date_Requested'] . "</td>";
                 echo "<td>" . $row['End_Date_Requested'] . "</td>";
                 echo "<td><input type='checkbox' name='check[$i]' value='".$row['ID']."'/></td>";
