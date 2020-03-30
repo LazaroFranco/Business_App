@@ -21,7 +21,7 @@ if (!$conn) {
       <?php
           include 'nav.php';
           echo "<h1 class='header-h1'>Employee Approval</h1>";
-          $userQuery = "SELECT ID, Fname, Lname, Type_Of_User FROM Users Where Approved=FALSE ORDER BY ID DESC";
+          $userQuery = "SELECT ID, Fname, image, Lname, Type_Of_User FROM Users Where Approved=FALSE ORDER BY ID DESC";
           $userResult = mysqli_query($conn, $userQuery);
           $i = 1; // counter for checkboxes
           echo "<form action='' method='POST'>";
@@ -30,6 +30,7 @@ if (!$conn) {
                   <thead>
                   <tr>
                       <th>ID</th>
+                      <th>Image</th>
                       <th>First Name</th>
                       <th>Last Name</th>
                       <th>Role</th>
@@ -40,6 +41,13 @@ if (!$conn) {
                       echo "<tbody>";
                       echo "<tr>";
                           echo "<td name='id'>" . $row['ID'] . "</td>";
+                          if($row['image'] == ""){
+                          echo "<td><img class='eap' src='images/default.svg' class='img-responsive' alt='Default'></td>";
+                          }
+                          else {
+                          echo "<td><img class='eap' src='images/".$row['image'] ."' class='img-responsive' alt='Default'></td>"
+                          ;
+                          }
                           echo "<td name='fname'>" . $row['Fname'] . "</td>";
                           echo "<td name='lname'>" . $row['Lname'] . "</td>";
                           echo "<td name='role'>" . $row['Type_Of_User'] . "</td>";

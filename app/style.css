@@ -546,3 +546,8 @@ li h3 {
 li .logout {
   color: white;
 }
+
+.eap {
+  width: 75px;
+  height: 75px;
+}
