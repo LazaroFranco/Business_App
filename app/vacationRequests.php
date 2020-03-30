@@ -59,7 +59,6 @@ if (!$conn) {
         $endDate = $_POST['endDate'];
 
         if (($todayDate != '') && ($firstName != '') && ($lastName != '') && ($typeOfRequest != '') && ($paidStatus != '') && ($startDate != '') && ($endDate != '')) {
-            
             if ($typeOfRequest == "vacation") {
                 $typeOfRequest = "vacation";
             } else if ($typeOfRequest == "sick") {
