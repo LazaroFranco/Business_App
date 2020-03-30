@@ -1,4 +1,6 @@
 /* --------VARIABLES */
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
+
 :root {
   --burg: rgb(139, 15, 61);
   --white: rgb(224, 220, 214);
@@ -22,6 +24,7 @@ html {
 body {
   --white: rgb(224, 220, 214);
 
+  color: black;
   font-size: 2rem;
 }
 
@@ -36,22 +39,38 @@ h2 {
   font-size: 3rem;
 }
 
+#manabiz {
+  font-size: 2rem;
+  background-color: #262626;
+  color: white;
+}
+
+.header-bn {
+  font-size: 300%;
+  background-color: #262626;
+  color: white;
+}
+
+#headerrow {
+  background-color: #262626;
+  color: white;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 h1,
 h2,
 h3,
 h4 {
   font-weight: bold;
+  margin-top: 0;
 }
 
 th {
   background-color: var(--burg);
   border: 1px solid black;
   color: white;
-}
-
-tr,
-td {
-  border: 1px solid grey;
+  text-align: center;
 }
 
 .main-h2 {
@@ -93,6 +112,12 @@ a,
   margin: 3px;
 }
 
+li a {
+  text-align: left;
+  border: none;
+  font-size: 4rem;
+}
+
 .a {
   color: black;
   border-color: black;
@@ -123,20 +148,22 @@ footer {
   bottom: 0;
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: #262626;
   text-align: center;
-  color: black;
+  color: white;
   border-top: solid 20px black;
 }
 
 footer h2,
 footer address {
   width: 40%;
+  color: white;
+  background-color: #262626;
 }
 
 footer address a {
   text-align: right;
-  color: black;
+  color: white;
 }
 
 .container {
@@ -158,7 +185,7 @@ footer address a {
 
 .footer-h2 {
   font-size: 3em;
-  color: var(--burg);
+  color: white;
 }
 
 /* --------NAV BAR */
@@ -192,7 +219,9 @@ img {
 }
 
 .php {
-  margin-top: 10rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin: auto;
+  width: 50;
 }
 
 li {
@@ -206,7 +235,7 @@ ul {
 
 ul li {
   display: inline;
-  color: white;
+  color: black;
 }
 
 .switch {
@@ -219,7 +248,6 @@ ul li {
 
 #leftbox {
   float: left;
-  background: rgb(212, 212, 212);
   width: 100%;
   height: 100%;
 }
@@ -270,6 +298,19 @@ input:checked + .slider {
   background-color: #2196f3;
 }
 
+label {
+  display: inline-block;
+  float: center;
+  clear: left;
+  width: 250px;
+  text-align: center;
+}
+
+input {
+  display: inline-block;
+  float: center;
+}
+
 th input {
   color: black;
 }
@@ -286,6 +327,7 @@ th input {
 
 .row {
   width: 100%;
+  color: black;
 }
 
 .column {
@@ -298,4 +340,201 @@ th input {
   content: "";
   display: table;
   clear: both;
+}
+
+.nav a {
+  border: groove;
+  border-color: black;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #262626;
+  border-right: groove;
+  border-color: black;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  padding-left: 0;
+  z-index: 1;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: white;
+  border-bottom: groove;
+  border-color: var(--burg);
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 3rem;
+  cursor: pointer;
+  background-color: #262626;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: var(--burg);
+}
+
+#main {
+  transition: margin-left 0.5s;
+  padding: 16px;
+}
+
+a.closebtn {
+  border: none;
+}
+
+.content-table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #009879;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid --var(--burg);
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+#submit,
+#upload {
+  border: black groove;
+}
+
+#submit:hover,
+#upload:hover {
+  color: white;
+  background-color: var(--burg);
+}
+
+.tox-checklist li {
+  color: black;
+  display: block;
+  list-style-type: disc;
+  text-align: left;
+}
+
+.tox-checklist > li:not(.tox-checklist--hidden) {
+  list-style: none;
+  margin: 0.25em 0;
+  position: relative;
+}
+
+.tox-checklist > li:not(.tox-checklist--hidden)::before {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20id%3D%22checklist-unchecked%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20id%3D%22Rectangle%22%20width%3D%2215%22%20height%3D%2215%22%20x%3D%22.5%22%20y%3D%22.5%22%20fill-rule%3D%22nonzero%22%20stroke%3D%22%234C4C4C%22%20rx%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A");
+  background-size: 100%;
+  content: '';
+  cursor: pointer;
+  height: 1em;
+  left: -1.5em;
+  position: absolute;
+  top: 0.125em;
+  width: 1em;
+}
+
+#rowmargin {
+  margin-top: 4rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.boxx {
+  width: 90%;
+  color: black;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 100%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear 1s; /* Safari */
+  animation: spin 2s linear 1s;
+  margin: auto;
+}
+
+#denied {
+  border-top: 16px solid rgb(139, 15, 61);
+  border-right: 16px solid rgb(139, 15, 61);
+}
+
+#approved {
+  border-top: 16px solid #3498db;
+  border-right: 16px solid #3498db;
+}
+
+#total {
+  border-top: 16px solid rgb(139, 15, 61);
+  border-right: 16px solid rgb(139, 15, 61);
+  border-bottom: 16px solid #3498db;
+  border-left: 16px solid #3498db;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.boxed {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 50%;
+  margin: auto;
 }

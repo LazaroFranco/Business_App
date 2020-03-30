@@ -24,9 +24,14 @@ if(isset($_GET['login'])) {
           $_SESSION['CompanyCode'] = $row[8];
           $_SESSION['Approved'] = $row[9];
           $_SESSION['type_of_User'] = $row[10];
+          $_SESSION['image'] = $row[11];
           $_SESSION['position'] = $row[12];
           $_SESSION['bio'] = $row[13];
           $_SESSION['Business_Name'] = $row[15];
+          $_SESSION['Business_Address'] = $row[16];
+          $_SESSION['Business_Phone'] = $row[17];
+          $_SESSION['Business_City'] = $row[19];
+          $_SESSION['Business_State'] = $row[20];
 
 
           header( 'Location: profile.php');

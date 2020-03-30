@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
     </script>
+    <script src="https://cdn.tiny.cloud/1/8m6tpouimlbz5x5x25hbvj09ilraavsvbam894vaugrokcts/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
     </script>
     <link rel="stylesheet" href="style.css">
@@ -35,7 +36,6 @@
     <section>
       <?php
 		include 'nav.php';
-        include 'footer.php';
         $userQuery = "SELECT * FROM `Users` WHERE
         Users.Fname = '".$_SESSION['Fname']."'
         AND
@@ -48,7 +48,7 @@
       ?>
     </section>
     <section>
-      <div class="row profile">
+      <div class="row">
         <div class="col-md-3">
           <div class="profile-usertitle">
             <div class="profile-usertitle-name">
@@ -61,17 +61,17 @@ echo "<h1 class='header-h1'>". $_SESSION['Fname']. " " . $_SESSION['Lname'] .
               <!-- SIDEBAR USERPIC -->
               <div class="profile-userpic">
                 <?php
-while ($row = mysqli_fetch_array($userResult)) {
-if($row['image'] == ""){
-echo "<img src='images/default.svg' class='img-responsive' alt='Default'>";
-}
-else {
-echo "<img src='images/".$row['image'] ."' class='img-responsive' alt='Default'>"
-;
-}
-echo "<br>";
-}
-?>
+                while ($row = mysqli_fetch_array($userResult)) {
+                if($row['image'] == ""){
+                echo "<img src='images/default.svg' class='img-responsive' alt='Default'>";
+                }
+                else {
+                echo "<img src='images/".$row['image'] ."' class='img-responsive' alt='Default'>"
+                ;
+                }
+                echo "<br>";
+                }
+                ?>
               </div>
               <!-- END SIDEBAR USERPIC -->
               <!-- SIDEBAR USER TITLE -->
@@ -82,28 +82,28 @@ echo "<br>";
             <div class="profile-usermenu">
               <ul class="nav">
                 <li class="active">
-                  <a onclick ="ov_show()" href="#">
+                  <a onclick ="ov_show()" href="#overview">
                     <i class="glyphicon glyphicon-home">
                     </i>
                     Overview
                   </a>
                 </li>
                 <li>
-                  <a onclick ="pv_show()" href="#">
+                  <a onclick ="pv_show()" href="#private-information">
                     <i class="glyphicon glyphicon-lock">
                     </i>
                     Private Information
                   </a>
                 </li>
                 <li>
-                  <a id="popup" onclick="div_show()" href="#">
+                  <a id="popup" onclick="div_show()" href="#account-settings">
                     <i class="glyphicon glyphicon-user">
                     </i>
                     Account Settings
                   </a>
                 </li>
                 <li>
-                  <a href="#" target="_blank">
+                  <a href="#tasks" target="_blank">
                     <i class="glyphicon glyphicon-ok">
                     </i>
                     Tasks
@@ -196,6 +196,7 @@ echo "<br>";
                 <?php
                 $userQuery = "SELECT * FROM Users WHERE     Fname = '".$_SESSION['Fname']."'";
 ;
+
                 $userResult = mysqli_query($conn, $userQuery);
                 $i = 1; // counter for checkboxes
 
@@ -208,8 +209,8 @@ echo "<br>";
                          </p>";
                  } else {
                    echo "<p class='me'>";
-                    echo "<h2>More About Me</h2>";
-                          echo $row['bio'];
+                    echo "<h2>" . $row['Fname'] . "'s Biography" ."</h2>";
+                          echo "<p>".$row['bio']."</p>";
                          echo"</p>";
                        }
                   $i++;
@@ -220,17 +221,16 @@ echo "<br>";
             <div>
             <?php
             while ($row = mysqli_fetch_array($userResult)) {
-              if(empty($_SESSION['bio'])){
+              if(empty($row['bio'])){
               echo "<p class='me'>
                     <h2>More about me</h2>
                       <p class='me'>I'm originally from a small country called New Zealand where we all have pet sheep and watch soccer every day of the week. I grew up in a small town but moved over to the UK a few years ago and I'm now living in the countryside in Ireland.
                       </p>
                     </p>";
               } else {
-                  echo "<p class='me'>
+                  echo "
                           <h2>More About Me</h2>
-                          <p>" . $_SESSION['bio'] . "</p>
-                        </p>
+                          " . $row['bio'] . "
                   ";
                 }
               }
@@ -245,6 +245,7 @@ echo "<br>";
                 <label>Update Profile Picture
                   <input type="file" name="file">
                 </label>
+                <br>
                 <input type="submit" name="upload" value="Upload" id="upload">
                 </input>
               </form>
@@ -258,7 +259,7 @@ echo "<br>";
                 <br>
                 <label for="bio">Biography: </label>
                 <br>
-                  <textarea name="bio" value="<?php echo $_SESSION['bio']; ?>" rows="10" cols="30"></textarea>
+                  <textarea id="froala-editor" name="bio" value="<?php echo $row['bio']; ?>" rows="10" cols="30"></textarea>
                 <br>
                 <input value="Submit" type="submit" name="submit" id="submit">
               </input>
@@ -324,8 +325,22 @@ echo "<br>";
         document.getElementById('pv').style.display = "none";
       }
 
+      tinymce.init({
+        selector: 'textarea',
+        plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+      });
+
       function refreshPage(){
 }
     </script>
+
   </body>
+
 </html>
+<?php
+include 'footer.php';
+ ?>

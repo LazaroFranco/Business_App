@@ -21,21 +21,24 @@ if (!$conn) {
       ?>
       <h1 class="header-h1">Employee Hours</h1>
 
-        <section class="php">
+        <div class="php">
           <?php
               $userQuery = "SELECT Emp_ID, FName, LName, Employee_Hours, Wages FROM `Users` JOIN `Employee_Access` WHERE Approved=TRUE ORDER BY Emp_ID DESC";
               $userResult = mysqli_query($conn, $userQuery);
               $i = 1; // counter for checkboxes
               echo "<h2>Employee Hours</h2>";
-              echo "<table>
+              echo "<table class='content-table'>
+                  <thead>
                   <tr>
                       <th>ID</th>
                       <th>First Name</th>
                       <th>Last Name</th>
                       <th>Total Hours</th>
                       <th>Wages</th>
-                  </tr>";
+                  </tr>
+                  </thead>";
                   while ($row = mysqli_fetch_array($userResult)) {
+                      echo "<tbody>";
                       echo "<tr>";
                           echo "<td name='id'>" . $row['ID'] . "</td>";
                           echo "<td name='fname'>" . $row['FName'] . "</td>";
@@ -46,10 +49,11 @@ if (!$conn) {
                       echo "</tr>";
                       $i++;
                   }
+                  echo "</tbody>";
               echo "</table>";
 
               include 'footer.php';
           ?>
-        </section>
+        </div>
     </body>
 </html>
