@@ -143,7 +143,7 @@ input[type=checkbox] {
 
 /* --------FOOTER */
 footer {
-  margin-top: 3rem;
+  margin-top: 50%;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -549,4 +549,38 @@ li .logout {
 .eap {
   width: 75px;
   height: 75px;
+}
+
+form li {
+  text-align: left;
+  display: list-item;
+}
+
+.vrform {
+  text-align: left;
+}
+
+label input[type="radio"] {
+  margin: auto;
+}
+
+section label {
+  font-size: 3rem;
+}
+
+.vrsubmit {
+  text-align: center;
+  width: 100%;
+  font-size: 3rem;
+}
+
+.vrform2 {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin: auto;
+  margin-top: 2rem;
+  width: fit-content;
+}
+
+.vrform2 tbody tr {
+  border-bottom: 1px solid #ddd;
 }
