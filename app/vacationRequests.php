@@ -22,30 +22,47 @@ if (!$conn) {
     ?>
     <h2 class="header-h1">Vacation Request Form</h1>
       <div class="boxed">
-        <form action="vacationRequests.php" name="vacReq" method="POST">
+        <form action="vacationRequests.php" class="vrform "name="vacReq" method="POST">
             <label>Today's Date:</label><input type="date" name="todayDate" value="<?php echo date('Y-m-d')?>"/><br>
             <label>Employee First Name:</label><input type="text" name="fname"/><br>
             <label>Employee Last Name:</label><input type="text" name="lname"/><br>
-            <label>Type of Request (Vacation/Sick):</label><br>
+            <section>
+              <h2>Type of Request (Vacation/Sick):</h2>
+              <label class="vacation">Vacation
                 <input type="radio" id="vacation" name="vacType" value="vacation"/>
-                <label>Vacation</label><br>
+                </label>
+                <br>
+              <label>Sick
                 <input type="radio" id="sick" name="vacType" value="sick"/>
-                <label>Sick</label><br>
-            <label>Paid/Unpaid: </label><br>
+              </label>
+                <br>
+             <label>
+               <h2>Paid/Unpaid:</h2>
+                <label>Paid
                 <input type="radio" id="paid" name="paidStatus" value="paid"/>
-                <label>Paid</label><br>
+                </label>
+                <br>
+                <label>Unpaid
                 <input type="radio" id= "unpaid" name="paidStatus" value="unpaid"/>
-                <label>Unpaid</label><br>
-            <label>Comments:</label><input type="text" name="comments"/><br>
-            <label>Start Date:</label><input type="date" name="startDate"/><br>
-            <label>End Date:</label><input type="date" name="endDate"/><br>
-            <input type="submit" name="submit" value="Submit Request">
+                </label>
+              </label>
+            </section>
+                <br>
+            <label>Comments:</label>
+            <input type="text" name="comments"/>
+            <br>
+            <label>Start Date:</label>
+            <input type="date" name="startDate"/>
+            <br>
+            <label>End Date:</label>
+            <input type="date" name="endDate"/>
+            <br>
+            <input class="vrsubmit" type="submit" name="submit" id="submit" value="Submit Request">
         </form>
         <form action="vacationRequests.php" name="viewReqs" method="POST">
-            <input type="submit" name="vacReqForms" value="View Employee Requests">
+            <input type="submit" id="submit" name="vacReqForms" value="View Employee Requests">
         </form>
       </div>
-
 <?php
 //if (isset($_GET['login'])) {
     if (isset($_POST['submit'])) {
@@ -93,9 +110,10 @@ if (!$conn) {
 if (isset($_POST['vacReqForms'])) {
     $getRequestList = mysqli_query($conn, "SELECT * FROM Vac_Req_Form WHERE Approved=0");
     $i = 1;
-    echo "<form action='vacationRequests.php' method='POST'>";
+    echo "<form class='vrform2' action='vacationRequests.php' method='POST'>";
         echo "<h1>Employee Requests for Time Off</h1>";
-            echo "<table>";
+            echo "<table class='content-table'>";
+              echo "<thead>";
                 echo "<tr>";
                     echo "<th>Submission Date</th>";
                     echo "<th>Employee Name</th>";
@@ -104,8 +122,12 @@ if (isset($_POST['vacReqForms'])) {
                     echo "<th>Comments</th>";
                     echo "<th>Start Date</th>";
                     echo "<th>End Date</th>";
+                    echo "<th>✅</th>";
                 echo "</tr>";
+              echo "</thead>";
+
         while ($row = mysqli_fetch_array($getRequestList)) {
+          echo "<tbody>";
             echo "<tr>";
                 echo "<td>" . $row['Today_Date'] . "</td>";
                 echo "<td>" . $row['Fname'] . ' ' . $row['Lname'] . "</td>";
@@ -116,11 +138,12 @@ if (isset($_POST['vacReqForms'])) {
                 echo "<td>" . $row['End_Date_Requested'] . "</td>";
                 echo "<td><input type='checkbox' name='check[$i]' value='".$row['ID']."'/></td>";
             echo "</tr>";
+            echo "</tbody>";
             $i++;
         }
         echo "</table>";
-        echo "<input type='submit' name='approve' value='Approve'/>";
-        echo "<input type='submit' name='deny' value='Deny'/>";
+        echo "<input id='submit' type='submit' name='approve' value='Approve'/>";
+        echo "<input id='submit' type='submit' name='deny' value='Deny'/>";
     echo "</form>";
 
             if (isset($_POST['approve'])) {
