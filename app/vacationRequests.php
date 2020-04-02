@@ -69,6 +69,7 @@ if (!$conn) {
       <a id="submit" style='cursor:grab;' onclick="approved_show()">
         View Upcoming Vacations (Approved)
       </a>
+      <br>
 <?php
 //if (isset($_GET['login'])) {
     if (isset($_POST['submit'])) {
