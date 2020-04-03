@@ -139,8 +139,8 @@ if (!$conn) {
                 echo "<td>" . $row['Today_Date'] . "</td>";
                 echo "<td>" . $row['Fname'] . ' ' . $row['Lname'] . "</td>";
                 echo "<td>" . $row['Type_of_Request'] . "</td>";
-                echo "<td>" . $row['Paid'] . "</td>";
-                echo "<td>" . $row['Comments'] . "</td>";
+                echo '<td>' . ($row['Paid'] ? 'Paid' : 'Not Paid') . '</td>';
+                 echo "<td>" . $row['Comments'] . "</td>";
                 echo "<td>" . $row['Start_Date_Requested'] . "</td>";
                 echo "<td>" . $row['End_Date_Requested'] . "</td>";
                 echo "<td><input type='checkbox' name='check[$i]' value='".$row['ID']."'/></td>";
