@@ -32,7 +32,7 @@ if (!$conn) {
                  </form>";
 
             //if (isset($_GET['login'])) {
-                if (isset($_POST['addItemButtom'])) {
+                if (isset($_POST['addItemButton'])) {
                     $itemName = $_POST['item-name'];
                     $itemQuantity = $_POST['item-quantity'];
                     $itemPrice = $_POST['item-price'];
@@ -41,12 +41,11 @@ if (!$conn) {
                     if (($itemName != '') && ($itemQuantity != '') && ($itemPrice != '')) {
                         $insertItem = "INSERT INTO `Inventory` (Company_ID, Item_Name, Price, Quantity) VALUES ('$companyID', '$itemName', '$itemPrice', '$itemQuantity')";
                         if (mysqli_query($conn, $insertItem)) {
-                            echo "You have entered " . $itemName . "into the inventory.";
+                            echo "You have entered " . $itemName . " into the inventory.";
                         } else {
                             echo "Error with adding item to the inventory." . mysqli_error($conn);
                         }
                     }
-                    header('Location: inventory.php');
                 }
             
 
@@ -80,6 +79,7 @@ if (!$conn) {
                 echo "</form>";
             //}
             // . "<button><i id='edit-price-icon' class='material-icons'>mode_edit</i></button>" .
+            mysqli_close($conn);
         ?> 
         
     </body>
