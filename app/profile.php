@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
     </script>
-    <script src="https://cdn.tiny.cloud/1/8m6tpouimlbz5x5x25hbvj09ilraavsvbam894vaugrokcts/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
     </script>
     <link rel="stylesheet" href="style.css">
@@ -88,6 +87,11 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
                     </i>
                     Tasks
                   </a>
+                </li>
+                <li>
+                  <div onclick="document.getElementById('new-message').style.display='block'" Eclass="white-back">
+                    <a style='cursor:grab; text-decoration: none;' id="submit">Message</a>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -227,6 +231,7 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
                 ?>
 
         </div>
+  </div>
       </div>
     </section>
     <script>
@@ -253,15 +258,11 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
         document.getElementById('abc').style.display = "none";
         document.getElementById('pv').style.display = "none";
       }
-
-      tinymce.init({
-        selector: 'textarea',
-        plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
-        toolbar_mode: 'floating',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-      });
+      function pm_show() {
+        document.getElementById('pm').style.display = "block";
+        document.getElementById('abc').style.display = "none";
+        document.getElementById('pv').style.display = "none";
+      }
 
       function refreshPage(){
 }
