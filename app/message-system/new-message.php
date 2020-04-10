@@ -1,6 +1,6 @@
 <?php
 
-require '../db.php';
+require 'db.php';
 if (!$conn) {
   die("Connection failed: " . mysqli_error());
 }
@@ -44,6 +44,8 @@ if (!$conn) {
     echo $sql;
   }
   }
+  mysqli_close($conn);
+
 ?>
 <script src="jquery-3.4.1.min.js"></script>
 <script>

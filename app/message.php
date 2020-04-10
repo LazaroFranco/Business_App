@@ -1,6 +1,6 @@
 <?php
 //include './nav.php';
-include_once '../db.php';
+include_once 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
@@ -20,14 +20,14 @@ if (!$conn) {
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="style.css">
         <title>Message</title>
     </head>
     <body>
 
       <?php
-          include '../nav.php';
-          include 'new-message.php';
+          include 'nav.php';
+          include 'message-system/new-message.php';
       ?>
 
     <div id="container">
@@ -40,15 +40,15 @@ if (!$conn) {
         ?>
       </div>
         <div id="left-col">
-          <?php include 'left-col.php' ?>
+          <?php include 'message-system/left-col.php' ?>
         </div>
         <div id="right-col">
-          <?php include 'right-col.php' ?>
+          <?php include 'message-system/right-col.php' ?>
         </div>
     </div>
     </body>
       <?php
-      include '../footer.php';
+      include 'footer.php';
 
       ?>
 </html>

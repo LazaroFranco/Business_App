@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
 
 <div id='right-col-container'>
 
   <?php
-  require '../db.php';
+  require 'db.php';
   if (!$conn) {
       die("Connection failed: " . mysqli_error());
   }
@@ -28,11 +28,11 @@
     while ($row = mysqli_fetch_array($r)) {
         echo "<header class='mheader'>";
               if($row['image'] == "") {
-              echo "<img class='eap' src='../images/default.svg' class='img-responsive' alt='Default'>          ".$row['Fname']."
+              echo "<img class='eap' src='images/default.svg' class='img-responsive' alt='Default'>          ".$row['Fname']."
               ".$row['Lname']."";
               }
               else {
-              echo "<img class='eap' src='../images/".$row['image'] ."' class='img-responsive' alt='Default'>           ".$row['Fname']."
+              echo "<img class='eap' src='images/".$row['image'] ."' class='img-responsive' alt='Default'>           ".$row['Fname']."
               ".$row['Lname']."";
               }
 
@@ -138,6 +138,8 @@ else {
   echo "No messages from you";
   $no_message = true;
 }
+mysqli_close($conn);
+
 ?>
 </div>
 <form id="message-form" method="POST">

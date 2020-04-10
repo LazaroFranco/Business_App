@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
 
 <div id="left-col-container">
   <div onclick="document.getElementById('new-message').style.display='block'" Eclass="white-back">
@@ -8,7 +8,7 @@
 
 <?php
 
-require '../db.php';
+require 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
@@ -30,11 +30,11 @@ if(isset($_GET['ID'])){
         "<a class='mContacts' href='?ID=".$row['ID']."' style='cursor:grab;'>";
 
         if($row['image'] == "") {
-        echo "<img class='mImage' src='../images/default.svg' class='img-responsive' alt='Default'>          ".$row['Fname']."
+        echo "<img class='mImage' src='images/default.svg' class='img-responsive' alt='Default'>          ".$row['Fname']."
         ".$row['Lname']."";
         }
         else {
-        echo "<img class='mImage' src='../images/".$row['image'] ."' class='img-responsive' alt='Default'>           ".$row['Fname']."
+        echo "<img class='mImage' src='images/".$row['image'] ."' class='img-responsive' alt='Default'>           ".$row['Fname']."
         ".$row['Lname']."";
         }
 
@@ -64,11 +64,11 @@ else {
         "<a class='mContacts' href='?ID=".$row['ID']."' style='cursor:grab;'>";
 
         if($row['image'] == "") {
-        echo "<img class='mImage' src='../images/default.svg' class='img-responsive' alt='Default'>          ".$row['Fname']."
+        echo "<img class='mImage' src='images/default.svg' class='img-responsive' alt='Default'>          ".$row['Fname']."
         ".$row['Lname']."";
         }
         else {
-        echo "<img class='mImage' src='../images/".$row['image'] ."' class='img-responsive' alt='Default'>           ".$row['Fname']."
+        echo "<img class='mImage' src='images/".$row['image'] ."' class='img-responsive' alt='Default'>           ".$row['Fname']."
         ".$row['Lname']."";
         }
 
@@ -82,6 +82,8 @@ else {
           echo "No user";
         }
       }
+      mysqli_close($conn);
+
 ?>
 
 </div>
