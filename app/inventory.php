@@ -15,7 +15,6 @@ if (!$conn) {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="style.css">
         <title>Inventory</title>
-
     </head>
     <body>
         <?php
@@ -44,10 +43,10 @@ if (!$conn) {
             // add item form
             echo "<form action='inventory.php' method='POST'>
                     <label>Item Name or Description: </label><input type='text' name='item-name'/><br>
-                    <label>Quantity: </label><input type='text' name='item-quantity'/><br>
-                    <label>Price: </label><input type='text' name='item-price'/></br>
+                    <label>Quantity: </label><input type='number' min='0' name='item-quantity'/><br>
+                    <label>Price: </label><input type='number' min='0.00' step='.01' name='item-price'/><br>
                     <input type='submit' name='addItemButton' value='Add Item'/>
-                 </form>";
+                 </form><br>";
             
             // remove item button logic
             if (isset($_POST['rmv-item-btn'])) {
@@ -59,7 +58,7 @@ if (!$conn) {
                             $selectedItemName = $row['Item_Name'];
                             $deleteItem = "DELETE FROM `Inventory` WHERE ID='$value'";
                             if (mysqli_query($conn, $deleteItem)) {
-                                echo "You have removed " . $selectedItemName . " from the inventory.";
+                                echo "You have removed " . $selectedItemName . " from the inventory.<br>";
                             } else {
                                 echo "Error with removing " . $selectedItemName . " from the inventory." . mysqli_error($conn);
                             }
@@ -71,6 +70,16 @@ if (!$conn) {
             // intentory table
             $getInventoryQuery = "SELECT * From `Inventory`";
             $getInventoryResults = mysqli_query($conn, $getInventoryQuery);
+
+            $totalPriceQuery = "UPDATE `Inventory` SET Total_Price=Price*Quantity";
+            $totalPriceResults = mysqli_query($conn, $totalPriceQuery);
+
+            $getGrandTotalValueQuery = "SELECT SUM(Total_Price) AS Grand_Total FROM `Inventory`";
+            $getGrandTotalValueResult = mysqli_query($conn, $getGrandTotalValueQuery);
+            while ($row = mysqli_fetch_array($getGrandTotalValueResult)) {
+                $grandTotal = $row['Grand_Total'];
+            }
+
             $i = 1;  // counter for checkboxes
             echo "<form action='inventory.php' method='POST'>";
             echo    "<table id='table' class='content-table'>
@@ -81,24 +90,29 @@ if (!$conn) {
                                 <th>Price per Unit</th>
                                 <th>Quantity in Stock</th>
                                 <th>Total Price</th>
-                                <th>Edit</th>
-                            <tr>
+                                <th>✅</th>
+                            </tr>
                         </thead>";
             while ($row = mysqli_fetch_array($getInventoryResults)) {
-                $totalPrice = number_format($row['Quantity'] * $row['Price'], 2);
+                $ID = $row['ID'];
+                $itemName = $row['Item_Name'];
+                $quantity = $row['Quantity'];
+                $price = $row['Price'];
+                $totalPrice = $row['Total_Price'];
                 echo    "<tbody>
                             <tr>
-                                <td name='ID'>" . $row['ID'] . "</td>
-                                <td name='item-name'>" . $row['Item_Name'] . "</td>
-                                <td name='price'>" . "$" . $row['Price'] . " " .  "</td>
-                                <td name='quantity'>" . $row['Quantity'] . " " . "</td>
+                                <td name='ID'>" . $ID . "</td>
+                                <td name='item-name'>" . $itemName . "</td>
+                                <td name='price'>" . "$" . $price . " " .  "</td>
+                                <td name='quantity'>" . $quantity . " " . "</td>
                                 <td name='total-price' class='total-price'>" . "$" . $totalPrice . "</td>
-                                <td><input type='checkbox' name='check[$i]' value='".$row['ID']."'/></td>";
-                echo        "<tr>";
+                                <td><input type='checkbox' name='check[$i]' value='" . $ID . "'/></td>";
+                echo        "</tr>";
                 $i++;
                 echo    "</tbody>";
             }
             echo    "</table>";
+            echo "Total Cost of Current Inventory: $" . $grandTotal . "<br>";
             echo "<input type='submit' name='rmv-item-btn' value='Remove item(s)'/>";
             echo "</form>";
 
