@@ -184,5 +184,9 @@ $("document").ready(function(event) {
   });
 });
 
+window.onload=function () {
+     var rightContainer = document.getElementById("messages-container");
+     rightContainer.scrollTop = rightContainer.scrollHeight;
+}
 
 </script>

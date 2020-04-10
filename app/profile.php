@@ -89,8 +89,8 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
                   </a>
                 </li>
                 <li>
-                  <div onclick="document.getElementById('new-message').style.display='block'" Eclass="white-back">
-                    <a style='cursor:grab; text-decoration: none;' id="submit">Message</a>
+                  <div>
+                    <a style='cursor:grab; text-decoration: none;' href="#message-box" onclick="pm_show()" id="submit">Message</a>
                   </div>
                 </li>
               </ul>
@@ -229,43 +229,30 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
                 <?php
 
                 ?>
-
+        </div>
+        <div style="display:none;" id="message-box">
+          <?php include 'message-system/right-col.php' ?>
         </div>
   </div>
+
       </div>
     </section>
     <script>
       // Validating Empty Field
       //Function To Display Popup
-      function div_show() {
-        document.getElementById('abc').style.display = "block";
-        document.getElementById('ov').style.display = "none";
-        document.getElementById('pv').style.display = "none";
-      }
-      //Function to Hide Popup
-      function div_hide(){
-        document.getElementById('abc').style.display = "none";
-        document.getElementById('pv').style.display = "none";
-        document.getElementById('ov').style.display = "none";
-      }
-      function pv_show() {
-        document.getElementById('pv').style.display = "block";
-        document.getElementById('abc').style.display = "none";
-        document.getElementById('ov').style.display = "none";
-      }
       function ov_show() {
         document.getElementById('ov').style.display = "block";
-        document.getElementById('abc').style.display = "none";
-        document.getElementById('pv').style.display = "none";
+        document.getElementById('message-box').style.display = "none";
+
       }
       function pm_show() {
-        document.getElementById('pm').style.display = "block";
-        document.getElementById('abc').style.display = "none";
-        document.getElementById('pv').style.display = "none";
+        document.getElementById('message-box').style.display = "block";
+        document.getElementById('ov').style.display = "none";
+        var rightContainer = document.getElementById("messages-container");
+        rightContainer.scrollTop = rightContainer.scrollHeight;
       }
 
-      function refreshPage(){
-}
+
     </script>
 
   </body>

@@ -1040,3 +1040,8 @@ button[disabled], html input[disabled] {
   color: var(--burg);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+
+#message-box {
+  height: 60em;
+  overflow: scroll;
+}
