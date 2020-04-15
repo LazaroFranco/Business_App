@@ -504,22 +504,6 @@ a.closebtn {
   margin: auto;
 }
 
-#denied {
-  border-top: 16px solid rgb(139, 15, 61);
-  border-right: 16px solid rgb(139, 15, 61);
-}
-
-#approved {
-  border-top: 16px solid #3498db;
-  border-right: 16px solid #3498db;
-}
-
-#total {
-  border-top: 16px solid rgb(139, 15, 61);
-  border-right: 16px solid rgb(139, 15, 61);
-  border-bottom: 16px solid #3498db;
-  border-left: 16px solid #3498db;
-}
 
 /* Safari */
 @-webkit-keyframes spin {
@@ -590,7 +574,9 @@ input[type="checkbox"] {
     cursor: pointer;
     position: relative;
 }
-
+text {
+  font-size: 1.2em;
+}
 input[type="checkbox"] > span {
     color: #34495E;
     padding: 0.5rem 0.25rem;

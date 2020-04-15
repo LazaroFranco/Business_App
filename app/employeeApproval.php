@@ -4,6 +4,16 @@ include_once 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
+$userQ = "SELECT COUNT(*) AS NumberofUsers, Approved FROM Users GROUP BY Approved";
+$result= mysqli_query($conn, $userQ);
+
+$denied = "SELECT COUNT(*) AS NumberofUsers, Approved FROM Users
+WHERE Users.Approved = 0;";
+$deniedResult = mysqli_query($conn, $denied);
+
+$approved = "SELECT COUNT(*) AS NumberofUsers, Approved FROM Users
+WHERE Users.Approved = 1;";
+$approvedResult = mysqli_query($conn, $approved);
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +23,55 @@ if (!$conn) {
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var dataTotal = google.visualization.arrayToDataTable([
+          ['Users', 'Number'],
+          <?php
+
+            while($row = mysqli_fetch_array($result)) {
+              echo "['". ($row['Approved'] ? 'Approved' : 'Not Approved') ."', ".$row["NumberofUsers"]."],";
+            }
+          ?>
+          ]);
+
+          var dataApproved = google.visualization.arrayToDataTable([
+            ['Users', 'Number'],
+            <?php
+
+              while($row = mysqli_fetch_array($approvedResult)) {
+                echo "['". ($row['Approved'] ? 'Approved' : 'Not Approved') ."', ".$row["NumberofUsers"]."],";
+              }
+            ?>
+            ]);
+
+            var dataDenied = google.visualization.arrayToDataTable([
+              ['Users', 'Number'],
+              <?php
+                while($row = mysqli_fetch_array($deniedResult)) {
+                  echo "['". ($row['Approved'] ? 'Approved' : 'Not Approved') ."', ".$row["NumberofUsers"]."],";
+                }
+              ?>
+              ]);
+
+        var options = {
+          title:'Percentage of Approved and Dissaproved Users',
+          is3D: true,
+          colors: ['lightgrey', '#8B0F3D']
+          };
+        var chartTotal = new google.visualization.PieChart(document.getElementById('total'));
+        chartTotal.draw(dataTotal, options);
+
+        var chartApproved = new google.visualization.PieChart(document.getElementById('approved'));
+        chartApproved.draw(dataApproved);
+
+        var chartDenied = new google.visualization.PieChart(document.getElementById('denied'));
+        chartDenied.draw(dataDenied);
+      };
+      </script>
       <link rel="stylesheet" href="style.css">
         <title>Employee Registration Approval</title>
     </head>
@@ -84,57 +143,14 @@ if (!$conn) {
           }
       ?>
 
+      <div class="boxx">
 
-      <div id="rowmargin" class="row">
-        <div class="column">
-          <div class="boxx">
-            <h3>Denied Number Of Users</h3>
-            <?php
-              $userQuery = "SELECT COUNT(*)
-              AS NumberofUsers
-              FROM Users
-              WHERE Users.Approved = 0;";
-              $userResult = mysqli_query($conn, $userQuery);
-              while ($row = mysqli_fetch_array($userResult)) {
-                echo "<div id='denied' class='loader'>";
-                echo "<h1>" .$row['NumberofUsers']."</h1>";
-                echo "</div> ";
-            }
-            ?>
+        <div class="row">
+          <div class="col-md-10">
+            <div style="width:900px; height:500px;" id="total"></div>
           </div>
         </div>
-        <div class="column">
-          <div class="boxx">
-            <h3>Approved Number Of Users</h3>
-            <?php
-              $userQuery = "SELECT COUNT(*)
-              AS NumberofUsers
-              FROM Users
-              WHERE Users.Approved = 1;";
-              $userResult = mysqli_query($conn, $userQuery);
-              while ($row = mysqli_fetch_array($userResult)) {
-              echo "<div id='approved' class='loader'>";
-              echo "<h1>" .$row['NumberofUsers']."</h1>";
-              echo "</div> ";
-            }
-            ?>
-          </div>
         </div>
-        <div class="column">
-          <div class="boxx">
-              <h3>Total Number Of Users</h3>
-              <?php
-                $userQuery = "SELECT COUNT(*) AS NumberofUsers FROM Users";
-                $userResult = mysqli_query($conn, $userQuery);
-                while ($row = mysqli_fetch_array($userResult)) {
-                  echo "<div id='total' class='loader'>";
-                  echo "<h1>" .$row['NumberofUsers']."</h1>";
-                  echo "</div> ";
-              }
-              ?>
-          </div>
-        </div>
-      </div>
     </body>
 <?php
 include 'footer.php';
