@@ -84,9 +84,9 @@ if (!$conn) {
             }
 
             if ($paidStatus == "paid") {
-                $paid = 1;
+                $paidStatus = 1;
             } else if ($paidStatus == "unpaid") {
-                $paid = 0;
+                $paidStatus = 0;
             }
 
             $getUserData = "SELECT ID, Company_ID FROM `Users` WHERE Fname='$firstName' AND Lname='$lastName'";

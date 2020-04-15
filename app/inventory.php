@@ -68,18 +68,16 @@ if (!$conn) {
             }
 
             // intentory table
-            $getInventoryQuery = "SELECT * From `Inventory`";
-            $getInventoryResults = mysqli_query($conn, $getInventoryQuery);
-
             $totalPriceQuery = "UPDATE `Inventory` SET Total_Price=Price*Quantity";
             $totalPriceResults = mysqli_query($conn, $totalPriceQuery);
-
             $getGrandTotalValueQuery = "SELECT SUM(Total_Price) AS Grand_Total FROM `Inventory`";
             $getGrandTotalValueResult = mysqli_query($conn, $getGrandTotalValueQuery);
             while ($row = mysqli_fetch_array($getGrandTotalValueResult)) {
                 $grandTotal = $row['Grand_Total'];
             }
 
+            $getInventoryQuery = "SELECT * From `Inventory`";
+            $getInventoryResults = mysqli_query($conn, $getInventoryQuery);
             $i = 1;  // counter for checkboxes
             echo "<form action='inventory.php' method='POST'>";
             echo    "<table id='table' class='content-table'>
@@ -90,6 +88,7 @@ if (!$conn) {
                                 <th>Price per Unit</th>
                                 <th>Quantity in Stock</th>
                                 <th>Total Price</th>
+                                <th>Edit</th>
                                 <th>✅</th>
                             </tr>
                         </thead>";
@@ -106,6 +105,7 @@ if (!$conn) {
                                 <td name='price'>" . "$" . $price . " " .  "</td>
                                 <td name='quantity'>" . $quantity . " " . "</td>
                                 <td name='total-price' class='total-price'>" . "$" . $totalPrice . "</td>
+                                <td name='edit-btn-cell'><button name='edit-btn' value='$ID'>Edit</button></td>
                                 <td><input type='checkbox' name='check[$i]' value='" . $ID . "'/></td>";
                 echo        "</tr>";
                 $i++;
