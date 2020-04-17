@@ -71,6 +71,28 @@ if (!$conn) {
       </a>
       <br>
 <?php
+
+    if (isset($_POST['approve'])) {
+        if (isset($_POST['check'])) {
+            foreach ($_POST['check'] as $value) {
+                $approveRequest = "UPDATE `Vac_Req_Form` SET Approved=1 WHERE ID='$value'";
+                mysqli_query($conn, $approveRequest);
+            }
+        }
+    }
+
+    if (isset($_POST['deny'])) {
+        if (isset($_POST['check'])) {
+            foreach ($_POST['check'] as $value) {
+                $deleteRequest = "DELETE FROM `Vac_Req_Form` WHERE ID='$value'";
+                if (mysqli_query($conn, $deleteRequest)) {
+                    echo "You have removed stuff.";
+                } else {
+                    echo "There was an error removing stuff." . " " . mysqli_error($conn);
+                }
+            }
+        }
+    }
 //if (isset($_GET['login'])) {
     if (isset($_POST['submit'])) {
         $todayDate = $_POST['todayDate'];
@@ -140,7 +162,7 @@ if (!$conn) {
                 echo "<td>" . $row['Fname'] . ' ' . $row['Lname'] . "</td>";
                 echo "<td>" . $row['Type_of_Request'] . "</td>";
                 echo '<td>' . ($row['Paid'] ? 'Paid' : 'Not Paid') . '</td>';
-                 echo "<td>" . $row['Comments'] . "</td>";
+                echo "<td>" . $row['Comments'] . "</td>";
                 echo "<td>" . $row['Start_Date_Requested'] . "</td>";
                 echo "<td>" . $row['End_Date_Requested'] . "</td>";
                 echo "<td><input type='checkbox' name='check[$i]' value='".$row['ID']."'/></td>";
@@ -153,6 +175,52 @@ if (!$conn) {
         echo "<input id='submit' type='submit' name='deny' value='Deny'/>";
     echo "</form>";
 
+        ?>
+
+        <div id="rowmargin" class="row">
+          <div class="row">
+            <div class="boxx" style="display:none;" id="showApproved">
+                <h2>Upcoming Vacations</h2>
+
+              <table class='content-table'>
+                <?php
+
+                $userQuery = mysqli_query($conn, "SELECT * FROM Vac_Req_Form
+                WHERE Approved=1;");
+                $i = 1;
+
+                    echo "<thead>";
+                      echo "<tr>";
+                          echo "<th>Employee ID</th>";
+                          echo "<th>Employee Name</th>";
+                          echo "<th>Paid Status</th>";
+                          echo "<th>Comments</th>";
+                          echo "<th>Start Date</th>";
+                          echo "<th>End Date</th>";
+                      echo "</tr>";
+                    echo "</thead>";
+
+                  while ($row =  mysqli_fetch_array($userQuery)) {
+
+                  $startDate = date("d-m-Y", strtotime($row['Start_Date_Requested']));
+
+                  $endDate = date("d-m-Y", strtotime($row['End_Date_Requested']));
+
+                    echo "<tbody>";
+                    echo "<tr>";
+                    echo "<td>".$row['Employee_ID']."</td>";
+                     echo "<td>".$row['Fname']. " " .$row['Lname']."</td>";
+                     echo '<td>' . ($row['Paid'] ? 'Paid' : 'Not Paid') . '</td>';
+                      echo "<td>" . $row['Comments'] . "</td>";
+
+                     echo "<td>".$startDate."</td>";
+                     echo "<td>".$endDate."</td>";
+
+                     echo "</tr>";
+                    echo "</tbody>";
+                    $i++;
+                }
+                                               
             if (isset($_POST['approve'])) {
                 if (isset($_POST['check'])) {
                     foreach ($_POST['check'] as $value) {
