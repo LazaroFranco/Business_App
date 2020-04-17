@@ -103,6 +103,9 @@ if (!isset($_SESSION)){
           echo "<li><a href=\"/Man-A-Biz/app/employees.php\">Employee List</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/message.php\"> Messages</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/vacationRequests.php\"> Vacation Requests</a></li>";
+          echo "<h3>Company Management</h3>";
+          echo "<li><a href=\"/Man-A-Biz/app/inventory.php\"> Inventory</a></li>";
+          echo "<li><a href=\"/Man-A-Biz/app/expenses.php\">  Expenses</a></li>";
           echo "</ul>";
           echo "<li><a class='logout' href='/Man-A-Biz/app/logout.php'>Logout</a></li>";
         }
