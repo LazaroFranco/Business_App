@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
     </script>
-    <script src="https://cdn.tiny.cloud/1/8m6tpouimlbz5x5x25hbvj09ilraavsvbam894vaugrokcts/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
     </script>
     <link rel="stylesheet" href="style.css">
@@ -88,6 +87,11 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
                     </i>
                     Tasks
                   </a>
+                </li>
+                <li>
+                  <div>
+                    <a style='cursor:grab; text-decoration: none;' href="#message-box" onclick="pm_show()" id="submit">Message</a>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -225,46 +229,30 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
                 <?php
 
                 ?>
-
         </div>
+        <div style="display:none;" id="message-box">
+          <?php include 'message-system/right-col.php' ?>
+        </div>
+  </div>
+
       </div>
     </section>
     <script>
       // Validating Empty Field
       //Function To Display Popup
-      function div_show() {
-        document.getElementById('abc').style.display = "block";
-        document.getElementById('ov').style.display = "none";
-        document.getElementById('pv').style.display = "none";
-      }
-      //Function to Hide Popup
-      function div_hide(){
-        document.getElementById('abc').style.display = "none";
-        document.getElementById('pv').style.display = "none";
-        document.getElementById('ov').style.display = "none";
-      }
-      function pv_show() {
-        document.getElementById('pv').style.display = "block";
-        document.getElementById('abc').style.display = "none";
-        document.getElementById('ov').style.display = "none";
-      }
       function ov_show() {
         document.getElementById('ov').style.display = "block";
-        document.getElementById('abc').style.display = "none";
-        document.getElementById('pv').style.display = "none";
+        document.getElementById('message-box').style.display = "none";
+
+      }
+      function pm_show() {
+        document.getElementById('message-box').style.display = "block";
+        document.getElementById('ov').style.display = "none";
+        var rightContainer = document.getElementById("messages-container");
+        rightContainer.scrollTop = rightContainer.scrollHeight;
       }
 
-      tinymce.init({
-        selector: 'textarea',
-        plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
-        toolbar_mode: 'floating',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-      });
 
-      function refreshPage(){
-}
     </script>
 
   </body>
