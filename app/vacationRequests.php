@@ -220,6 +220,70 @@ if (!$conn) {
                     echo "</tbody>";
                     $i++;
                 }
+                                               
+            if (isset($_POST['approve'])) {
+                if (isset($_POST['check'])) {
+                    foreach ($_POST['check'] as $value) {
+                        $approveRequest = "UPDATE `Vac_Req_Form` SET Approved=1 WHERE ID='$value'";
+                        mysqli_query($conn, $approveRequest);
+                    }
+                }
+            }
+
+            if (isset($_POST['deny'])) {
+                if (isset($_POST['check'])) {
+                    foreach ($_POST['check'] as $value) {
+                        $deleteRequest = "DELETE FROM `Vac_Req_Form` WHERE ID='$value'";
+                        mysqli_query($conn, $deleteRequest);
+                    }
+                }
+            }
+
+        ?>
+
+        <div id="rowmargin" class="row">
+          <div class="row">
+            <div class="boxx" style="display:none;" id="showApproved">
+                <h2>Upcoming Vacations</h2>
+
+              <table class='content-table'>
+                <?php
+
+                $userQuery = mysqli_query($conn, "SELECT * FROM Vac_Req_Form
+                WHERE Approved=1;");
+                $i = 1;
+
+                    echo "<thead>";
+                      echo "<tr>";
+                          echo "<th>Employee ID</th>";
+                          echo "<th>Employee Name</th>";
+                          echo "<th>Paid Status</th>";
+                          echo "<th>Comments</th>";
+                          echo "<th>Start Date</th>";
+                          echo "<th>End Date</th>";
+                      echo "</tr>";
+                    echo "</thead>";
+
+                  while ($row =  mysqli_fetch_array($userQuery)) {
+
+                  $startDate = date("d-m-Y", strtotime($row['Start_Date_Requested']));
+
+                  $endDate = date("d-m-Y", strtotime($row['End_Date_Requested']));
+
+                    echo "<tbody>";
+                    echo "<tr>";
+                    echo "<td>".$row['Employee_ID']."</td>";
+                     echo "<td>".$row['Fname']. " " .$row['Lname']."</td>";
+                     echo '<td>' . ($row['Paid'] ? 'Paid' : 'Not Paid') . '</td>';
+                      echo "<td>" . $row['Comments'] . "</td>";
+
+                     echo "<td>".$startDate."</td>";
+                     echo "<td>".$endDate."</td>";
+
+                     echo "</tr>";
+                    echo "</tbody>";
+                    $i++;
+                }
 
                 mysqli_close($conn);
 

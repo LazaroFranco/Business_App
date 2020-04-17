@@ -34,7 +34,7 @@ if(isset($_GET['login'])) {
           $_SESSION['Business_State'] = $row[20];
 
 
-          header( 'Location: profile.php');
+          header( 'Location: myprofile.php');
         break;
         }
           }

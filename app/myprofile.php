@@ -4,13 +4,18 @@
   if (!$conn) {
   	die("Connection failed: " . mysqli_error());
   }
-
-  $ID = isset($_REQUEST['ID'])?$_REQUEST['ID']:'';
-
-  if ($ID == $_SESSION['ID']) {
-    header( 'Location: myprofile.php');
+  if(isset($_POST['upload'])) {
+  	move_uploaded_file($_FILES['file']['tmp_name'],"images/".$_FILES['file']['name']);
+    $q= "UPDATE Users SET image = '".$_FILES['file']['name']."'
+    WHERE
+    Users.Fname = '".$_SESSION['Fname']."'
+    AND
+    Users.Lname = '".$_SESSION['Lname']."'
+    AND
+    Users.DoB = '".$_SESSION['DoB']."'
+    ";
+    $qResult = mysqli_query($conn, $q);
   }
-
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -32,7 +37,11 @@
       <?php
 		include 'nav.php';
         $userQuery = "SELECT * FROM `Users` WHERE
-        ID='$ID'
+        Users.Fname = '".$_SESSION['Fname']."'
+        AND
+        Users.Lname = '".$_SESSION['Lname']."'
+        AND
+        Users.DoB = '".$_SESSION['DoB']."'
         ";
         $userResult = mysqli_query($conn, $userQuery);
         $i = 1; // counter for checkboxes
@@ -44,17 +53,15 @@
           <div class="profile-usertitle">
             <div class="profile-usertitle-name">
               <?php
-
-              while ($row = mysqli_fetch_array($userResult)) {
-echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
-"</h1>";
-
+echo "<h1 class='header-h1'>". $_SESSION['Fname']. " " . $_SESSION['Lname'] .
+"</h1>"
 ?>
             </div>
             <div class="profile-sidebar">
               <!-- SIDEBAR USERPIC -->
               <div class="profile-userpic">
                 <?php
+                while ($row = mysqli_fetch_array($userResult)) {
                 if($row['image'] == ""){
                 echo "<img src='images/default.svg' class='img-responsive' alt='Default'>";
                 }
@@ -63,15 +70,14 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
                 ;
                 }
                 echo "<br>";
-                echo "<div class='profile-usertitle-job'>
-
-                 ".$row['position']."
-                 </div>
-                ";
                 }
                 ?>
               </div>
               <!-- END SIDEBAR USERPIC -->
+              <!-- SIDEBAR USER TITLE -->
+              <div class="profile-usertitle-job">
+                <?php echo $_SESSION['position'] ?>
+              </div>
             </div>
             <div class="profile-usermenu">
               <ul class="nav">
@@ -80,6 +86,20 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
                     <i class="glyphicon glyphicon-home">
                     </i>
                     Overview
+                  </a>
+                </li>
+                <li>
+                  <a onclick ="pv_show()" href="#private-information">
+                    <i class="glyphicon glyphicon-lock">
+                    </i>
+                    Private Information
+                  </a>
+                </li>
+                <li>
+                  <a id="popup" onclick="div_show()" href="#account-settings">
+                    <i class="glyphicon glyphicon-user">
+                    </i>
+                    Account Settings
                   </a>
                 </li>
                 <li>
@@ -95,10 +115,46 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
           </div>
         </div>
         <div class="col-md-9">
+          <div id="pv" class="profile-content" style="display:none;">
+            <table class="table">
+              <h2>Your Information To The Company (Private)</h2>
+              <tbody>
+              <tr>
+                <td>Age:
+                </td>
+                <td>
+                  <?php echo $_SESSION['DoB'] ?>
+                </td>
+              </tr>
+              <tr>
+                <td>Email:
+                </td>
+                <td>
+                  <?php echo $_SESSION['email'] ?>
+                </td>
+              </tr>
+              <tr>
+                <td>Phone:
+                </td>
+                <td>
+                  <?php echo $_SESSION['Phone'] ?>
+                </td>
+              </tr>
+              <tr>
+                <td>Company Code:
+                </td>
+                <td>
+                  <?php echo $_SESSION['CompanyCode'] ?>
+                </td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
           </
 
             <div class="col-md-9">
               <div id="ov" class="profile-content">
+                <button onClick="window.location.reload();">Refresh Data</button>
               <table class="table">
 
                 <h2>Public Profile</h2>
@@ -107,79 +163,39 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
               <tr>
                 <td>Name: </td>
                 <td>
-                   <?php
-                   $userQuery = "SELECT * FROM Users WHERE  ID = '$ID'";
-
-                   $userResult = mysqli_query($conn, $userQuery);
-                   $i = 1; // counter for checkboxes
-
-                   while ($row = mysqli_fetch_array($userResult)) {
-
-                    echo "<p>". $row['Fname']. " " . $row['Lname'] . "</p>";
-                  }
-                     ?>
+                  <?php
+                   echo "<p>". $_SESSION['Fname']. " " . $_SESSION['Lname'] . "</p>"?>
                 </td>
               </tr>
               <tr>
                 <td>Email:
                 </td>
                 <td>
-                  <?php
-                  $userQuery = "SELECT * FROM Users WHERE  ID = '$ID'";
-
-                  $userResult = mysqli_query($conn, $userQuery);
-                  $i = 1; // counter for checkboxes
-
-                  while ($row = mysqli_fetch_array($userResult)) {
-
-                    echo $row['Email'];
-                }
-                    ?>
+                  <?php echo $_SESSION['email'] ?>
                 </td>
               </tr>
               <tr>
                 <td>Phone:
                 </td>
                 <td>
-                  <?php
-                  $userQuery = "SELECT * FROM Users WHERE   ID = '$ID'";
-
-                  $userResult = mysqli_query($conn, $userQuery);
-                  $i = 1; // counter for checkboxes
-
-                  while ($row = mysqli_fetch_array($userResult)) {
-
-                   echo $row['Phone'];
-                 }
-                    ?>
+                  <?php echo $_SESSION['Phone'] ?>
                 </td>
               </tr>
               <tr>
                 <td>Company Code:
                 </td>
                 <td>
-                  <?php
-                  $userQuery = "SELECT * FROM Users WHERE   ID = '$ID'";
-
-
-                  $userResult = mysqli_query($conn, $userQuery);
-                  $i = 1; // counter for checkboxes
-
-                  while ($row = mysqli_fetch_array($userResult)) {
-
-                   echo $row['Company_Code'];
-                 }
-                    ?>
+                  <?php echo $_SESSION['CompanyCode'] ?>
                 </td>
               </tr>
             </tbody>
             </table>
 
-
             <tr>
               <td>
                 <?php
-                $userQuery = "SELECT * FROM Users WHERE     ID = '$ID'";
+                $userQuery = "SELECT * FROM Users WHERE     Fname = '".$_SESSION['Fname']."'";
+;
 
                 $userResult = mysqli_query($conn, $userQuery);
                 $i = 1; // counter for checkboxes
@@ -221,6 +237,61 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
            ?>
          </div>
           </div>
+          <div id="abc" style="display:none;">
+            <!-- Popup Div Starts Here -->
+            <div id="popupSettings">
+              <form action="" enctype="multipart/form-data" id="form" method="post" name="form">
+                <h2>Account Settings</h2>
+                <label>Update Profile Picture
+                  <input type="file" name="file">
+                </label>
+                <br>
+                <input type="submit" name="upload" value="Upload" id="upload">
+                </input>
+              </form>
+
+              <form action="" id="form" method="POST" name="form">
+                <br>
+                <label for="Email">Email: </label><input class="" type="text" value="<?php echo $_SESSION['email']; ?>" name="Email">
+                <br>
+                <label for="Phone" class="">Phone (Format: 000-000-0000): </label>
+                <input class="" type="tel" value="<?php echo $_SESSION['Phone']; ?>" name="Phone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                <br>
+                <label for="bio">Biography: </label>
+                <br>
+                  <textarea id="froala-editor" name="bio" value="<?php echo $row['bio']; ?>" rows="10" cols="30"></textarea>
+                <br>
+                <input value="Submit" type="submit" name="submit" id="submit">
+              </input>
+              <br>
+              <a onclick="ov_show()" href="#">
+                Close Settings
+              </a>
+              <?php
+                if(isset($_POST['submit'])) {
+                  $email = $_POST['Email'];
+                  $phone = $_POST['Phone'];
+                  $bio= $_POST['bio'];
+
+                  $sql= "UPDATE Users SET Users.Email='$email', Users.Phone='$phone', Users.bio='$bio'
+                  WHERE
+                  Users.Fname = '".$_SESSION['Fname']."'
+                  AND
+                  Users.Lname = '".$_SESSION['Lname']."'
+                  AND
+                  Users.DoB = '".$_SESSION['DoB']."'
+                  ";
+
+                mysqli_query($conn, $sql);
+
+
+              }
+
+              ?>
+              </form>
+
+          </div>
+        </div>
         <div id="tasks">
                 <?php
 
