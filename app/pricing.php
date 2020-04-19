@@ -38,7 +38,7 @@
                     if (($item != '') && ($cost != '')) {
                         $insertItem = "INSERT INTO `Customer_Pricing` (Company_ID, Description, Cost, Unit) VALUES ('$companyID', '$item', '$cost', '$unit')";
                         if (mysqli_query($conn, $insertItem)) {
-                            echo "You have entered " . $item . " into Customer Pricing at the cost of " . $cost . " per " . $unit . ".";
+                            echo "You have entered " . $item . " into your Customer Pricing at the cost of " . $cost . " per " . $unit . ".";
                         } else {
                             echo "Error with adding " . $item . " to the inventory." . mysqli_error($conn);
                         }
@@ -50,7 +50,7 @@
                 echo "<form action='pricing.php' method='POST'>
                         <label>Item/Description: </label><input type='text' name='item'/><br>
                         <label>Cost: </label><input type='number' min='0.00' step='.01' name='cost'/><br>
-                        <label>Unit: </label><input type='text' min='0' name='unit'/><br>
+                        <label>Per Unit Type: </label><input type='text' min='0' name='unit'/><br>
                         <input type='submit' name='submit' value='Submit'/>
                     </form><br>";
                 
@@ -104,7 +104,7 @@
                     echo    "</tbody>";
                 }
                 echo    "</table>";
-                echo "<input type='submit' name='rmv-item' value='Remove item(s)'/>";
+                echo "<input type='submit' name='rmv-item' value='Remove'/>";
                 echo "</form>";
 
                 include 'footer.php';
