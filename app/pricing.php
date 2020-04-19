@@ -104,7 +104,7 @@
                     echo    "</tbody>";
                 }
                 echo    "</table>";
-                echo "<input type='submit' name='rmv-item' value='Remove'/>";
+                echo "   <input type='submit' name='rmv-item' value='Remove'/>";
                 echo "</form>";
 
                 include 'footer.php';
