@@ -3,6 +3,11 @@ include_once 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
+if (!isset($_SESSION)){
+  session_start();
+  $Fname = $_SESSION['Fname'];
+  $Lname = $_SESSION['Lname'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +29,10 @@ if (!$conn) {
       <div class="boxed">
         <form action="vacationRequests.php" class="vrform "name="vacReq" method="POST">
             <label>Today's Date:</label><input type="date" name="todayDate" value="<?php echo date('Y-m-d')?>"/><br>
-            <label>Employee First Name:</label><input type="text" name="fname"/><br>
-            <label>Employee Last Name:</label><input type="text" name="lname"/><br>
+            <?php
+            echo"<label>Employee First Name:</label><input type='text' name='fname' value='$Fname' readonly/><br>";
+            echo"<label>Employee Last Name:</label><input type='text' name='lname' value='$Lname' readonly/><br>";
+            ?>
             <section>
               <h2>Type of Request (Vacation/Sick):</h2>
               <label class="vacation">Vacation

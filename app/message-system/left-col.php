@@ -12,6 +12,11 @@ require 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
+if (!isset($_SESSION)){
+  session_start();
+}
+$compID = $_SESSION['companyID'];
+
 $no_message = false;
 if(isset($_GET['ID'])){
   $_GET['ID'] = $_GET['ID'];
@@ -50,7 +55,7 @@ if(isset($_GET['ID'])){
 }
 
 else {
-  $q = "SELECT * FROM Users";
+  $q = "SELECT * FROM Users WHERE Company_ID = '$compID'";
 
         $myResult = mysqli_query($conn, $q);
 

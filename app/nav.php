@@ -31,8 +31,9 @@ if (!isset($_SESSION)){
     <ul id="mySidebar-users" class="sidebar">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNavUsers()">&times;</a>
       <?php
+      $comp_id = $_SESSION['companyID'];
       echo "<h1 class='usersh1'>Your Team</h1>";
-      $userQuery = mysqli_query($conn, "SELECT * FROM Users
+      $userQuery = mysqli_query($conn, "SELECT * FROM Users WHERE Company_ID = '$comp_id'
       ;");
 
       $i = 1;

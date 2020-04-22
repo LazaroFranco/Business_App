@@ -4,6 +4,9 @@ include_once 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
+if (!isset($_SESSION)){
+  session_start();
+}
 $userQ = "SELECT COUNT(*) AS NumberofUsers, Approved FROM Users GROUP BY Approved";
 $result= mysqli_query($conn, $userQ);
 
@@ -78,9 +81,10 @@ $approvedResult = mysqli_query($conn, $approved);
     <body>
 
       <?php
+          $comp_id = $_SESSION['companyID'];
           include 'nav.php';
           echo "<h1 class='header-h1'>Employee Approval</h1>";
-          $userQuery = "SELECT ID, position, Fname, image, Lname, Type_Of_User FROM Users Where Approved=FALSE ORDER BY ID DESC";
+          $userQuery = "SELECT ID, position, Fname, image, Lname, Type_Of_User FROM Users Where Approved=FALSE AND Company_ID = '$comp_id' ORDER BY ID DESC";
           $userResult = mysqli_query($conn, $userQuery);
           $i = 1; // counter for checkboxes
           echo "<form action='' method='POST'>";

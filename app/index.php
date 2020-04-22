@@ -8,7 +8,7 @@ if(isset($_GET['login'])) {
   $search = "SELECT * From Users, Company WHERE Users.Company_Code = Company.Company_Code;";
   $result = mysqli_query($conn, $search);
   while($row = mysqli_fetch_row($result)) {
-    if ($row[9] == 0) {
+    if ($row[9] == 1) {
       if ($row[5] == $_GET['uname'] ?? '') {
         if ($row[6] == $_GET['psw'] ?? ''){
 

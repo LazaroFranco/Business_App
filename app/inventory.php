@@ -1,7 +1,9 @@
 <?php
 include_once 'db.php';
-session_start();
-if (!$conn) {
+if (!isset($_SESSION)){
+    session_start();
+    $compID =$_SESSION['companyID'];
+  }if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
 ?>
@@ -18,10 +20,10 @@ if (!$conn) {
     </head>
     <body>
         <?php
+        $grandTotal = NULL;
             include 'nav.php';
             echo "<h1 class='header-h1'>Inventory</h1>";
             echo "<p>Merchandise for your company's use in order to provide goods and services to our customers.</p>";
-
             // add item button logic
             if (isset($_POST['addItemButton'])) {
                 $itemName = $_POST['item-name'];
@@ -30,6 +32,13 @@ if (!$conn) {
                 $companyID = $_SESSION['companyID'];
 
                 if (($itemName != '') && ($itemQuantity != '') && ($itemPrice != '')) {
+                    $sql = "SELECT Item_Name FROM `Inventory` WHERE Item_Name = '$itemName' AND Company_ID = '$companyID'";
+                    $result = mysqli_query($conn, $sql);
+                    if($result->num_rows == 1){
+                        $updateItem = "UPDATE `Inventory` SET Price = $itemPrice, Quantity = $itemQuantity WHERE Item_Name = '$itemName' AND Company_ID = '$companyID'";
+                        $updateresult = (mysqli_query($conn, $updateItem));
+                    }
+                    else{
                     $insertItem = "INSERT INTO `Inventory` (Company_ID, Item_Name, Price, Quantity) VALUES ('$companyID', '$itemName', '$itemPrice', '$itemQuantity')";
                     if (mysqli_query($conn, $insertItem)) {
                         echo "You have entered " . $itemName . " into the inventory.";
@@ -37,6 +46,7 @@ if (!$conn) {
                         echo "Error with adding item to the inventory." . mysqli_error($conn);
                     }
                 }
+            }
                 header('Location: inventory.php');
             }
 
@@ -70,13 +80,18 @@ if (!$conn) {
             // intentory table
             $totalPriceQuery = "UPDATE `Inventory` SET Total_Price=Price*Quantity";
             $totalPriceResults = mysqli_query($conn, $totalPriceQuery);
-            $getGrandTotalValueQuery = "SELECT SUM(Total_Price) AS Grand_Total FROM `Inventory`";
+            $getGrandTotalValueQuery = "SELECT SUM(Total_Price) AS Grand_Total FROM `Inventory` WHERE Company_ID = $compID";
             $getGrandTotalValueResult = mysqli_query($conn, $getGrandTotalValueQuery);
+            if(!($getGrandTotalValueResult)){
+                echo"Nothing in Inventory!";
+            }
+            else{
             while ($row = mysqli_fetch_array($getGrandTotalValueResult)) {
                 $grandTotal = $row['Grand_Total'];
             }
+        }
 
-            $getInventoryQuery = "SELECT * From `Inventory`";
+            $getInventoryQuery = "SELECT * From `Inventory` WHERE Company_ID = $compID";
             $getInventoryResults = mysqli_query($conn, $getInventoryQuery);
             $i = 1;  // counter for checkboxes
             echo "<form action='inventory.php' method='POST'>";
@@ -88,7 +103,6 @@ if (!$conn) {
                                 <th>Price per Unit</th>
                                 <th>Quantity in Stock</th>
                                 <th>Total Price</th>
-                                <th>Edit</th>
                                 <th>✅</th>
                             </tr>
                         </thead>";
@@ -105,7 +119,6 @@ if (!$conn) {
                                 <td name='price'>" . "$" . $price . " " .  "</td>
                                 <td name='quantity'>" . $quantity . " " . "</td>
                                 <td name='total-price' class='total-price'>" . "$" . $totalPrice . "</td>
-                                <td name='edit-btn-cell'><button name='edit-btn' value='$ID'>Edit</button></td>
                                 <td><input type='checkbox' name='check[$i]' value='" . $ID . "'/></td>";
                 echo        "</tr>";
                 $i++;
