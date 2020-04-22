@@ -71,6 +71,28 @@ if (!$conn) {
       </a>
       <br>
 <?php
+
+    if (isset($_POST['approve'])) {
+        if (isset($_POST['check'])) {
+            foreach ($_POST['check'] as $value) {
+                $approveRequest = "UPDATE `Vac_Req_Form` SET Approved=1 WHERE ID='$value'";
+                mysqli_query($conn, $approveRequest);
+            }
+        }
+    }
+
+    if (isset($_POST['deny'])) {
+        if (isset($_POST['check'])) {
+            foreach ($_POST['check'] as $value) {
+                $deleteRequest = "DELETE FROM `Vac_Req_Form` WHERE ID='$value'";
+                if (mysqli_query($conn, $deleteRequest)) {
+                    echo "You have removed stuff.";
+                } else {
+                    echo "There was an error removing stuff." . " " . mysqli_error($conn);
+                }
+            }
+        }
+    }
 //if (isset($_GET['login'])) {
     if (isset($_POST['submit'])) {
         $todayDate = $_POST['todayDate'];
@@ -91,9 +113,9 @@ if (!$conn) {
             }
 
             if ($paidStatus == "paid") {
-                $paid = 1;
+                $paidStatus = 1;
             } else if ($paidStatus == "unpaid") {
-                $paid = 0;
+                $paidStatus = 0;
             }
 
             $getUserData = "SELECT ID, Company_ID FROM `Users` WHERE Fname='$firstName' AND Lname='$lastName'";
@@ -140,7 +162,7 @@ if (!$conn) {
                 echo "<td>" . $row['Fname'] . ' ' . $row['Lname'] . "</td>";
                 echo "<td>" . $row['Type_of_Request'] . "</td>";
                 echo '<td>' . ($row['Paid'] ? 'Paid' : 'Not Paid') . '</td>';
-                 echo "<td>" . $row['Comments'] . "</td>";
+                echo "<td>" . $row['Comments'] . "</td>";
                 echo "<td>" . $row['Start_Date_Requested'] . "</td>";
                 echo "<td>" . $row['End_Date_Requested'] . "</td>";
                 echo "<td><input type='checkbox' name='check[$i]' value='".$row['ID']."'/></td>";
@@ -152,6 +174,16 @@ if (!$conn) {
         echo "<input id='submit' type='submit' name='approve' value='Approve'/>";
         echo "<input id='submit' type='submit' name='deny' value='Deny'/>";
     echo "</form>";
+
+        ?>
+
+        <div id="rowmargin" class="row">
+          <div class="row">
+            <div class="boxx" style="display:none;" id="showApproved">
+                <h2>Upcoming Vacations</h2>
+
+              <table class='content-table'>
+                <?php
 
             if (isset($_POST['approve'])) {
                 if (isset($_POST['check'])) {

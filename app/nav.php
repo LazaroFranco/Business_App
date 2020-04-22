@@ -34,6 +34,7 @@ if (!isset($_SESSION)){
       echo "<h1 class='usersh1'>Your Team</h1>";
       $userQuery = mysqli_query($conn, "SELECT * FROM Users
       ;");
+
       $i = 1;
         while ($row =  mysqli_fetch_array($userQuery)) {
             if($row['image'] == ""){
@@ -69,9 +70,7 @@ if (!isset($_SESSION)){
             }
           $i++;
       }
-      if (isset($_POST['view_profile'])) {
 
-      }
       ?>
     </ul>
   </nav>
@@ -102,13 +101,17 @@ if (!isset($_SESSION)){
           echo "<li><a href=\"/Man-A-Biz/app/employeeApproval.php\"> Employee Approval</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/employeeHours.php\"> Employee Hours</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/employees.php\">Employee List</a></li>";
-
+          echo "<li><a href=\"/Man-A-Biz/app/message.php\"> Messages</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/vacationRequests.php\"> Vacation Requests</a></li>";
+          echo "<h3>Company Management</h3>";
+          echo "<li><a href=\"/Man-A-Biz/app/inventory.php\"> Inventory</a></li>";
+          echo "<li><a href=\"/Man-A-Biz/app/expenses.php\">  Expenses</a></li>";
           echo "</ul>";
           echo "<li><a class='logout' href='/Man-A-Biz/app/logout.php'>Logout</a></li>";
         }
 
      ?>
+
    </li>
   </ul>
 </nav>
