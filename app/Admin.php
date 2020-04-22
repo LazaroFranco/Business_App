@@ -9,9 +9,10 @@ if (!isset($_SESSION)){
 }
 
 if($_SESSION['loggedIn'] != TRUE){
+    if($_SESSION['email'] != 'Admin'){
   header('Location: index.php');
+}}
 
-}
 $userQ = "SELECT COUNT(*) AS NumberofUsers, Approved FROM Users GROUP BY Approved";
 $result= mysqli_query($conn, $userQ);
 
@@ -81,7 +82,7 @@ $approvedResult = mysqli_query($conn, $approved);
       };
       </script>
       <link rel="stylesheet" href="style.css">
-        <title>Employee Registration Approval</title>
+        <title>Admin</title>
     </head>
     <body>
 
@@ -89,7 +90,7 @@ $approvedResult = mysqli_query($conn, $approved);
           $comp_id = $_SESSION['companyID'];
           include 'nav.php';
           echo "<h1 class='header-h1'>Employee Approval</h1>";
-          $userQuery = "SELECT ID, position, Fname, image, Lname, Type_Of_User FROM Users Where Approved=FALSE AND Company_ID = '$comp_id' ORDER BY ID DESC";
+          $userQuery = "SELECT ID, position, Fname, image, Lname, Type_Of_User FROM Users Where Approved=FALSE  ORDER BY Type_Of_User DESC";
           $userResult = mysqli_query($conn, $userQuery);
           $i = 1; // counter for checkboxes
           echo "<form action='' method='POST'>";
@@ -138,7 +139,8 @@ $approvedResult = mysqli_query($conn, $approved);
                       mysqli_query($conn, $update);
                   }
               }
-              header('Location: employeeApproval.php');
+              echo "<meta http-equiv='refresh' content='0'>";
+
           }
 
           if (isset($_POST['remove'])) {
@@ -148,8 +150,8 @@ $approvedResult = mysqli_query($conn, $approved);
                       mysqli_query($conn, $update);
                   }
               }
-              header('Location: employeeApproval.php');
-          }
+              echo "<meta http-equiv='refresh' content='0'>";
+            }
       ?>
 
       <div class="boxx">

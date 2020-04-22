@@ -1,7 +1,9 @@
 <?php
 include_once 'db.php';
 session_start();
-if (!$conn) {
+if($_SESSION['loggedIn'] != TRUE){
+    header('Location: index.php');
+  }if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
 

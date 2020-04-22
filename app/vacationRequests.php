@@ -5,7 +5,9 @@ if (!$conn) {
 }
 if (!isset($_SESSION)){
   session_start();
-  $Fname = $_SESSION['Fname'];
+  if($_SESSION['loggedIn'] != TRUE){
+      header('Location: index.php');
+    }  $Fname = $_SESSION['Fname'];
   $Lname = $_SESSION['Lname'];
 }
 ?>

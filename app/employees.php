@@ -63,7 +63,7 @@ $compID = $_SESSION['companyID'];
       </tr>
     </thead>
         <?php
-        $sql = "SELECT * FROM Users JOIN Employees ON Users.ID = Employees.Emp_ID WHERE Employees.Company_ID = $compID";
+        $sql = "SELECT * FROM Users JOIN Employees ON Users.ID = Employees.Emp_ID WHERE Employees.Company_ID = $compID AND Users.Approved = '1'";
         $result = mysqli_query($conn, $sql);
         if($result){
         while($row = mysqli_fetch_row($result)) {
@@ -98,7 +98,7 @@ $compID = $_SESSION['companyID'];
         </tr>
       </thead>
 <?php
-        $sql = "SELECT * FROM Users JOIN Employees ON Users.ID = Employees.Emp_ID WHERE Employees.Company_ID = $compID";
+        $sql = "SELECT * FROM Users JOIN Employees ON Users.ID = Employees.Emp_ID WHERE Employees.Company_ID = $compID AND Users.Approved = '1'";
         $result = mysqli_query($conn, $sql);
         if($result){
         while($row = mysqli_fetch_row($result)) {

@@ -3,6 +3,10 @@ include_once 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
+session_start();
+if($_SESSION['loggedIn'] != TRUE){
+    header('Location: index.php');
+  }
 ?>
 
 <!DOCTYPE html>
