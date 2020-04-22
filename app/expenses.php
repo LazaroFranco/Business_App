@@ -21,7 +21,8 @@ if (!$conn) {
     <body>
       <?php
       include 'nav.php';
-      
+      $companyID = $_SESSION['companyID'];
+
       ?>
         <div class="bg" ></div>
         <h1 class="header-h1">Expenses</h1>
@@ -78,7 +79,7 @@ if (!$conn) {
             </div>
 
                         <?php
-                    $getBuilding = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'build'");
+                    $getBuilding = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'build' AND Company_ID = '$companyID'");
                     echo "<h1>Building Expenses</h1>";
                         echo "<table class='content-table'>";
                         echo "<thead>";
@@ -99,7 +100,7 @@ if (!$conn) {
                         }
                     echo"</table>";
 
-                    $getEquipment = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'equipment'");
+                    $getEquipment = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'equipment' AND Company_ID = '$companyID'");
 
                         echo "<h1>Equipment Expenses</h1>";
                             echo "<table class='content-table'>";
@@ -123,7 +124,7 @@ if (!$conn) {
 
 
       
-                    $getUtilities = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'utilities'");
+                    $getUtilities = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'utilities' AND Company_ID = '$companyID'");
 
                     echo "<h1>Utilities Expenses</h1>";
                         echo "<table class='content-table'>";
@@ -145,7 +146,7 @@ if (!$conn) {
                     echo"</table>";
 
 
-                    $getOther = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'other'");
+                    $getOther = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'other' AND Company_ID = '$companyID'");
 
                     echo "<h1>Other Expenses</h1>";
                         echo "<table class='content-table'>";
