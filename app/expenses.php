@@ -185,6 +185,8 @@ if($_SESSION['Authorization'] != 'Admin' & $_SESSION['Authorization'] != 'Secret
                           $insertexpenses = "INSERT INTO `Expenses` (Company_ID, Expense, Exp_Name, Type_of_Exp)
                                        VALUES ('$compID', '$exp_cost', '$exp_name', '$type')";
                   if (mysqli_query($conn, $insertexpenses)) {
+                    echo "<meta http-equiv='refresh' content='0'>";
+
                       echo "You have submitted an expense.";
                   } else {
                       echo "Error with submitting request." . mysqli_error($conn);

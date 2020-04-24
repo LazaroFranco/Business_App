@@ -6,7 +6,6 @@ if($_SESSION['loggedIn'] != TRUE){
   }if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -112,6 +111,8 @@ else{
 
 
                         <?php
+                        $compID = $_SESSION['companyID'];
+
                     echo'<div id="scheduled" name="scheduled" style="display: block;">';
                     $getOrders = mysqli_query($conn, "SELECT * FROM Orders  WHERE Completed = '0' ORDER BY Due_Date Asc");
                     echo "<h1>Customer Order Schedule</h1>";
@@ -148,7 +149,7 @@ else{
                         echo"<br>";
                     echo'<div id="complete" name="Orders" style="display: none;">';
 
-                        $getOrders = mysqli_query($conn, "SELECT * FROM Orders WHERE Completed = '1' ORDER BY Due_Date Asc ");
+                        $getOrders = mysqli_query($conn, "SELECT * FROM Orders WHERE Completed = '1' AND Company_ID = $compID ORDER BY Due_Date Asc ");
                     echo "<h1>Completed Orders</h1>";
                         echo "<table class='content-table'>";
                         echo "<thead>";
@@ -184,7 +185,6 @@ else{
                       $ord_date = $_POST['ord_date'];
                       $due_date = $_POST['due_date'];
                       $order_det = $_POST['order_det'];
-                      $compID = $_SESSION['companyID'];
   
                       if(($ord_name != "") & ($ord_date != "") & ($due_date != "") & ($order_det != "")){
                           $insertorder = "INSERT INTO `Orders` (Company_ID, Order_Name, Date_Ordered, Due_Date, Order_Details)
