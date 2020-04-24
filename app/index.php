@@ -32,9 +32,21 @@ if(isset($_GET['login'])) {
           $_SESSION['Business_Phone'] = $row[17];
           $_SESSION['Business_City'] = $row[19];
           $_SESSION['Business_State'] = $row[20];
+          
+          $employ_ID = $row[0];
+          $Auth = "SELECT * From Employees WHERE Emp_ID = $employ_ID;";
+          $AuthResult = mysqli_query($conn, $Auth);
+          while($Arow = mysqli_fetch_row($AuthResult)) {
+            $_SESSION['Authorization'] = $Arow[5];
+          }
 
+          if($row[5] == "Admin"){
+            header( 'Location: Admin.php');
 
+          }
+          else{
           header( 'Location: myprofile.php');
+          }
         break;
         }
           }

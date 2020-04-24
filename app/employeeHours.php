@@ -3,10 +3,14 @@ include_once 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
-session_start();
-if($_SESSION['loggedIn'] != TRUE){
+if (!isset($_SESSION)){
+    session_start();
+  }if($_SESSION['loggedIn'] != TRUE){
     header('Location: index.php');
   }
+  if($_SESSION['Authorization'] != 'Admin' & $_SESSION['Authorization'] != 'Secretary' & $_SESSION['Authorization'] != 'Manager'){
+    header('Location: myprofile.php');
+    }
 ?>
 
 <!DOCTYPE html>

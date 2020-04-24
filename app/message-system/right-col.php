@@ -4,8 +4,9 @@
 
   <?php
   require 'db.php';
-  session_start();
-  if($_SESSION['loggedIn'] != TRUE){
+  if (!isset($_SESSION)){
+    session_start();
+  }  if($_SESSION['loggedIn'] != TRUE){
       header('Location: index.php');
     }
   if (!$conn) {

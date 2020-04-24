@@ -139,7 +139,7 @@ $compID = "No";
   }
 
 
-  $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID) VALUES ('$compID', '$employID')";
+  $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Secretary')";
   mysqli_query($conn,$sql);
   ?>
   <script type="text/javascript">
@@ -175,7 +175,7 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
   }
   }
 
-  $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID) VALUES ('$compID', '$employID')";
+  $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Employee')";
   mysqli_query($conn,$sql);
 
   ?>

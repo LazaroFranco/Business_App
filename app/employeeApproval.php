@@ -7,10 +7,13 @@ if (!$conn) {
 if (!isset($_SESSION)){
   session_start();
 }
-
 if($_SESSION['loggedIn'] != TRUE){
   header('Location: index.php');
 
+}
+
+  if($_SESSION['Authorization'] != 'Admin' & $_SESSION['Authorization'] != 'Secretary'){
+header('Location: myprofile.php');
 }
 $userQ = "SELECT COUNT(*) AS NumberofUsers, Approved FROM Users GROUP BY Approved";
 $result= mysqli_query($conn, $userQ);
@@ -138,7 +141,7 @@ $approvedResult = mysqli_query($conn, $approved);
                       mysqli_query($conn, $update);
                   }
               }
-              header('Location: employeeApproval.php');
+              echo "<meta http-equiv='refresh' content='0'>";
           }
 
           if (isset($_POST['remove'])) {
@@ -148,7 +151,7 @@ $approvedResult = mysqli_query($conn, $approved);
                       mysqli_query($conn, $update);
                   }
               }
-              header('Location: employeeApproval.php');
+              echo "<meta http-equiv='refresh' content='0'>";
           }
       ?>
 

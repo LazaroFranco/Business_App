@@ -5,6 +5,10 @@ if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
 $compID = $_SESSION['companyID'];
+
+if($_SESSION['Authorization'] != 'Admin' & $_SESSION['Authorization'] != 'Secretary' & $_SESSION['Authorization'] != 'Manager'){
+  header('Location: myprofile.php');
+  }
 ?>
 
 <!DOCTYPE html>

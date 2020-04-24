@@ -2,11 +2,13 @@
 include_once 'db.php';
 if (!isset($_SESSION)){
     session_start();
+}
     if($_SESSION['loggedIn'] != TRUE){
         header('Location: index.php');
-      }    $compID =$_SESSION['companyID'];
-  }if (!$conn) {
-    die("Connection failed: " . mysqli_error());
+      }    
+    $compID =$_SESSION['companyID'];
+    if (!$conn) {
+        die("Connection failed: " . mysqli_error());
 }
 ?>
 
