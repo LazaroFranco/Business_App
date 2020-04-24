@@ -21,6 +21,7 @@
         <?php
             include 'nav.php';
         ?>
+
         <div class="bg" ></div>
         <h1 class="header-h1">Customer Pricing</h1>
 
@@ -38,15 +39,14 @@
                     if (($item != '') && ($cost != '')) {
                         $insertItem = "INSERT INTO `Customer_Pricing` (Company_ID, Description, Cost, Unit) VALUES ('$companyID', '$item', '$cost', '$unit')";
                         if (mysqli_query($conn, $insertItem)) {
-                            echo "You have entered " . $item . " into your Customer Pricing at the cost of " . $cost . " per " . $unit . ".";
+                            echo "You have entered " . $item . " into your Customer Pricing at the cost of $" . $cost . " per " . $unit . ".";
                         } else {
                             echo "Error with adding " . $item . " to the inventory." . mysqli_error($conn);
                         }
                     }
-                    //header('Location: pricing.php');
                 }
 
-                // add item form
+                // add goods/services form
                 echo "<form action='pricing.php' method='POST'>
                         <label>Item/Description: </label><input type='text' name='item'/><br>
                         <label>Cost: </label><input type='number' min='0.00' step='.01' name='cost'/><br>
@@ -80,10 +80,10 @@
                 echo    "<table id='table' class='content-table'>
                             <thead>
                                 <tr>
-                                    <th>Item/Description Number</th>
+                                    <th>ID Number</th>
                                     <th>Description</th>
                                     <th>Cost</th>
-                                    <th>Unit</th>
+                                    <th>Unit Type</th>
                                     <th>✅</th>
                                 </tr>
                             </thead>";
@@ -96,16 +96,16 @@
                                 <tr>
                                     <td>" . $ID . "</td>
                                     <td>" . $desc . "</td>
-                                    <td>" . "$" . $table_cost . " " .  "</td>
-                                    <td>" . $table_unit . " " . "</td>
-                                    <td><input type='checkbox' name='check[$i]' value='" . $ID . "'/></td>";
-                    echo        "</tr>";
+                                    <td>" . "$" . $table_cost . "</td>
+                                    <td>" . $table_unit . "</td>
+                                    <td><input type='checkbox' name='check[$i]' value='" . $ID . "'/></td>
+                                </tr>";
                     $i++;
                     echo    "</tbody>";
                 }
-                echo    "</table>";
-                echo "   <input type='submit' name='rmv-item' value='Remove'/>";
-                echo "</form>";
+                echo    "</table>
+                         <input type='submit' name='rmv-item' value='Remove'/>
+                    </form>";
 
                 include 'footer.php';
 

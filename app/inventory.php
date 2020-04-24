@@ -37,7 +37,7 @@ if (!$conn) {
                         echo "Error with adding item to the inventory." . mysqli_error($conn);
                     }
                 }
-                header('Location: inventory.php');
+                //header('Location: inventory.php');
             }
 
             // add item form
