@@ -1,5 +1,12 @@
 <?php
 //include './nav.php';
+if (!isset($_SESSION)){
+  session_start();
+}
+  if($_SESSION['loggedIn'] != TRUE){
+    header('Location: index.php');
+  }
+
 include_once 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());

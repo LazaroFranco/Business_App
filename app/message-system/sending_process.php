@@ -1,6 +1,8 @@
 <?php
 session_start();
-require('../db.php');
+if($_SESSION['loggedIn'] != TRUE){
+    header('Location: index.php');
+  }require('../db.php');
 if(isset($_SESSION['ID']) and isset($_GET['ID'])) {
   if (isset($_POST['text'])) {
     if($_POST['text'] !='') {

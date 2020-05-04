@@ -1,10 +1,14 @@
 <?php
 include_once 'db.php';
 session_start();
-if (!$conn) {
+if($_SESSION['loggedIn'] != TRUE){
+    header('Location: index.php');
+  }if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
-
+if($_SESSION['Authorization'] != 'Admin' & $_SESSION['Authorization'] != 'Secretary' & $_SESSION['Authorization'] != 'Manager'){
+    header('Location: myprofile.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +25,8 @@ if (!$conn) {
     <body>
       <?php
       include 'nav.php';
-      
+      $companyID = $_SESSION['companyID'];
+
       ?>
         <div class="bg" ></div>
         <h1 class="header-h1">Expenses</h1>
@@ -78,7 +83,7 @@ if (!$conn) {
             </div>
 
                         <?php
-                    $getBuilding = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'build'");
+                    $getBuilding = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'build' AND Company_ID = '$companyID'");
                     echo "<h1>Building Expenses</h1>";
                         echo "<table class='content-table'>";
                         echo "<thead>";
@@ -99,7 +104,7 @@ if (!$conn) {
                         }
                     echo"</table>";
 
-                    $getEquipment = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'equipment'");
+                    $getEquipment = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'equipment' AND Company_ID = '$companyID'");
 
                         echo "<h1>Equipment Expenses</h1>";
                             echo "<table class='content-table'>";
@@ -123,7 +128,7 @@ if (!$conn) {
 
 
       
-                    $getUtilities = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'utilities'");
+                    $getUtilities = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'utilities' AND Company_ID = '$companyID'");
 
                     echo "<h1>Utilities Expenses</h1>";
                         echo "<table class='content-table'>";
@@ -145,7 +150,7 @@ if (!$conn) {
                     echo"</table>";
 
 
-                    $getOther = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'other'");
+                    $getOther = mysqli_query($conn, "SELECT * FROM Expenses WHERE Type_of_Exp = 'other' AND Company_ID = '$companyID'");
 
                     echo "<h1>Other Expenses</h1>";
                         echo "<table class='content-table'>";
@@ -180,6 +185,8 @@ if (!$conn) {
                           $insertexpenses = "INSERT INTO `Expenses` (Company_ID, Expense, Exp_Name, Type_of_Exp)
                                        VALUES ('$compID', '$exp_cost', '$exp_name', '$type')";
                   if (mysqli_query($conn, $insertexpenses)) {
+                    echo "<meta http-equiv='refresh' content='0'>";
+
                       echo "You have submitted an expense.";
                   } else {
                       echo "Error with submitting request." . mysqli_error($conn);

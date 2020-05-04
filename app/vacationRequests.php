@@ -3,6 +3,15 @@ include_once 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
+if (!isset($_SESSION)){
+  session_start();
+}
+  if($_SESSION['loggedIn'] != TRUE){
+      header('Location: index.php');
+    }  
+  $Fname = $_SESSION['Fname'];
+  $Lname = $_SESSION['Lname'];
+  $comp_ID = $_SESSION['companyID'];
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +33,10 @@ if (!$conn) {
       <div class="boxed">
         <form action="vacationRequests.php" class="vrform "name="vacReq" method="POST">
             <label>Today's Date:</label><input type="date" name="todayDate" value="<?php echo date('Y-m-d')?>"/><br>
-            <label>Employee First Name:</label><input type="text" name="fname"/><br>
-            <label>Employee Last Name:</label><input type="text" name="lname"/><br>
+            <?php
+            echo"<label>Employee First Name:</label><input type='text' name='fname' value='$Fname' readonly/><br>";
+            echo"<label>Employee Last Name:</label><input type='text' name='lname' value='$Lname' readonly/><br>";
+            ?>
             <section>
               <h2>Type of Request (Vacation/Sick):</h2>
               <label class="vacation">Vacation
@@ -62,20 +73,24 @@ if (!$conn) {
         <form action="vacationRequests.php" name="viewReqs" method="POST">
         </form>
       </div>
-      <a id="submit" style='cursor:grab;' onclick="all_show()">
-        View All Requests
-      </a>
+      <?php
 
-      <a id="submit" style='cursor:grab;' onclick="approved_show()">
-        View Upcoming Vacations (Approved)
-      </a>
-      <br>
-<?php
+      if($_SESSION['Authorization'] == 'Admin' || $_SESSION['Authorization'] == 'Secretary'){
+        echo"<a id='submit' style='cursor:grab;' onclick='all_show()'>
+          View All Requests
+        </a>
+
+        <a id='submit' style='cursor:grab;' onclick='approved_show()'>
+          View Upcoming Vacations (Approved)
+        </a>
+        <br>";
+      }
+
 
     if (isset($_POST['approve'])) {
         if (isset($_POST['check'])) {
             foreach ($_POST['check'] as $value) {
-                $approveRequest = "UPDATE `Vac_Req_Form` SET Approved=1 WHERE ID='$value'";
+                $approveRequest = "UPDATE `Vac_Req_Form` SET Approved=1 WHERE ID='$value' AND Company_ID = $comp_ID";
                 mysqli_query($conn, $approveRequest);
             }
         }
@@ -84,7 +99,7 @@ if (!$conn) {
     if (isset($_POST['deny'])) {
         if (isset($_POST['check'])) {
             foreach ($_POST['check'] as $value) {
-                $deleteRequest = "DELETE FROM `Vac_Req_Form` WHERE ID='$value'";
+                $deleteRequest = "DELETE FROM `Vac_Req_Form` WHERE ID='$value' AND Company_ID = $comp_ID";
                 if (mysqli_query($conn, $deleteRequest)) {
                     echo "You have removed stuff.";
                 } else {
@@ -137,7 +152,7 @@ if (!$conn) {
         }
     }
 //}
-    $getRequestList = mysqli_query($conn, "SELECT * FROM Vac_Req_Form WHERE Approved=0");
+    $getRequestList = mysqli_query($conn, "SELECT * FROM Vac_Req_Form WHERE Approved=0 AND Company_ID = $comp_ID");
     $i = 1;
     echo "<form style='display:none;' id='vrform2' class='vrform2' action='vacationRequests.php' method='POST'>";
         echo "<h1>Employee Requests for Time Off</h1>";
@@ -214,7 +229,7 @@ if (!$conn) {
                 <?php
 
                 $userQuery = mysqli_query($conn, "SELECT * FROM Vac_Req_Form
-                WHERE Approved=1;");
+                WHERE Approved=1  AND Company_ID = $comp_ID;");
                 $i = 1;
 
                     echo "<thead>";
