@@ -129,7 +129,7 @@ $approvedResult = mysqli_query($conn, $approved);
                       mysqli_query($conn, $update);
                   }
               }
-              header('Location: employeeApproval.php');
+              //header('Location: employeeApproval.php');
           }
 
           if (isset($_POST['remove'])) {
@@ -139,7 +139,7 @@ $approvedResult = mysqli_query($conn, $approved);
                       mysqli_query($conn, $update);
                   }
               }
-              header('Location: employeeApproval.php');
+              //header('Location: employeeApproval.php');
           }
       ?>
 
