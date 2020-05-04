@@ -90,7 +90,6 @@ if (!isset($_SESSION)){
           </a></h3>";
           echo "<ul>";
           echo "<li><a href=\"/Man-A-Biz/app/Admin.php\"> Admin Page</a></li>";
-          echo "<li><a href=\"/Man-A-Biz/app/Schedule.php\"> Employee Schedule</a></li>";
           echo "</ul>";
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
@@ -100,6 +99,7 @@ if (!isset($_SESSION)){
           echo "<li><a href=\"/Man-A-Biz/app/message.php\"> Messages</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/vacationRequests.php\"> Vacation Requests</a></li>";
           echo "<h3>Company Management</h3>";
+          echo "<li><a href=\"/Man-A-Biz/app/pricing.php\"> Pricing</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/inventory.php\"> Inventory</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/expenses.php\">  Expenses</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/orders.php\">  Orders</a></li>";
@@ -117,11 +117,11 @@ if (!isset($_SESSION)){
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
           echo "<li><a href=\"/Man-A-Biz/app/employeeApproval.php\"> Employee Approval</a></li>";
-          echo "<li><a href=\"/Man-A-Biz/app/employeeHours.php\"> Employee Hours</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/employees.php\">Employee List</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/message.php\"> Messages</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/vacationRequests.php\"> Vacation Requests</a></li>";
           echo "<h3>Company Management</h3>";
+          echo "<li><a href=\"/Man-A-Biz/app/pricing.php\"> Pricing</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/inventory.php\"> Inventory</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/expenses.php\">  Expenses</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/orders.php\">  Orders</a></li>";
@@ -132,12 +132,10 @@ if (!isset($_SESSION)){
           <img src='images/".$_SESSION['image'] ."' class='img-responsive' alt='Default'>My Profile
           </a></h3>";
           echo "<ul>";
-          echo "<li><a href=\"/Man-A-Biz/app/Schedule.php\"> Employee Schedule</a></li>";
           echo "</ul>";
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
           // echo "<li><a href=\"/Man-A-Biz/app/employeeApproval.php\"> Employee Approval</a></li>";
-          echo "<li><a href=\"/Man-A-Biz/app/employeeHours.php\"> Employee Hours</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/employees.php\">Employee List</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/message.php\"> Messages</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/vacationRequests.php\"> Vacation Requests</a></li>";
@@ -152,12 +150,10 @@ if (!isset($_SESSION)){
           <img src='images/".$_SESSION['image'] ."' class='img-responsive' alt='Default'>My Profile
           </a></h3>";
           echo "<ul>";
-          echo "<li><a href=\"/Man-A-Biz/app/Schedule.php\"> Employee Schedule</a></li>";
           echo "</ul>";
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
           // echo "<li><a href=\"/Man-A-Biz/app/employeeApproval.php\"> Employee Approval</a></li>";
-          // echo "<li><a href=\"/Man-A-Biz/app/employeeHours.php\"> Employee Hours</a></li>";
           // echo "<li><a href=\"/Man-A-Biz/app/employees.php\">Employee List</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/message.php\"> Messages</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/vacationRequests.php\"> Vacation Requests</a></li>";
@@ -172,12 +168,10 @@ if (!isset($_SESSION)){
           <img src='images/".$_SESSION['image'] ."' class='img-responsive' alt='Default'>My Profile
           </a></h3>";
           echo "<ul>";
-          echo "<li><a href=\"/Man-A-Biz/app/Schedule.php\"> Employee Schedule</a></li>";
           echo "</ul>";
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
           echo "<li><a href=\"/Man-A-Biz/app/employeeApproval.php\"> Employee Approval</a></li>";
-          echo "<li><a href=\"/Man-A-Biz/app/employeeHours.php\"> Employee Hours</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/employees.php\">Employee List</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/message.php\"> Messages</a></li>";
           echo "<li><a href=\"/Man-A-Biz/app/vacationRequests.php\"> Vacation Requests</a></li>";

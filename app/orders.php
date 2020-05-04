@@ -114,7 +114,7 @@ else{
                         $compID = $_SESSION['companyID'];
 
                     echo'<div id="scheduled" name="scheduled" style="display: block;">';
-                    $getOrders = mysqli_query($conn, "SELECT * FROM Orders  WHERE Completed = '0' ORDER BY Due_Date Asc");
+                    $getOrders = mysqli_query($conn, "SELECT * FROM Orders  WHERE Completed = '0' AND Company_ID = $compID ORDER BY Due_Date Asc");
                     echo "<h1>Customer Order Schedule</h1>";
                         echo "<table class='content-table'>";
                         echo "<thead>";

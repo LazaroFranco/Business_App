@@ -4,6 +4,8 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_error());
     }
+    $companyID = $_SESSION['companyID'];
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +36,6 @@
                     $item = $_POST['item'];
                     $cost = $_POST['cost'];
                     $unit = $_POST['unit'];
-                    $companyID = $_SESSION['companyID'];
 
                     if (($item != '') && ($cost != '')) {
                         $insertItem = "INSERT INTO `Customer_Pricing` (Company_ID, Description, Cost, Unit) VALUES ('$companyID', '$item', '$cost', '$unit')";
@@ -73,7 +74,7 @@
                     }
                 }
 
-                $getItemsQuery = "SELECT * From `Customer_Pricing`";
+                $getItemsQuery = "SELECT * From `Customer_Pricing` WHERE Company_ID = $companyID";
                 $getItemsResults = mysqli_query($conn, $getItemsQuery);
                 $i = 1;  // counter for checkboxes
                 echo "<form action='pricing.php' method='POST'>";
