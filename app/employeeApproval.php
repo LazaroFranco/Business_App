@@ -142,6 +142,7 @@ $approvedResult = mysqli_query($conn, $approved);
                   }
               }
               echo "<meta http-equiv='refresh' content='0'>";
+
           }
 
           if (isset($_POST['remove'])) {
@@ -152,6 +153,7 @@ $approvedResult = mysqli_query($conn, $approved);
                   }
               }
               echo "<meta http-equiv='refresh' content='0'>";
+
           }
       ?>
 

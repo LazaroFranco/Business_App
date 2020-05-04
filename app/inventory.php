@@ -52,6 +52,7 @@ if (!isset($_SESSION)){
                 }
             }
                 header('Location: inventory.php');
+
             }
 
             // add item form

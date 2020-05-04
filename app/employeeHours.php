@@ -28,39 +28,59 @@ if (!isset($_SESSION)){
       include 'nav.php';
       ?>
       <h1 class="header-h1">Employee Hours</h1>
+      
 
         <div class="php">
           <?php
-              $userQuery = "SELECT Emp_ID, FName, LName, Employee_Hours, Wages FROM `Users` JOIN `Employee_Access` WHERE Approved=TRUE ORDER BY Emp_ID DESC";
-              $userResult = mysqli_query($conn, $userQuery);
-              $i = 1; // counter for checkboxes
-              echo "<h2>Employee Hours</h2>";
-              echo "<table class='content-table'>
-                  <thead>
-                  <tr>
-                      <th>ID</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Total Hours</th>
-                      <th>Wages</th>
-                  </tr>
-                  </thead>";
-                  while ($row = mysqli_fetch_array($userResult)) {
-                      echo "<tbody>";
-                      echo "<tr>";
-                          echo "<td name='id'>" . $row['ID'] . "</td>";
-                          echo "<td name='fname'>" . $row['FName'] . "</td>";
-                          echo "<td name='lname'>" . $row['LName'] . "</td>";
-                          echo "<td name='hours'>" . $row['Employee_Hours'] . "</td>";
-                          echo "<td name='Wages>" . $row['Wages'] . "</td>";
-                          echo "<td><input type='checkbox' name='check[$i]' value='".$row['ID']."'</td>";
-                      echo "</tr>";
-                      $i++;
-                  }
-                  echo "</tbody>";
-              echo "</table>";
 
-              include 'footer.php';
+                if (isset($_POST['submit'])) {
+                    $hours = $_POST['hours'];
+                    $insertHours = "INSERT INTO 'Employee_Access' (Employee_Hours) VALUES ('$hours')";
+                    if (mysqli_query($conn, $insertHours)) {
+                        echo "You have entered hours.";
+                    } else {
+                        echo "Something went wrong." . mysqli_error($conn);
+                    }
+                }
+
+                $userQuery = "SELECT Emp_ID, FName, LName, Employee_Access.Wages FROM `Users` JOIN `Employee_Access`";
+                $userResult = mysqli_query($conn, $userQuery);
+                $i = 1; // counter for checkboxes
+                echo "<h2>Employee Hours</h2>";
+                echo "<form action='employeeHours.php' method='POST'>";
+                    echo "<table class='content-table'>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Total Hours</th>
+                                    <th>Wages</th>
+                                    <th>✅</th>
+                                </tr>
+                            </thead>";
+                        while ($row = mysqli_fetch_array($userResult)) {
+                            $ID = $row['ID'];
+                            $fname = $row['FName'];
+                            $lname = $row['LName'];
+                            $wages = $row['Wages'];
+                            $employeehours = $row['Employee_Hours'];
+                            echo "<tbody>";
+                            echo "<tr>";
+                                echo "<td name='id'>" . $ID . "</td>";
+                                echo "<td name='fname'>" . $fname . "</td>";
+                                echo "<td name='lname'>" . $lname . "</td>";
+                                echo "<td name='hours'><input type='text' name='hours' placeholder='".$employeehours."'/></td>";
+                                echo "<td name='Wages>" . $wages . "</td>";
+                                echo "<td><input type='checkbox' name='check[$i]' value='".$ID."'</td>";
+                            echo "</tr>";
+                            $i++;
+                        }
+                        echo "</tbody>";
+                    echo "</table>";
+                    echo "<input type='submit' name='submit' value='Submit Hours'/>";
+                echo "</form>";
+                include 'footer.php';
           ?>
         </div>
     </body>
