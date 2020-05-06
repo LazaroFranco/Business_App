@@ -112,7 +112,6 @@ if (!isset($_SESSION)){
           <img src='images/".$_SESSION['image'] ."' class='img-responsive' alt='Default'>My Profile
           </a></h3>";
           echo "<ul>";
-          echo "<li><a href=\"/Man-A-Biz/app/Schedule.php\"> Employee Schedule</a></li>";
           echo "</ul>";
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
