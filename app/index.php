@@ -137,9 +137,9 @@ if(isset($_GET['login'])) {
    <footer>
      <h2 class="footer-h1">Man-A-Biz</h2>
      <address>
-       <p>750 E King St</p>
-       <p>Lancaster, PA 17602</p>
-       <p><a href="tel:1-717-299-7701" class="phone">717.299.7701</a></p>
+       <p>Tech by Laz LLC</p>
+       <p>State of Florida</p>
+       <p><a href="tel:1-717-617-3258" class="phone">717.617.3258</a></p>
      </address>
    </footer>
    <script>
