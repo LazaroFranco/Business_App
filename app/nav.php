@@ -85,100 +85,100 @@ if (!isset($_SESSION)){
     <?php
         $Auth= $_SESSION['Authorization'];
         if ($Auth == 'Admin'){
-          echo "<h3><a style='color: white;' href=\"/Business_App/app/myprofile.php\">
+          echo "<h3><a style='color: white;' href=\"/app/myprofile.php\">
           <img src='images/".$_SESSION['image'] ."' class='img-responsive' alt='Default'>My Profile
           </a></h3>";
           echo "<ul>";
-          echo "<li><a href=\"/Business_App/app/Admin.php\"> Admin Page</a></li>";
+          echo "<li><a href=\"/app/Admin.php\"> Admin Page</a></li>";
           echo "</ul>";
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
-          echo "<li><a href=\"/Business_App/app/employeeApproval.php\"> Employee Approval</a></li>";
-          echo "<li><a href=\"/Business_App/app/employeeHours.php\"> Employee Hours</a></li>";
-          echo "<li><a href=\"/Business_App/app/employees.php\">Employee List</a></li>";
-          echo "<li><a href=\"/Business_App/app/message.php\"> Messages</a></li>";
-          echo "<li><a href=\"/Business_App/app/vacationRequests.php\"> Vacation Requests</a></li>";
+          echo "<li><a href=\"/app/employeeApproval.php\"> Employee Approval</a></li>";
+          echo "<li><a href=\"/app/employeeHours.php\"> Employee Hours</a></li>";
+          echo "<li><a href=\"/app/employees.php\">Employee List</a></li>";
+          echo "<li><a href=\"/app/message.php\"> Messages</a></li>";
+          echo "<li><a href=\"/app/vacationRequests.php\"> Vacation Requests</a></li>";
           echo "<h3>Company Management</h3>";
-          echo "<li><a href=\"/Business_App/app/pricing.php\"> Pricing</a></li>";
-          echo "<li><a href=\"/Business_App/app/inventory.php\"> Inventory</a></li>";
-          echo "<li><a href=\"/Business_App/app/expenses.php\">  Expenses</a></li>";
-          echo "<li><a href=\"/Business_App/app/orders.php\">  Orders</a></li>";
+          echo "<li><a href=\"/app/pricing.php\"> Pricing</a></li>";
+          echo "<li><a href=\"/app/inventory.php\"> Inventory</a></li>";
+          echo "<li><a href=\"/app/expenses.php\">  Expenses</a></li>";
+          echo "<li><a href=\"/app/orders.php\">  Orders</a></li>";
 
           echo "</ul>";
-          echo "<li><a class='logout' href='/Business_App/app/logout.php'>Logout</a></li>";
+          echo "<li><a class='logout' href='/app/logout.php'>Logout</a></li>";
 
         } else if ($Auth == 'Secretary'){
-          echo "<h3><a style='color: white;' href=\"/Business_App/app/myprofile.php\">
+          echo "<h3><a style='color: white;' href=\"/app/myprofile.php\">
           <img src='images/".$_SESSION['image'] ."' class='img-responsive' alt='Default'>My Profile
           </a></h3>";
           echo "<ul>";
           echo "</ul>";
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
-          echo "<li><a href=\"/Business_App/app/employeeApproval.php\"> Employee Approval</a></li>";
-          echo "<li><a href=\"/Business_App/app/employees.php\">Employee List</a></li>";
-          echo "<li><a href=\"/Business_App/app/message.php\"> Messages</a></li>";
-          echo "<li><a href=\"/Business_App/app/vacationRequests.php\"> Vacation Requests</a></li>";
+          echo "<li><a href=\"/app/employeeApproval.php\"> Employee Approval</a></li>";
+          echo "<li><a href=\"/app/employees.php\">Employee List</a></li>";
+          echo "<li><a href=\"/app/message.php\"> Messages</a></li>";
+          echo "<li><a href=\"/app/vacationRequests.php\"> Vacation Requests</a></li>";
           echo "<h3>Company Management</h3>";
-          echo "<li><a href=\"/Business_App/app/pricing.php\"> Pricing</a></li>";
-          echo "<li><a href=\"/Business_App/app/inventory.php\"> Inventory</a></li>";
-          echo "<li><a href=\"/Business_App/app/expenses.php\">  Expenses</a></li>";
-          echo "<li><a href=\"/Business_App/app/orders.php\">  Orders</a></li>";
+          echo "<li><a href=\"/app/pricing.php\"> Pricing</a></li>";
+          echo "<li><a href=\"/app/inventory.php\"> Inventory</a></li>";
+          echo "<li><a href=\"/app/expenses.php\">  Expenses</a></li>";
+          echo "<li><a href=\"/app/orders.php\">  Orders</a></li>";
           echo "</ul>";
-          echo "<li><a class='logout' href='/Business_App/app/logout.php'>Logout</a></li>";
+          echo "<li><a class='logout' href='/app/logout.php'>Logout</a></li>";
         } else if ($Auth == 'Manager'){
-          echo "<h3><a style='color: white;' href=\"/Business_App/app/myprofile.php\">
+          echo "<h3><a style='color: white;' href=\"/app/myprofile.php\">
           <img src='images/".$_SESSION['image'] ."' class='img-responsive' alt='Default'>My Profile
           </a></h3>";
           echo "<ul>";
           echo "</ul>";
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
-          // echo "<li><a href=\"/Business_App/app/employeeApproval.php\"> Employee Approval</a></li>";
-          echo "<li><a href=\"/Business_App/app/employees.php\">Employee List</a></li>";
-          echo "<li><a href=\"/Business_App/app/message.php\"> Messages</a></li>";
-          echo "<li><a href=\"/Business_App/app/vacationRequests.php\"> Vacation Requests</a></li>";
+          // echo "<li><a href=\"/app/employeeApproval.php\"> Employee Approval</a></li>";
+          echo "<li><a href=\"/app/employees.php\">Employee List</a></li>";
+          echo "<li><a href=\"/app/message.php\"> Messages</a></li>";
+          echo "<li><a href=\"/app/vacationRequests.php\"> Vacation Requests</a></li>";
           echo "<h3>Company Management</h3>";
-          echo "<li><a href=\"/Business_App/app/inventory.php\"> Inventory</a></li>";
-          echo "<li><a href=\"/Business_App/app/expenses.php\">  Expenses</a></li>";
-          echo "<li><a href=\"/Business_App/app/orders.php\">  Orders</a></li>";
+          echo "<li><a href=\"/app/inventory.php\"> Inventory</a></li>";
+          echo "<li><a href=\"/app/expenses.php\">  Expenses</a></li>";
+          echo "<li><a href=\"/app/orders.php\">  Orders</a></li>";
           echo "</ul>";
-          echo "<li><a class='logout' href='/Business_App/app/logout.php'>Logout</a></li>";
+          echo "<li><a class='logout' href='/app/logout.php'>Logout</a></li>";
         } else if ($Auth == 'Employee'){
-          echo "<h3><a style='color: white;' href=\"/Business_App/app/myprofile.php\">
+          echo "<h3><a style='color: white;' href=\"/app/myprofile.php\">
           <img src='images/".$_SESSION['image'] ."' class='img-responsive' alt='Default'>My Profile
           </a></h3>";
           echo "<ul>";
           echo "</ul>";
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
-          // echo "<li><a href=\"/Business_App/app/employeeApproval.php\"> Employee Approval</a></li>";
-          // echo "<li><a href=\"/Business_App/app/employees.php\">Employee List</a></li>";
-          echo "<li><a href=\"/Business_App/app/message.php\"> Messages</a></li>";
-          echo "<li><a href=\"/Business_App/app/vacationRequests.php\"> Vacation Requests</a></li>";
+          // echo "<li><a href=\"/app/employeeApproval.php\"> Employee Approval</a></li>";
+          // echo "<li><a href=\"/app/employees.php\">Employee List</a></li>";
+          echo "<li><a href=\"/app/message.php\"> Messages</a></li>";
+          echo "<li><a href=\"/app/vacationRequests.php\"> Vacation Requests</a></li>";
           echo "<h3>Company Management</h3>";
-          echo "<li><a href=\"/Business_App/app/inventory.php\"> Inventory</a></li>";
-          // echo "<li><a href=\"/Business_App/app/expenses.php\">  Expenses</a></li>";
-          echo "<li><a href=\"/Business_App/app/orders.php\">  Orders</a></li>";
+          echo "<li><a href=\"/app/inventory.php\"> Inventory</a></li>";
+          // echo "<li><a href=\"/app/expenses.php\">  Expenses</a></li>";
+          echo "<li><a href=\"/app/orders.php\">  Orders</a></li>";
           echo "</ul>";
-          echo "<li><a class='logout' href='/Business_App/app/logout.php'>Logout</a></li>";
+          echo "<li><a class='logout' href='/app/logout.php'>Logout</a></li>";
         } else {
-          echo "<h3><a style='color: white;' href=\"/Business_App/app/myprofile.php\">
+          echo "<h3><a style='color: white;' href=\"/app/myprofile.php\">
           <img src='images/".$_SESSION['image'] ."' class='img-responsive' alt='Default'>My Profile
           </a></h3>";
           echo "<ul>";
           echo "</ul>";
           echo "<h3>Employee Management</h3>";
           echo "<ul>";
-          echo "<li><a href=\"/Business_App/app/employeeApproval.php\"> Employee Approval</a></li>";
-          echo "<li><a href=\"/Business_App/app/employees.php\">Employee List</a></li>";
-          echo "<li><a href=\"/Business_App/app/message.php\"> Messages</a></li>";
-          echo "<li><a href=\"/Business_App/app/vacationRequests.php\"> Vacation Requests</a></li>";
+          echo "<li><a href=\"/app/employeeApproval.php\"> Employee Approval</a></li>";
+          echo "<li><a href=\"/app/employees.php\">Employee List</a></li>";
+          echo "<li><a href=\"/app/message.php\"> Messages</a></li>";
+          echo "<li><a href=\"/app/vacationRequests.php\"> Vacation Requests</a></li>";
           echo "<h3>Company Management</h3>";
-          echo "<li><a href=\"/Business_App/app/inventory.php\"> Inventory</a></li>";
-          echo "<li><a href=\"/Business_App/app/expenses.php\">  Expenses</a></li>";
+          echo "<li><a href=\"/app/inventory.php\"> Inventory</a></li>";
+          echo "<li><a href=\"/app/expenses.php\">  Expenses</a></li>";
           echo "</ul>";
-          echo "<li><a class='logout' href='/Business_App/app/logout.php'>Logout</a></li>";
+          echo "<li><a class='logout' href='/app/logout.php'>Logout</a></li>";
         }
 
      ?>
