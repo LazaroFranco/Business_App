@@ -101,7 +101,7 @@ if(isset($_GET['login'])) {
    </header>
    <nav class="nav">
      <div class="ul">
-       <a href="/Man-A-Biz/app/index.php">Home</a>
+      
      </div>
    </nav>
    <section class="hero-img"></section>
