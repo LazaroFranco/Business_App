@@ -160,13 +160,13 @@ input[type=checkbox] {
 /* --------FOOTER */
 footer {
   width: 100%;
-  margin-top: 7rem;
+  margin-top: 25%;
   display: flex;
   justify-content: space-between;
   background-color: white;
   text-align: center;
   color: black;
-  border-top: solid 20px black;
+  border-top: solid 10px black;
 }
 
 footer h2,

@@ -21,12 +21,15 @@ include_once 'db.php';
         if (emp.value == "1"){
         document.getElementById("basic").style.display = "inline-grid";
         document.getElementById("buss_owner").style.display = "none";
+        document.getElementById("button").style.display = "inline-grid";
+        document.getElementById("section").style.display = "inline-grid";
 
     }
     if (emp.value == "0"){
         document.getElementById("basic").style.display = "none";
         document.getElementById("buss_owner").style.display = "inline-grid";
-
+        document.getElementById("button").style.display = "inline-grid";
+        document.getElementById("section").style.display = "inline-grid";
     }
       }
 
@@ -94,11 +97,18 @@ include_once 'db.php';
       <label for="BPhone" class="">Business Phone (Format: 000-000-0000)</label><input class="" type="tel" name="BPhone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
 
 </div>
+<div>
+<input style="display: none;" id="button" type="submit" name="submit" value="Submit"><br>
+<p style="display: none;" id="section">
+Thank you for information, we will contact you within 48 hours
+</p>
+</div>
 
-<input id="button" type="submit" name="submit" value="Submit">
   <form>
 <?php
+
 if(isset($_GET['submit'])){
+
   $role = $_GET['type-of-user'];
 
   $fname = $_GET['Fname'];
@@ -151,7 +161,7 @@ $compID = "No";
   mysqli_query($conn,$sql);
   ?>
   <script type="text/javascript">
-  window.location.href = 'http://localhost/Business_app/app/';
+  window.location.href = 'https://business-app.herokuapp.com/app/';
   </script>
   <?php
 }
@@ -166,7 +176,7 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
     while($row = mysqli_fetch_assoc($result)){
     $compID = $row['ID'];
   }
-  }
+  }8WpOOAyTcC g9tOkevXAh
 
 
   $sql = "INSERT INTO `Users`(Company_ID, Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$compID', '$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
@@ -188,7 +198,7 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
 
   ?>
   <script type="text/javascript">
-  window.location.href = 'http://localhost/Business_app/app/';
+  window.location.href = 'https://business-app.herokuapp.com/app/';
   </script>
   <?php
 
@@ -198,22 +208,18 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
 
 }
 ?>
-<footer class="bg-light py-5">
-  <div class="container px-4 px-lg-5">
-    <div>&copy;<script>document.write(new Date().getFullYear());</script>, Man-A-Biz. Property of Tech by Laz, LLC.
-    </div>
-  </div>
-</footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- SimpleLightbox plugin JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
   </body>
+  <footer class="bg-light py-5">
+    <div>
+      <div>&copy;<script>document.write(new Date().getFullYear());</script>, Man-A-Biz. Property of Tech by Laz, LLC.
+      </div>
+    </div>
+  </footer>
 </html>
