@@ -110,7 +110,6 @@ $Arow[5]; } if($row[5] == "Admin"){ header( 'Location: Admin.php'); } else{ head
                 <input id="first_name" name="name" type="text" class="form-control" required="">
               </div>
             </div>
-<<<<<<< HEAD
             <div class="col-sm-6">
               <div class="form-group">
                 <label>Your Email *</label>
@@ -168,72 +167,5 @@ $Arow[5]; } if($row[5] == "Admin"){ header( 'Location: Admin.php'); } else{ head
       }
     }
   </script>
-</body>
-
+  </body>
 </html>
-=======
-              </form>';
-
-
-
-
-              ?>
-   </header>
-   <nav class="nav">
-     <div class="ul">
-      
-     </div>
-   </nav>
-   <section class="hero-img"></section>
-   <section class="home">
-     <div class="container">
-       <div class="row">
-         <div class="col-sm-4">
-           <img src="./images/connect.jpeg" alt="Connect image" height="250" width="325">
-           <br>
-           <h3>Connect</h3>
-           <p>A Connection will be the first step to any system!</p>
-           <p>From company administrator to contractors, you will be able to keep everyone in touch. </p>
-         </div>
-         <div class="col-sm-4">
-           <img src="https://www.janbaskdigitaldesign.com/assets/frontend/img/img2/responsive-BannerodPatch.png" height="250" width="350">
-           <h3>Personalize</h3>
-           <p>See what you want to see!</p>
-           <p>With this application you will be able to add or remove any operating system that will help you run your business!</p>
-         </div>
-         <div class="col-sm-4">
-           <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F49131482%2F261103918272%2F1%2Foriginal.jpg?auto=compress&s=343edf3d16fa73337d4073e9231bbd8e" height="250" width="350">
-           <h3>Manage</h3>
-           <p>Manage your team with a click of a button!</p>
-           <p>Our graphical user interface(GUI) will allow you to use every feature without a problem.</p>
-         </div>
-       </div>
-     </div>
-   </section>
-   <?php
-
- ?>
-   <footer>
-     <h2 class="footer-h1">Man-A-Biz</h2>
-     <address>
-       <p>Tech by Laz LLC</p>
-       <p>State of Florida</p>
-       <p><a href="tel:1-717-617-3258" class="phone">717.617.3258</a></p>
-     </address>
-   </footer>
-   <script>
-     function myFunction(id) {
-       var x = document.getElementById(id);
-       var y = document.querySelector('#hide');
-       if (x.className.indexOf("w3-show") == -1) {
-         x.className += " w3-show";
-         y.style.visibility = 'hidden';
-       } else {
-         x.className = x.className.replace(" w3-show", "");
-       }
-     }
-   </script>
- </body>
-
- </html>
->>>>>>> f99aea8103ae53d1abc7022962c715d1ec6beee6
