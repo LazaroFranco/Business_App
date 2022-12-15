@@ -19,13 +19,13 @@ include_once 'db.php';
     }
       function mployee(emp){
         if (emp.value == "1"){
-        document.getElementById("basic").style.display = "block";
+        document.getElementById("basic").style.display = "inline-grid";
         document.getElementById("buss_owner").style.display = "none";
 
     }
     if (emp.value == "0"){
-        document.getElementById("basic").style.display = "block";
-        document.getElementById("buss_owner").style.display = "block";
+        document.getElementById("basic").style.display = "none";
+        document.getElementById("buss_owner").style.display = "inline-grid";
 
     }
       }
@@ -38,21 +38,28 @@ include_once 'db.php';
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="reg.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="styles.css" type="text/css">
     <title>Register</title>
   </head>
   <body>
        <div class="bg" ></div>
 
     <header class="centered" id="header">
-       <h1 class="header-h1">Man-A-Biz</h1>
-       <h2>Register</h2>
+       <h1 class="header-h1">Man-a-Biz</h1>
+       <h2 class="text-center mt-0">Register</h2>
 
         <section class="sign">
           <a class="a" onclick="myFunction('Demo1')"  class="w3-btn w3-block w3-black w3-left-align" id="hide" >Login</a>
+          <a class="a" href="index.php">Home</a>
           <div id="Demo1" class="w3-container w3-hide">
             <label for="uname"><b>Username</b></label>
               <input type="text" placeholder="Enter Username" name="uname" required>
@@ -60,6 +67,7 @@ include_once 'db.php';
             <label for="psw"><b>Password</b></label>
                <input type="password" placeholder="Enter Password" name="psw" required>
             <a class="a" onclick="myFunction('Demo1')" class="w3-btn w3-block w3-black w3-left-align" id="login">Login</a>
+            <a class="a" onClick="history.go(0);">Cancel</a>
           </div>
     </header>
     <h3>What is your role?</h3>
@@ -143,7 +151,7 @@ $compID = "No";
   mysqli_query($conn,$sql);
   ?>
   <script type="text/javascript">
-  window.location.href = 'http://localhost/Man-A-Biz/app/';
+  window.location.href = 'http://localhost/Business_app/app/';
   </script>
   <?php
 }
@@ -180,7 +188,7 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
 
   ?>
   <script type="text/javascript">
-  window.location.href = 'http://localhost/Man-A-Biz/app/';
+  window.location.href = 'http://localhost/Business_app/app/';
   </script>
   <?php
 
@@ -190,14 +198,22 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
 
 }
 ?>
-    <footer>
-      <h2 class="footer-h1">Man-A-Biz</h2>
-      <address>
-        <p>750 E King St</p>
-        <p>Lancaster, PA 17602</p>
-        <p><a href="tel:1-717-299-7701" class="phone">717.299.7701</a></p>
-      </address>
-    </footer>
-
+<footer class="bg-light py-5">
+  <div class="container px-4 px-lg-5">
+    <div>&copy;<script>document.write(new Date().getFullYear());</script>, Man-A-Biz. Property of Tech by Laz, LLC.
+    </div>
+  </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SimpleLightbox plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
   </body>
 </html>
