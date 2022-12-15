@@ -176,7 +176,7 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
     while($row = mysqli_fetch_assoc($result)){
     $compID = $row['ID'];
   }
-  }8WpOOAyTcC g9tOkevXAh
+  }
 
 
   $sql = "INSERT INTO `Users`(Company_ID, Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$compID', '$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
