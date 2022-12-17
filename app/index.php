@@ -95,7 +95,7 @@ if (isset($_GET["logout"])) {
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" required="">
         </div>
-          <button onclick="myFunction('Demo1')" id="login" name="login">Login</button>
+          <button type="submit" onclick="myFunction('Demo1')" id="login" name="login">Login</button>
           <button onClick="history.go(0);">Cancel</button>
         </div>
       </form>
