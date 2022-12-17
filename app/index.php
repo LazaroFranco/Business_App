@@ -58,8 +58,13 @@ if (isset($_GET["logout"])) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+  <meta name="keywords" content="Tech by Laz, Techbylaz, Techbylazllc, Man-a-biz, lazaro franco, laz franco, Lazaro Franco Valdes, Laz, Lazaro, Franco, Valdes, Florida, Pennsylvania, git"/>
+
+  <meta name="description" content="Business Management APP. Tech by Laz, LLC." />
+  <meta name="author" content="Tech by Laz, LLC." />
+  <link rel="apple-touch-icon" sizes="128x128" href="manabizlogo.jpg"/>
+  <link rel="icon" sizes="192x192" href="nice-manabizlogo.jpg"/>
+  <link rel="shortcut icon" type="image/jpeg" href="manabizlogo.jpg"/>
   <title>Man-a-Biz</title>
   <!-- Favicon-->
 
