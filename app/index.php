@@ -84,7 +84,7 @@ if (isset($_GET["logout"])) {
     <section class="sign">
       <a class="a" href="register.php">Register</a>
       <a class="a" onclick="myFunction('Demo1')" id="hide">Login</a>
-      <form>
+      <form style="margin-top: 50%;">
         <div id="Demo1" class="w3-container w3-hide">
           <div>
           <label for="uname"><b>Username</b></label>
