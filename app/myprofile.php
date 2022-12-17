@@ -2,7 +2,7 @@
   include_once 'db.php';
   session_start();
   if($_SESSION['loggedIn'] != TRUE){
-      header('Location: index.php');
+      header('Location: myprofile.php');
     }  if (!$conn) {
   	die("Connection failed: " . mysqli_error());
   }
