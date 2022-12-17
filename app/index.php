@@ -91,7 +91,7 @@ if (isset($_GET["logout"])) {
     </div>
     <section class="sign">
 
-      <form style="margin-top: 50%;">
+      <form class="formnav" style="margin-top: 50%;">
         <div id="Demo1" class="w3-container w3-hide">
           <div>
           <label for="uname"><b>Username</b></label>
