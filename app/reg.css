@@ -45,8 +45,8 @@ div.bg {
 .header-h1 {
   margin: auto;
   width: 100%;
-  font-size: 7rem;
-  letter-spacing: 2rem;
+  font-size: 3rem;
+  letter-spacing: 1rem;
   color: black;
   font-weight: bolder;
   position: absolute;
@@ -105,17 +105,10 @@ table {
 a,
 .burgbox {
   color: black;
-  border-style: groove;
-  border-color: black;
   padding: 10px;
   display: inline-block;
   text-decoration: none;
   margin: 3px;
-}
-
-.a {
-  color: white;
-  border-color: white;
 }
 
 .burgbordered,
@@ -166,7 +159,7 @@ footer {
   background-color: white;
   text-align: center;
   color: black;
-  border-top: solid 10px black;
+  position: revert;
 }
 
 footer h2,
@@ -250,12 +243,16 @@ img {
 
 .a {
   color: black;
-  border-color: black;
 }
 
 .a:hover {
-  background-color: black;
-  color: white;
+  cursor: grab;
+  background-color: transparent;
+  border-radius: 8px;
+  border-left: groove orange;
+  border-right: groove orange;
+  color: black;
+  text-decoration: none;
 }
 
 .nav {
@@ -273,13 +270,6 @@ img {
   text-align: center;
   font-size: 1.2em;
   align-content: centered;
-}
-
-.nav a:hover {
-  border-style: groove;
-  border-color: white;
-  border-bottom-style: none;
-  border-top-style: none;
 }
 
 .ul {

@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="style.css">
 
 <div id="left-col-container">
@@ -12,18 +11,11 @@ require 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }
-if (!isset($_SESSION)){
-  session_start();
-  if($_SESSION['loggedIn'] != TRUE){
-      header('Location: index.php');
-    }}
-$compID = $_SESSION['companyID'];
-
 $no_message = false;
 if(isset($_GET['ID'])){
   $_GET['ID'] = $_GET['ID'];
 
-  $q = "SELECT * FROM Users WHERE Approved = '1' AND Company_ID = $compID";
+  $q = "SELECT * FROM Users";
 
         $myResult = mysqli_query($conn, $q);
 
@@ -57,7 +49,7 @@ if(isset($_GET['ID'])){
 }
 
 else {
-  $q = "SELECT * FROM Users WHERE Company_ID = '$compID' AND Approved = '1'";
+  $q = "SELECT * FROM Users";
 
         $myResult = mysqli_query($conn, $q);
 

@@ -1,3 +1,4 @@
+
 <?php
   include_once '../db.php';
   session_start();
@@ -63,7 +64,6 @@ echo "<h1 class='header-h1'>". $row['Fname']. " " . $row['Lname'] .
                 }
                 echo "<br>";
                 echo "<div class='profile-usertitle-job'>
-
                  ".$row['position']."
                  </div>
                 ";

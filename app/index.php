@@ -1,10 +1,56 @@
-<?php include_once 'db.php'; session_start(); if(isset($_GET['login'])) { $search = "SELECT * From Users, Company WHERE Users.Company_Code = Company.Company_Code;"; $result = mysqli_query($conn, $search); while($row = mysqli_fetch_row($result)) { if
-($row[9] == 1) { if ($row[5] == $_GET['uname'] ?? '') { if ($row[6] == $_GET['psw'] ?? ''){ $_SESSION['role'] = $row[10]; $_SESSION['loggedIn'] = true; $_SESSION['ID'] = $row[0]; $_SESSION['companyID'] = $row[1]; $_SESSION['Fname'] = $row[2];
-$_SESSION['Lname'] = $row[3]; $_SESSION['Phone'] = $row[4]; $_SESSION['email'] = $row[5]; $_SESSION['DoB'] = $row[7]; $_SESSION['CompanyCode'] = $row[8]; $_SESSION['Approved'] = $row[9]; $_SESSION['type_of_User'] = $row[10]; $_SESSION['image'] =
-$row[11]; $_SESSION['position'] = $row[12]; $_SESSION['bio'] = $row[13]; $_SESSION['Business_Name'] = $row[15]; $_SESSION['Business_Address'] = $row[16]; $_SESSION['Business_Phone'] = $row[17]; $_SESSION['Business_City'] = $row[19];
-$_SESSION['Business_State'] = $row[20]; $employ_ID = $row[0]; $Auth = "SELECT * From Employees WHERE Emp_ID = $employ_ID;"; $AuthResult = mysqli_query($conn, $Auth); while($Arow = mysqli_fetch_row($AuthResult)) { $_SESSION['Authorization'] =
-$Arow[5]; } if($row[5] == "Admin"){ header( 'Location: Admin.php'); } else{ header( 'Location: myprofile.php'); } break; } } } } } if(isset($_GET['logout'])) { header( 'Location: logout.php'); }
+<?php
+include_once "db.php";
+session_start();
+if (isset($_GET["login"])) {
+    $search =
+        "SELECT * From Users, Company WHERE Users.Company_Code = Company.Company_Code;";
+    $result = mysqli_query($conn, $search);
+    while ($row = mysqli_fetch_row($result)) {
+        if ($row[9] == 1) {
+            if ($row[5] == $_GET["uname"] ?? "") {
+                if ($row[6] == $_GET["psw"] ?? "") {
+                    $_SESSION["role"] = $row[10];
+                    $_SESSION["loggedIn"] = true;
+                    $_SESSION["ID"] = $row[0];
+                    $_SESSION["companyID"] = $row[1];
+                    $_SESSION["Fname"] = $row[2];
+                    $_SESSION["Lname"] = $row[3];
+                    $_SESSION["Phone"] = $row[4];
+                    $_SESSION["email"] = $row[5];
+                    $_SESSION["DoB"] = $row[7];
+                    $_SESSION["CompanyCode"] = $row[8];
+                    $_SESSION["Approved"] = $row[9];
+                    $_SESSION["type_of_User"] = $row[10];
+                    $_SESSION["image"] = $row[11];
+                    $_SESSION["position"] = $row[12];
+                    $_SESSION["bio"] = $row[13];
+                    $_SESSION["Business_Name"] = $row[15];
+                    $_SESSION["Business_Address"] = $row[16];
+                    $_SESSION["Business_Phone"] = $row[17];
+                    $_SESSION["Business_City"] = $row[19];
+                    $_SESSION["Business_State"] = $row[20];
+                    $employ_ID = $row[0];
+                    $Auth = "SELECT * From Employees WHERE Emp_ID = $employ_ID;";
+                    $AuthResult = mysqli_query($conn, $Auth);
+                    while ($Arow = mysqli_fetch_row($AuthResult)) {
+                        $_SESSION["Authorization"] = $Arow[5];
+                    }
+                    if ($row[5] == "Admin") {
+                        header("Location: Admin.php");
+                    } else {
+                        header("Location: myprofile.php");
+                    }
+                    break;
+                }
+            }
+        }
+    }
+}
+if (isset($_GET["logout"])) {
+    header("Location: logout.php");
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,13 +86,16 @@ $Arow[5]; } if($row[5] == "Admin"){ header( 'Location: Admin.php'); } else{ head
       <a class="a" onclick="myFunction('Demo1')" id="hide">Login</a>
       <form>
         <div id="Demo1" class="w3-container w3-hide">
+          <div>
           <label for="uname"><b>Username</b></label>
           <input type="text" placeholder="Enter Username" name="uname" required="">
+        </div>
+        <div>
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" required="">
-          <button class="a" onclick="myFunction('Demo1')" id="login" name="login">Login</button>
+        </div>
+          <button onclick="myFunction('Demo1')" id="login" name="login">Login</button>
           <button onClick="history.go(0);">Cancel</button>
-
         </div>
       </form>
     </section>

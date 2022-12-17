@@ -92,7 +92,6 @@ body {
 
 /* --------NAV BAR */
 nav {
-  font-size: 1.5rem;
   width: 100%;
   position: absolute;
   top: 20em;
@@ -166,6 +165,11 @@ img {
   border-color: white;
   border-bottom-style: none;
   border-top-style: none;
+}
+
+#Demo1 {
+  margin-top: 18%;
+  background-color: white;
 }
 
 .ul {

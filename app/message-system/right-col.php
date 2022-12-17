@@ -4,11 +4,6 @@
 
   <?php
   require 'db.php';
-  if (!isset($_SESSION)){
-    session_start();
-  }  if($_SESSION['loggedIn'] != TRUE){
-      header('Location: index.php');
-    }
   if (!$conn) {
       die("Connection failed: " . mysqli_error());
   }
@@ -54,7 +49,6 @@
 
 else {
   die("<br><br><br>
-
   <h1>Hi ".$_SESSION['Fname'].",<br>Please select someone to message.</h1>");
   $q="SELECT * FROM Messages
       WHERE user_from = {$_SESSION['ID']}

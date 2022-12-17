@@ -101,33 +101,45 @@ if($_SESSION['Authorization'] != 'Admin' & $_SESSION['Authorization'] != 'Secret
 
         </tr>
       </thead>
-<?php
-        $sql = "SELECT * FROM Users JOIN Employees ON Users.ID = Employees.Emp_ID WHERE Employees.Company_ID = $compID AND Users.Approved = '1'";
-        $result = mysqli_query($conn, $sql);
-        if($result){
-        while($row = mysqli_fetch_row($result)) {
-            echo '<tbody>';
-            echo '<tr>';
-            echo"<form action='employees.php' name='employees' method='POST'>";
-            echo "<td>" . $row[2] ." ". $row[3] . "</td>";
-            echo "<td>" . $row[17] . "<input name='position'type='text' placeholder='New Position'>" ."</th>";
-            echo "<td>" . $row[18] . "<input name='wage'type='number' placeholder='New Wage'>" . "</td>";
-            echo"<td>" . $row[19] . "<select name='auth'>
-                <option value=''> </option>
-                <option value='Employee'> Employee</option>
-                <option value='Manager'>Manager</option>
-                <option value='Secretary'>Secretary</option></select>
-                </td>";
-            echo"<td><button type='submit'> ✅ </button></td>";
+      <?php
+      $sql = "SELECT * FROM Users JOIN Employees ON Users.ID = Employees.Emp_ID WHERE Employees.Company_ID = $compID AND Users.Approved = '1'";
+      $result = mysqli_query($conn, $sql);
+      if ($result) {
+          while ($row = mysqli_fetch_row($result)) {
+              echo "<tbody>";
+              echo "<tr>";
+              echo "<form action='employees.php' name='employees' method='POST'>";
+              echo "<td>" . $row[2] . " " . $row[3] . "</td>";
 
-            echo'<input type="hidden" name="submit" value=' ."$row[0]" .'>';
-            echo "</tr>";
-            echo "</tbody>";
-            echo '</form>';
+              echo "<td>" .
+                  $row[17] .
+                  "<input name='position'type='text' placeholder='New Position'>" .
+                  "</th>";
 
-       }
-    }
-     ?>
+              echo "<td>" .
+                  $row[18] .
+                  "<input name='wage'type='number' placeholder='New Wage'>" .
+                  "</td>";
+
+              echo "<td>" .
+                  $row[19] .
+                  "<select name='auth'>
+                      <option value=''> </option>
+                      <option value='Employee'> Employee</option>
+                      <option value='Manager'>Manager</option>
+                      <option value='Secretary'>Secretary</option></select>
+                      </td>";
+
+              echo "<td><button type='submit'> ✅ </button></td>";
+
+              echo '<input type="hidden" name="submit" value=' . "$row[0]" . ">";
+              echo "</tr>";
+              echo "</tbody>";
+              echo "</form>";
+          }
+      }
+      ?>
+
           </table>
      </div>
 </div>
@@ -144,6 +156,11 @@ if(isset($_POST['submit'])){
     $sql = "UPDATE `Employees` SET `Position` = '$position' WHERE Emp_ID = '$UsrID'";
     mysqli_query($conn,$sql);
     }
+    if(($position != '')){
+    $sql = "UPDATE `Users` SET `position` = '$position' WHERE Users.ID = '$UsrID'";
+    mysqli_query($conn,$sql);
+    }
+
     if(($wage != '')){
         $sql = "UPDATE `Employees` SET `Wage` = '$wage' WHERE Emp_ID = '$UsrID'";
         mysqli_query($conn,$sql);
@@ -155,7 +172,7 @@ if(isset($_POST['submit'])){
 
 ?>
     <script type="text/javascript">
-    window.location.href = 'http://localhost/Man-A-Biz/app/Employees.php';
+    window.location.href = 'employees.php';
     </script>
     <?php
 }

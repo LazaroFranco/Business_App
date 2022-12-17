@@ -56,6 +56,7 @@ h2 {
   color: white;
   margin-left: 0;
   margin-right: 0;
+  padding-bottom: 5%;
 }
 
 h1,
@@ -143,14 +144,13 @@ input[type=checkbox] {
 
 /* --------FOOTER */
 footer {
-  margin-top: 50%;
+  margin-top: 100%;
   display: flex;
   width: 100%;
   justify-content: space-between;
   background-color: #262626;
   text-align: center;
   color: white;
-  border-top: solid 20px black;
 }
 
 footer h2,

@@ -1,6 +1,6 @@
 <?php
-include_once 'db.php';
-
+include_once "db.php";
+session_start();
 ?>
 
 <script LANGUAGE="JavaScript">
@@ -61,7 +61,9 @@ include_once 'db.php';
        <h2 class="text-center mt-0">Register</h2>
 
         <section class="sign">
+          <!--
           <a class="a" onclick="myFunction('Demo1')"  class="w3-btn w3-block w3-black w3-left-align" id="hide" >Login</a>
+        -->
           <a class="a" href="index.php">Home</a>
           <div id="Demo1" class="w3-container w3-hide">
             <label for="uname"><b>Username</b></label>
@@ -98,116 +100,117 @@ include_once 'db.php';
 
 </div>
 <div>
-<input style="display: none;" id="button" type="submit" name="submit" value="Submit"><br>
+<input style="display: none;" id="button" type="submit" name="submit" value="Submit">
+<br>
 <p style="display: none;" id="section">
 Thank you for information, we will contact you within 48 hours
 </p>
 </div>
 
   <form>
-<?php
+    <?php
 
-if(isset($_GET['submit'])){
+    if(isset($_GET['submit'])){
 
-  $role = $_GET['type-of-user'];
+      $role = $_GET['type-of-user'];
 
-  $fname = $_GET['Fname'];
-  $lname = $_GET['Lname'];
-  $email = $_GET['Email'];
-  $phone = $_GET['Phone'];
-  $birth = $_GET['Birth'];
-  $password = $_GET['Pword'];
-  $compName = $_GET['CompName'];
-  $baddress = $_GET['BAddress'];
-  $city = $_GET['City'];
-  $state = $_GET['State'];
-  $bphone = $_GET['BPhone'];
-  $Ccode = $_GET['Ccode'];
-$compID = "No";
+      $fname = $_GET['Fname'];
+      $lname = $_GET['Lname'];
+      $email = $_GET['Email'];
+      $phone = $_GET['Phone'];
+      $birth = $_GET['Birth'];
+      $password = $_GET['Pword'];
+      $compName = $_GET['CompName'];
+      $baddress = $_GET['BAddress'];
+      $city = $_GET['City'];
+      $state = $_GET['State'];
+      $bphone = $_GET['BPhone'];
+      $Ccode = $_GET['Ccode'];
+      $compID = "No";
 
-  if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
-& $password != "" & $birth != "" & $compName != "" & $baddress != "" & $city != "" & $state != "" & $bphone != "" & $Ccode != "")){
-  $sql = "INSERT INTO `Company`(Business_Name, Business_Address, Phone, Email, City, State, Company_Code) VALUES ('$compName','$baddress','$bphone','$email','$city','$state','$Ccode')";
-  mysqli_query($conn,$sql);
+      if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
+    & $password != "" & $birth != "" & $compName != "" & $baddress != "" & $city != "" & $state != "" & $bphone != "" & $Ccode != "")){
+      $sql = "INSERT INTO `Company`(Business_Name, Business_Address, Phone, Email, City, State, Company_Code) VALUES ('$compName','$baddress','$bphone','$email','$city','$state','$Ccode')";
+      mysqli_query($conn,$sql);
 
-  $UserCompanyID = "SELECT ID FROM `Company` WHERE Company_Code = '$Ccode'";
-  $result = mysqli_query($conn, $UserCompanyID);
+      $UserCompanyID = "SELECT ID FROM `Company` WHERE Company_Code = '$Ccode'";
+      $result = mysqli_query($conn, $UserCompanyID);
 
-  $resultCheck = mysqli_num_rows($result);
-  echo $resultCheck;
-  if($resultCheck > 0){
-    while($row = mysqli_fetch_assoc($result)){
-    $compID = $row['ID'];
-  }
-  }
-
-
-  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Type_Of_User, Company_ID) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0','$role','$compID')";
-  mysqli_query($conn,$sql);
-
-  $EmpID = "SELECT ID FROM `Users` WHERE Email = '$email'";
-  $result = mysqli_query($conn, $EmpID);
-
-  $resultCheck = mysqli_num_rows($result);
-  echo $resultCheck;
-  if($resultCheck > 0){
-    while($row = mysqli_fetch_assoc($result)){
-    $employID = $row['ID'];
-  }
-  }
+      $resultCheck = mysqli_num_rows($result);
+      echo $resultCheck;
+      if($resultCheck > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        $compID = $row['ID'];
+      }
+      }
 
 
-  $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Secretary')";
-  mysqli_query($conn,$sql);
-  ?>
-  <script type="text/javascript">
-  window.location.href = 'https://business-app.herokuapp.com/app/';
-  </script>
-  <?php
-}
-if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != ""){
+      $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Type_Of_User, Company_ID) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0','$role','$compID')";
+      mysqli_query($conn,$sql);
 
-  $UserCompanyID = "SELECT ID FROM `Company` WHERE Company_Code = '$Ccode'";
-  $result = mysqli_query($conn, $UserCompanyID);
+      $EmpID = "SELECT ID FROM `Users` WHERE Email = '$email'";
+      $result = mysqli_query($conn, $EmpID);
 
-  $resultCheck = mysqli_num_rows($result);
-  echo $resultCheck;
-  if($resultCheck > 0){
-    while($row = mysqli_fetch_assoc($result)){
-    $compID = $row['ID'];
-  }
-  }
+      $resultCheck = mysqli_num_rows($result);
+      echo $resultCheck;
+      if($resultCheck > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        $employID = $row['ID'];
+      }
+      }
 
 
-  $sql = "INSERT INTO `Users`(Company_ID, Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$compID', '$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
-  mysqli_query($conn,$sql);
+      $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Secretary')";
+      mysqli_query($conn,$sql);
+      ?>
+      <script type="text/javascript">
+      window.location.href = 'https://business-app.herokuapp.com/app/';
+      </script>
+      <?php
+    }
+    if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != ""){
 
-  $EmpID = "SELECT ID FROM `Users` WHERE Email = '$email'";
-  $result = mysqli_query($conn, $EmpID);
+      $UserCompanyID = "SELECT ID FROM `Company` WHERE Company_Code = '$Ccode'";
+      $result = mysqli_query($conn, $UserCompanyID);
 
-  $resultCheck = mysqli_num_rows($result);
-  echo $resultCheck;
-  if($resultCheck > 0){
-    while($row = mysqli_fetch_assoc($result)){
-    $employID = $row['ID'];
-  }
-  }
-
-  $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Employee')";
-  mysqli_query($conn,$sql);
-
-  ?>
-  <script type="text/javascript">
-  window.location.href = 'https://business-app.herokuapp.com/app/';
-  </script>
-  <?php
-
-}
+      $resultCheck = mysqli_num_rows($result);
+      echo $resultCheck;
+      if($resultCheck > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        $compID = $row['ID'];
+      }
+      }
 
 
+      $sql = "INSERT INTO `Users`(Company_ID, Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$compID', '$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
+      mysqli_query($conn,$sql);
 
-}
-?>
+      $EmpID = "SELECT ID FROM `Users` WHERE Email = '$email'";
+      $result = mysqli_query($conn, $EmpID);
+
+      $resultCheck = mysqli_num_rows($result);
+      echo $resultCheck;
+      if($resultCheck > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        $employID = $row['ID'];
+      }
+      }
+
+      $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Employee')";
+      mysqli_query($conn,$sql);
+
+      ?>
+      <script type="text/javascript">
+      window.location.href = 'https://business-app.herokuapp.com/app/';
+      </script>
+      <?php
+
+    }
+
+
+
+    }
+    ?>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- SimpleLightbox plugin JS-->
@@ -215,6 +218,19 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+<script>
+  function myFunction(id) {
+    var x = document.getElementById(id);
+    var y = document.querySelector('#hide');
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+      y.style.visibility = 'hidden';
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+</script>
   </body>
   <footer class="bg-light py-5">
     <div>
