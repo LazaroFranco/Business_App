@@ -133,6 +133,7 @@ img {
   color: black;
   border-color: black;
   cursor: default;
+  background-color: white;
 }
 
 .a:hover {
@@ -207,6 +208,8 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   right: 0;
   margin-right: 10%;
   margin-top: 10%;
+  background-color: white;
+  color: black;
 }
 
 .nav {
