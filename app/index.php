@@ -1,8 +1,6 @@
 <?php
 include_once "db.php";
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', true);
 if (isset($_GET["login"])) {
     $search =
         "SELECT * From Users, Company WHERE Users.Company_Code = Company.Company_Code;";
@@ -40,7 +38,7 @@ if (isset($_GET["login"])) {
                     if ($row[5] == "Admin") {
                         header("Location: Admin.php");
                     } else {
-                        header("Location: myprofile.php");
+                        header("Location: https://business-app.herokuapp.com/app/myprofile.php");
                     }
                     break;
                 }
