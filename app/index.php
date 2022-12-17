@@ -80,10 +80,11 @@ if (isset($_GET["logout"])) {
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container px-4 px-lg-5">
       <a onClick="history.go(0);" class="navbar-brand">Man-A-Biz</a>
-    </div>
-    <section class="sign">
       <a class="a" href="register.php">Register</a>
       <a class="a" onclick="myFunction('Demo1')" id="hide">Login</a>
+    </div>
+    <section class="sign">
+
       <form style="margin-top: 50%;">
         <div id="Demo1" class="w3-container w3-hide">
           <div>
