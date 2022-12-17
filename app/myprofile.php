@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
     </script>
-    <script src="https://cdn.tiny.cloud/1/8m6tpouimlbz5x5x25hbvj09ilraavsvbam894vaugrokcts/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
     </script>
     <link rel="stylesheet" href="style.css">
@@ -327,13 +326,6 @@ echo "<h1 class='header-h1'>". $_SESSION['Fname']. " " . $_SESSION['Lname'] .
         document.getElementById('pv').style.display = "none";
       }
 
-      tinymce.init({
-        selector: 'textarea',
-        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
-        toolbar_mode: 'floating',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-      });
 
       function refreshPage(){
 }
