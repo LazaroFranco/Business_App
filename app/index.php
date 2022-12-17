@@ -1,6 +1,8 @@
 <?php
 include_once "db.php";
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', true);
 if (isset($_GET["login"])) {
     $search =
         "SELECT * From Users, Company WHERE Users.Company_Code = Company.Company_Code;";
