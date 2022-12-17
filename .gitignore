@@ -123,3 +123,6 @@ dmypy.json
 
 .idea/
 Business_App.iml
+
+# db.php
+app/db.php
