@@ -123,5 +123,3 @@ dmypy.json
 
 .idea/
 Business_App.iml
-
-/app/db.php
