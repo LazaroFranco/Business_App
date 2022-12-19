@@ -788,10 +788,7 @@ progress {
     max-width: 960px;
   }
 }
-@media (min-width: 1200px) {
-  .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1140px;
-  }
+
 }
 @media (min-width: 1400px) {
   .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
@@ -11485,7 +11482,7 @@ hr.divider-light {
 @media (min-width: 992px) {
   #mainNav {
     box-shadow: none;
-    background-color: transparent;
+    background-color: white;
   }
 
   #mainNav .navbar-brand:hover {
@@ -11537,8 +11534,7 @@ header.masthead h1, header.masthead .h1 {
 }
 @media (min-width: 992px) {
   header.masthead {
-    height: 100vh;
-    min-height: 40rem;
+    min-height:30rem;
     padding-top: 4.5rem;
     padding-bottom: 0;
   }

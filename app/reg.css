@@ -57,10 +57,6 @@ div.bg {
   width: 100%;
 }
 
-h1 {
-  color: var(--burg);
-}
-
 h2 {
   font-style: italic;
 }
@@ -70,12 +66,6 @@ h2,
 h3,
 h4 {
   font-weight: bold;
-}
-
-th {
-  background-color: var(--burg);
-  border: 1px solid black;
-  color: white;
 }
 
 tr,
@@ -88,7 +78,22 @@ td {
 }
 
 input[type=submit] {
-  border-radius: 0 5px 0 0;
+  display: inline-block;
+  border: none;
+  background: transparent;
+  letter-spacing: .1rem;
+  font-size: x-large;
+}
+
+input[type=submit]:hover {
+  cursor: grab;
+  background-color: transparent;
+  border-radius: 8px;
+  border-left: groove orange;
+  border-right: groove orange;
+  color: black;
+  text-decoration: none;
+  letter-spacing: 3px;
 }
 
 table {
@@ -118,11 +123,29 @@ input[type=number],
 input[type=email],
 input[type=password],
 input[type=date] {
-  border: 3px solid var(--burg);
   display: inline-block;
   padding: 10px;
-  background-color: white;
   margin: 3px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  background: transparent;
+}
+
+input[type=text]:focus,
+input[type=tel]:focus,
+input[type=number]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+input[type=date]:focus {
+   border-bottom: 1px solid orange;
+ }
+
+
+.submit {
+  display: inline-grid;
+  border: none;
+  background-color: transparent;
 }
 
 .flexbox {
@@ -144,10 +167,6 @@ input[type=date] {
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
-}
-
-input[type=checkbox] {
-  border: 2px solid var(--burg);
 }
 
 /* --------FOOTER */
@@ -187,11 +206,6 @@ footer address a {
 
 .left-container {
   text-align: left;
-}
-
-.footer-h1 {
-  font-size: 3em;
-  color: var(--burg);
 }
 
 /* --------NAV BAR */

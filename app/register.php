@@ -1,5 +1,5 @@
 <?php
-include_once "db.php";
+require "db.php";
 session_start();
 ?>
 
@@ -137,7 +137,9 @@ Thank you for information, we will contact you within 48 hours
       $result = mysqli_query($conn, $UserCompanyID);
 
       $resultCheck = mysqli_num_rows($result);
-      echo $resultCheck;
+      // RESULT CHECK SHOWS RESULT ID
+      //  $resultCheck;
+       "<p>Submission was succesful, please wait up to 48hrs for approval.</p>";
       if($resultCheck > 0){
         while($row = mysqli_fetch_assoc($result)){
         $compID = $row['ID'];
@@ -152,20 +154,25 @@ Thank you for information, we will contact you within 48 hours
       $result = mysqli_query($conn, $EmpID);
 
       $resultCheck = mysqli_num_rows($result);
-      echo $resultCheck;
+      // RESULT CHECK SHOWS RESULT ID
+      //  $resultCheck;
+       "<p>Submission was succesful, please wait up to 48hrs for approval.</p>";
       if($resultCheck > 0){
         while($row = mysqli_fetch_assoc($result)){
-        $employID = $row['ID'];
+        $EmpID = $row['ID'];
       }
       }
 
 
-      $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Secretary')";
+      $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$EmpID', 'Secretary')";
       mysqli_query($conn,$sql);
       ?>
+      <!--
       <script type="text/javascript">
       window.location.href = 'https://business-app.herokuapp.com/app/';
       </script>
+
+    -->
       <?php
     }
     if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != ""){
@@ -174,7 +181,9 @@ Thank you for information, we will contact you within 48 hours
       $result = mysqli_query($conn, $UserCompanyID);
 
       $resultCheck = mysqli_num_rows($result);
-      echo $resultCheck;
+      // RESULT CHECK SHOWS RESULT ID
+      //  $resultCheck;
+       "<p>Submission was succesful, please wait up to 48hrs for approval.</p>";
       if($resultCheck > 0){
         while($row = mysqli_fetch_assoc($result)){
         $compID = $row['ID'];
@@ -189,20 +198,24 @@ Thank you for information, we will contact you within 48 hours
       $result = mysqli_query($conn, $EmpID);
 
       $resultCheck = mysqli_num_rows($result);
-      echo $resultCheck;
+      // RESULT CHECK SHOWS RESULT ID
+      // echo $resultCheck;
+      echo "<p>Submission was succesful, please wait up to 48hrs for approval.</p>";
       if($resultCheck > 0){
         while($row = mysqli_fetch_assoc($result)){
-        $employID = $row['ID'];
+        $EmpID = $row['ID'];
       }
       }
 
-      $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Employee')";
+      $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$EmpID', 'Employee')";
       mysqli_query($conn,$sql);
 
       ?>
+      <!--
       <script type="text/javascript">
       window.location.href = 'https://business-app.herokuapp.com/app/';
       </script>
+    -->
       <?php
 
     }
