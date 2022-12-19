@@ -21,13 +21,13 @@ include_once 'db.php';
         if (emp.value == "1"){
         document.getElementById("basic").style.display = "inline-grid";
         document.getElementById("buss_owner").style.display = "none";
-        document.getElementById("button").style.display = "inline-grid";
+        document.getElementById("button").style.display = "block";
 
     }
     if (emp.value == "0"){
         document.getElementById("basic").style.display = "inline-grid";
         document.getElementById("buss_owner").style.display = "inline-grid";
-        document.getElementById("button").style.display = "inline-grid";
+        document.getElementById("button").style.display = "block";
 
     }
       }
@@ -93,7 +93,8 @@ include_once 'db.php';
       <label for="Fname">First Name</label><input class="" type="text" name="Fname"><br>
       <label for="Lname">Last Name</label><input class="" type="text" name="Lname"><br>
       <label for="Email">Email</label><input class="" type="text" name="Email"><br>
-      <label for="Phone" class="">Phone (Format: 000-000-0000)</label><input class="" type="tel" name="Phone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
+      <label for="Phone" class="">Phone (Format: 000-000-0000)</label>
+      <input class="" type="tel" name="Phone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
       <label for="Birth" class="">Date Of Birth</label><input class="" type="date" name="Birth"><br>
       <label for="Pword">Password</label><input class="" type="text" name="Pword"><br>
       <label for="Ccode" class="">Company Code</label><input class="" type="text" name="Ccode"><br>
@@ -103,12 +104,14 @@ include_once 'db.php';
       <label for="CompName">Company Name</label><input class="" type="text" name="CompName"><br>
       <label for="BAddress">Business Address</label><input class="" type="text" name="BAddress"><br>
       <label for="City">City</label><input class="" type="text" name="City"><br>
-      <label for="State" class="">State</label><input class="" type="text" name="State"><br>
-      <label for="BPhone" class="">Business Phone (Format: 000-000-0000)</label><input class="" type="tel" name="BPhone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
+      <label for="State" class="">State</label><input class="" type="text" name="State">
+      <br>
+      <label for="BPhone" class="">Business Phone (Format: 000-000-0000)</label>
+      <input class="" type="tel" name="BPhone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
 
 </div>
 
-<input style="display: none;" id="button" type="submit" name="submit" value="Submit">
+<input style="display: none; text-align: center;width: 100%;" id="button" type="submit" name="submit" value="Submit">
   <form>
 <?php
 if(isset($_GET['submit'])){
