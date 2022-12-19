@@ -31,7 +31,6 @@ include_once 'db.php';
 
     }
       }
-
         </script>
 
 
@@ -46,6 +45,8 @@ include_once 'db.php';
 
     <meta name="description" content="Business Management APP. Tech by Laz, LLC." />
     <meta name="author" content="Tech by Laz, LLC." />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
     <link rel="apple-touch-icon" sizes="128x128" href="manabizlogo.jpg"/>
     <link rel="icon" sizes="192x192" href="nice-manabizlogo.jpg"/>
     <link rel="shortcut icon" type="image/jpeg" href="manabizlogo.jpg"/>
@@ -88,26 +89,48 @@ include_once 'db.php';
     <input type="radio" name="type-of-user" id="owner" onclick="mployee(this)" value="0"required>
       <label for="user">Business Owner</label>
       <input type="radio" name="type-of-user" id="employee" onclick="mployee(this)" value="1"required>
-      <label for="user">Employee</label><br>
-<div style="display: none;" id="basic" class="show-forms-employee">
-      <label for="Fname">First Name</label><input class="" type="text" name="Fname"><br>
-      <label for="Lname">Last Name</label><input class="" type="text" name="Lname"><br>
-      <label for="Email">Email</label><input class="" type="text" name="Email"><br>
+      <label for="user">Employee</label>
+      <br>
+      <div style="display: none; width: 75%; margin: 5%;" id="basic" class="show-forms-employee">
+      <label for="Fname">First Name</label>
+      <input class="" type="text" name="Fname">
+      <br>
+      <label for="Lname">Last Name</label>
+      <input class="" type="text" name="Lname">
+      <br>
+      <label for="Email">Email</label>
+      <input class="" type="text" name="Email">
+      <br>
       <label for="Phone" class="">Phone (Format: 000-000-0000)</label>
-      <input class="" type="tel" name="Phone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
-      <label for="Birth" class="">Date Of Birth</label><input class="" type="date" name="Birth"><br>
-      <label for="Pword">Password</label><input class="" type="text" name="Pword"><br>
-      <label for="Ccode" class="">Company Code</label><input class="" type="text" name="Ccode"><br>
+      <input onkeydown="phoneNumberFormatter()" class="" id="phone-number" type="tel" name="Phone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
+      <br>
+      <label for="Birth" class="">Date Of Birth</label>
+      <input class="" type="date" name="Birth">
+      <br>
+      <label for="Pword">Password</label>
+      <input class="" type="text" name="Pword">
+      <br>
+      <label for="Ccode" class="">Company Code</label>
+      <input class="" type="text" name="Ccode">
+      <br>
 
 </div>
-<div style="display: none;" id="buss_owner" class="show-forms-employee">
-      <label for="CompName">Company Name</label><input class="" type="text" name="CompName"><br>
-      <label for="BAddress">Business Address</label><input class="" type="text" name="BAddress"><br>
-      <label for="City">City</label><input class="" type="text" name="City"><br>
-      <label for="State" class="">State</label><input class="" type="text" name="State">
+<div style="display: none; width: 75%;margin: 5%;" id="buss_owner" class="show-forms-employee">
+      <label for="CompName">Company Name</label>
+      <input class="" type="text" name="CompName">
+      <br>
+      <label for="BAddress">Business Address</label>
+      <input class="" type="text" name="BAddress">
+      <br>
+      <label for="City">City</label>
+      <input class="" type="text" name="City">
+      <br>
+      <label for="State" class="">State</label>
+      <input class="" type="text" name="State">
       <br>
       <label for="BPhone" class="">Business Phone (Format: 000-000-0000)</label>
-      <input class="" type="tel" name="BPhone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
+      <input onkeydown="phoneNumberFormatter()" class="" id="phone-number" type="tel" name="BPhone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
+      <br>
 
 </div>
 
@@ -223,6 +246,26 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
       x.className = x.className.replace(" w3-show", "");
     }
   }
+
+  function formatPhoneNumber(value) {
+  if (!value) return value;
+  const phoneNumber = value.replace(/[^\d]/g, '');
+  const phoneNumberLength = phoneNumber.length;
+  if (phoneNumberLength < 4) return phoneNumber;
+  if (phoneNumberLength < 7) {
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+  }
+  return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+    3,
+    6
+  )}-${phoneNumber.slice(6, 9)}`;
+}
+
+function phoneNumberFormatter() {
+  const inputField = document.getElementById('phone-number');
+  const formattedInputValue = formatPhoneNumber(inputField.value);
+  inputField.value = formattedInputValue;
+}
 </script>
 </body>
 <footer>

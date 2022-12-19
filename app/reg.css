@@ -145,6 +145,9 @@ input[type=date]:focus {
    border-bottom: 1px solid orange;
  }
 
+label {
+  font-weight: bold;
+}
 
 .submit {
   display: inline-grid;
