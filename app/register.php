@@ -102,7 +102,7 @@ include_once 'db.php';
       <input class="" type="text" name="Email">
       <br>
       <label for="Phone" class="">Phone (Format: 000-000-0000)</label>
-      <input onkeydown="phoneNumberFormatter()" class="" id="phone-number" type="tel" name="Phone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
+      <input class="" id="phone-number" type="tel" name="Phone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
       <br>
       <label for="Birth" class="">Date Of Birth</label>
       <input class="" type="date" name="Birth">
@@ -129,7 +129,7 @@ include_once 'db.php';
       <input class="" type="text" name="State">
       <br>
       <label for="BPhone" class="">Business Phone (Format: 000-000-0000)</label>
-      <input onkeydown="phoneNumberFormatter()" class="" id="BPhone" type="tel" name="BPhone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
+      <input class="" id="BPhone" type="tel" name="BPhone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
       <br>
 
 </div>
@@ -246,31 +246,6 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
       x.className = x.className.replace(" w3-show", "");
     }
   }
-
-  function formatPhoneNumber(value) {
-  if (!value) return value;
-  const phoneNumber = value.replace(/[^\d]/g, '');
-  const phoneNumberLength = phoneNumber.length;
-  if (phoneNumberLength < 4) return phoneNumber;
-  if (phoneNumberLength < 7) {
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
-  }
-  return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
-    3,
-    6
-  )}-${phoneNumber.slice(6, 10)}`;
-}
-
-function phoneNumberFormatter() {
-  const inputField = document.getElementById('phone-number');
-  const inputFields = document.getElementById('BPhone');
-
-  const formattedInputValue = formatPhoneNumber(inputField.value);
-  inputField.value = formattedInputValue;
-
-  const formattedInputValues = formatPhoneNumber(inputFields.value);
-  inputFields.value = formattedInputValues;
-}
 </script>
 </body>
 <footer>
