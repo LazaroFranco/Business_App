@@ -129,7 +129,7 @@ include_once 'db.php';
       <input class="" type="text" name="State">
       <br>
       <label for="BPhone" class="">Business Phone (Format: 000-000-0000)</label>
-      <input onkeydown="phoneNumberFormatter()" class="" id="phone-number" type="tel" name="BPhone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
+      <input onkeydown="phoneNumberFormatter()" class="" id="BPhone" type="tel" name="BPhone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
       <br>
 
 </div>
@@ -263,8 +263,13 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
 
 function phoneNumberFormatter() {
   const inputField = document.getElementById('phone-number');
+  const inputFields = document.getElementById('BPhone');
+
   const formattedInputValue = formatPhoneNumber(inputField.value);
   inputField.value = formattedInputValue;
+
+  const formattedInputValues = formatPhoneNumber(inputFields.value);
+  inputFields.value = formattedInputValues;
 }
 </script>
 </body>

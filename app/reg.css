@@ -86,6 +86,7 @@ input[type=submit] {
   background: transparent;
   letter-spacing: .1rem;
   font-size: x-large;
+  color: black;
 }
 
 input[type=submit]:hover {
@@ -153,6 +154,7 @@ label {
   display: inline-grid;
   border: none;
   background-color: transparent;
+  color: black;
 }
 
 .flexbox {
