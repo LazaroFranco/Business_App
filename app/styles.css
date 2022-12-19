@@ -77,6 +77,11 @@
   }
 }
 
+html {
+  --white: rgb(224,220,214);
+  height: 120vh;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -85,9 +90,9 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: linear-gradient(90deg, rgba(255,255,255,1) -3%, rgba(240,240,240,1) 0%);
 }
 
 /* --------NAV BAR */
@@ -207,15 +212,26 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   position: absolute;
   right: 0;
   margin-right: 10%;
-  margin-top: 10%;
+}
+
+.formnav {
   background-color: white;
   color: black;
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 1px rgb(0 0 0 / 40%);
 }
 
 .nav {
   width: 100%;
   background-color: black;
   height: 100px;
+}
+
+.navi {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;  
 }
 
 .navfrom {
@@ -11418,7 +11434,7 @@ textarea.form-control-lg {
   }
 }
 html {
-  height: 100%;
+  height: 120vh;
   scroll-padding-top: calc(4.5rem - 1px);
 }
 
@@ -11598,4 +11614,8 @@ a:not([href]):hover {
 .bg-primary {
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+}
+
+footer {
+  text-align: center;
 }

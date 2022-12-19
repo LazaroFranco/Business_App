@@ -19,14 +19,14 @@ include_once 'db.php';
     }
       function mployee(emp){
         if (emp.value == "1"){
-        document.getElementById("basic").style.display = "block";
+        document.getElementById("basic").style.display = "inline-grid";
         document.getElementById("buss_owner").style.display = "none";
         document.getElementById("button").style.display = "inline-grid";
 
     }
     if (emp.value == "0"){
-        document.getElementById("basic").style.display = "block";
-        document.getElementById("buss_owner").style.display = "block";
+        document.getElementById("basic").style.display = "inline-grid";
+        document.getElementById("buss_owner").style.display = "inline-grid";
         document.getElementById("button").style.display = "inline-grid";
 
     }
@@ -40,6 +40,15 @@ include_once 'db.php';
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="keywords" content="Tech by Laz, Techbylaz, Techbylazllc, Man-a-biz, lazaro franco, laz franco, Lazaro Franco Valdes, Laz, Lazaro, Franco, Valdes, Florida, Pennsylvania, git"/>
+
+    <meta name="description" content="Business Management APP. Tech by Laz, LLC." />
+    <meta name="author" content="Tech by Laz, LLC." />
+    <link rel="apple-touch-icon" sizes="128x128" href="manabizlogo.jpg"/>
+    <link rel="icon" sizes="192x192" href="nice-manabizlogo.jpg"/>
+    <link rel="shortcut icon" type="image/jpeg" href="manabizlogo.jpg"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
@@ -213,7 +222,7 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
   }
 </script>
 </body>
-<footer class="bg-light py-5">
+<footer>
   <div>
     <div>&copy;<script>document.write(new Date().getFullYear());</script>, Man-A-Biz. Property of Tech by Laz, LLC.
     </div>

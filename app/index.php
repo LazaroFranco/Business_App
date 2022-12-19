@@ -95,11 +95,11 @@ if (isset($_GET["logout"])) {
         <div id="Demo1" class="w3-container w3-hide">
           <div>
           <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required="">
+          <input class="navi" type="text" placeholder="Enter Username" name="uname" required="">
         </div>
         <div>
           <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required="">
+          <input class="navi" type="password" placeholder="Enter Password" name="psw" required="">
         </div>
           <button type="submit" onclick="myFunction('Demo1')" id="login" name="login">Login</button>
           <button onClick="history.go(0);">Cancel</button>
@@ -142,6 +142,13 @@ if (isset($_GET["logout"])) {
               <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
               <h3 class="h4 mb-2">Personalize</h3>
               <p class="text-muted mb-0">See what you want to see! With this application you will be able to add or remove any operating system that will help you run your business!</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="mt-5">
+              <div class="mb-2"><i class="bi-lock fs-1 text-primary"></i></div>
+              <h3 class="h4 mb-2">All in one</h3>
+              <p class="text-muted mb-0">Store documents online for quick access. Capture bills and receipts via email, or scan files from your mobile.</p>
             </div>
           </div>
         </div>
@@ -194,7 +201,7 @@ if (isset($_GET["logout"])) {
     </div>
   </section>
   <!-- Footer-->
-  <footer class="bg-light py-5">
+  <footer>
     <div class="container px-4 px-lg-5">
       <div>&copy;<script>document.write(new Date().getFullYear());</script>, Man-A-Biz. Property of Tech by Laz, LLC.
       </div>
