@@ -1,5 +1,5 @@
 <?php
-include_once 'db.php';
+require 'db.php';
 
 ?>
 
@@ -138,8 +138,8 @@ include_once 'db.php';
   <form>
 <?php
 if(isset($_GET['submit'])){
-  $role = $_GET['type-of-user'];
 
+  $role = $_GET['type-of-user'];
   $fname = $_GET['Fname'];
   $lname = $_GET['Lname'];
   $email = $_GET['Email'];
@@ -153,7 +153,6 @@ if(isset($_GET['submit'])){
   $bphone = $_GET['BPhone'];
   $Ccode = $_GET['Ccode'];
   $compID = "No";
-  $employID = "No";
 
 
   if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
@@ -169,30 +168,38 @@ if(isset($_GET['submit'])){
     while($row = mysqli_fetch_assoc($result)){
     $compID = $row['ID'];
   }
+  echo "<p>Submission for Company was succesful, please wait up to 48hrs for approval.</p>";
+}
+else {
+  echo "<p>Error With Company Registration</p>";
+  echo("Error description: " . mysqli_error($conn));
+  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 }
 
 
-  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Type_Of_User, Company_ID) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0','$role','$compID')";
+  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Company_ID) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0', '$compID')";
   mysqli_query($conn,$sql);
 
-  $EmpID = "SELECT ID FROM `Users` WHERE Email = '$email'";
-  $result = mysqli_query($conn, $EmpID);
+  $UserID = "SELECT ID FROM `Users` WHERE Email = '$email'";
+  $result = mysqli_query($conn, $UserID);
 
   $resultCheck = mysqli_num_rows($result);
   if($resultCheck > 0){
     while($row = mysqli_fetch_assoc($result)){
-    $employID = $row['ID'];
+    $UsersID = $row['ID'];
   }
-  echo "<p>Submission was succesful, please wait up to 48hrs for approval.</p>";
+  echo "<p>Submission for User was succesful, please wait up to 48hrs for approval.</p>";
+}
+else {
+  echo "<p>Error With User Registration</p>";
+  echo("Error description: " . mysqli_error($conn));
+  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+
 }
 
 
-
-  $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Secretary')";
-  mysqli_query($conn,$sql);
-  ?>
-
-  <?php
 }
 if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != ""){
 
@@ -219,6 +226,9 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
     $employID = $row['ID'];
   }
   echo "<p>Submission was succesful, please wait up to 48hrs for approval.</p>";
+}
+else {
+  echo "<p>Error With User Registration</p>";
 }
 
 
