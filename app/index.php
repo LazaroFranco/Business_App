@@ -39,7 +39,7 @@ if (isset($_GET["login"])) {
                     if ($row[5] == "Admin") {
                         header("Location: Admin.php");
                     } else {
-                        header("Location: https://business-app.herokuapp.com/app/myprofile.php");
+                        header("Location: myprofile.php"); 
                     }
                     break;
                 }
