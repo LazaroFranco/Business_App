@@ -101,14 +101,15 @@ require 'db.php';
       <label for="Email">Email</label>
       <input class="" type="text" name="Email">
       <br>
-      <label for="Phone" class="">Phone (Format: 000-000-0000)</label>
-      <input class="" id="phone-number" type="tel" name="Phone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
+      <label for="Phone" class="">Phone</label>
+      <input class="" id="phone-number" type="tel" name="Phone">
       <br>
       <label for="Birth" class="">Date Of Birth</label>
       <input class="" type="date" name="Birth">
       <br>
       <label for="Pword">Password</label>
-      <input class="" type="text" name="Pword">
+      <input class="" type="password" id="myInput" name="Pword">
+      <input type="checkbox" onclick="myFunction()">Show Password
       <br>
       <label for="Ccode" class="">Company Code</label>
       <input class="" type="text" name="Ccode">
@@ -128,8 +129,8 @@ require 'db.php';
       <label for="State" class="">State</label>
       <input class="" type="text" name="State">
       <br>
-      <label for="BPhone" class="">Business Phone (Format: 000-000-0000)</label>
-      <input class="" id="BPhone" type="tel" name="BPhone" pattern="[[0-9]{3}-[0-9]{3}-[0-9]{4}">
+      <label for="BPhone" class="">Business Phone</label>
+      <input class="" id="BPhone" type="tel" name="BPhone">
       <br>
 
 </div>
@@ -152,12 +153,12 @@ if(isset($_GET['submit'])){
   $state = $_GET['State'];
   $bphone = $_GET['BPhone'];
   $Ccode = $_GET['Ccode'];
-  $compID = "No";
+  $compID = true;
 
 
   if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
 & $password != "" & $birth != "" & $compName != "" & $baddress != "" & $city != "" & $state != "" & $bphone != "" & $Ccode != "")){
-  $sql = "INSERT INTO `Company`(Business_Name, Business_Address, Phone, Email, City, State, Company_Code) VALUES ('$compName','$baddress','$bphone','$email','$city','$state','$Ccode')";
+  $sql = "INSERT INTO `company`(Business_Name, Business_Address, Phone, Email, City, State, Company_Code) VALUES ('$compName','$baddress','$bphone','$email','$city','$state','$Ccode')";
   mysqli_query($conn,$sql);
 
   $UserCompanyID = "SELECT ID FROM `Company` WHERE Company_Code = '$Ccode'";
@@ -178,16 +179,16 @@ else {
 }
 
 
-  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Company_ID) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0', '$compID')";
+  $sql = "INSERT INTO `users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Company_ID) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0', '$compID')";
   mysqli_query($conn,$sql);
 
-  $UserID = "SELECT ID FROM `Users` WHERE Email = '$email'";
+  $UserID = "SELECT ID FROM `users` WHERE Email = '$email'";
   $result = mysqli_query($conn, $UserID);
 
   $resultCheck = mysqli_num_rows($result);
   if($resultCheck > 0){
     while($row = mysqli_fetch_assoc($result)){
-    $UsersID = $row['ID'];
+    $usersID = $row['ID'];
   }
   echo "<p>Submission for User was succesful, please wait up to 48hrs for approval.</p>";
 }
@@ -214,10 +215,10 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
 }
 
 
-  $sql = "INSERT INTO `Users`(Company_ID, Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$compID', '$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
+  $sql = "INSERT INTO `users`(Company_ID, Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$compID', '$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
   mysqli_query($conn,$sql);
 
-  $EmpID = "SELECT ID FROM `Users` WHERE Email = '$email'";
+  $EmpID = "SELECT ID FROM `users` WHERE Email = '$email'";
   $result = mysqli_query($conn, $EmpID);
 
   $resultCheck = mysqli_num_rows($result);
@@ -232,7 +233,7 @@ else {
 }
 
 
-  $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Employee')";
+  $sql = "INSERT INTO `employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Employee')";
   mysqli_query($conn,$sql);
 
   ?>
@@ -254,6 +255,15 @@ else {
       y.style.visibility = 'hidden';
     } else {
       x.className = x.className.replace(" w3-show", "");
+    }
+  }
+
+  function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
     }
   }
 </script>

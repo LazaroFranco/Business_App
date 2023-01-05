@@ -1,10 +1,10 @@
 <?php
 
-include_once "db.php";
+require "db.php";
 session_start();
 if (isset($_GET["login"])) {
     $search =
-        "SELECT * From Users, Company WHERE Users.Company_Code = Company.Company_Code;";
+        "SELECT * From users, company WHERE users.Company_Code = company.Company_Code;";
     $result = mysqli_query($conn, $search);
     while ($row = mysqli_fetch_row($result)) {
         if ($row[9] == 1) {
