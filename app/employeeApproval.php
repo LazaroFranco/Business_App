@@ -1,6 +1,6 @@
 <?php
 //include './nav.php';
-include_once 'db.php';
+require 'db.php';
 if (!$conn) {
     die("Connection failed: " . mysqli_error());
 }

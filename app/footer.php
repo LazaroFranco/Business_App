@@ -11,7 +11,7 @@ if (!isset($_SESSION)){
 
 <footer>
   <?php
-  echo "<h2 class='footer-h2'>". $_SESSION['Business_Name'].
+  echo "<h2 class='footer-h2'>". $_SESSION['position'].
    "</h2>";
    ?>
   <address>

@@ -2,6 +2,11 @@
 
 require "db.php";
 session_start();
+echo $_SESSION['type_of_User'];
+
+echo "<h3> PHP List All Session Variables</h3>";
+foreach ($_SESSION as $key=>$val)
+echo $key." ".$val."<br/>";
 if (isset($_GET["login"])) {
     $search =
         "SELECT * From users, company WHERE users.Company_Code = company.Company_Code;";
@@ -39,7 +44,7 @@ if (isset($_GET["login"])) {
                     if ($row[5] == "Admin") {
                         header("Location: Admin.php");
                     } else {
-                        header("Location: myprofile.php"); 
+                        header("Location: myprofile.php");
                     }
                     break;
                 }

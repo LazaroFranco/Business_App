@@ -169,7 +169,7 @@ if(isset($_GET['submit'])){
     while($row = mysqli_fetch_assoc($result)){
     $compID = $row['ID'];
   }
-  echo "<p>Submission for Company was succesful, please wait up to 48hrs for approval.</p>";
+  echo "<p>Submission for your Company account was succesful, please wait up to 48hrs for approval or contact us.</p>";
 }
 else {
   echo "<p>Error With Company Registration</p>";
@@ -178,9 +178,8 @@ else {
 
 }
 
-
-  $sql = "INSERT INTO `users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved, Company_ID) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0', '$compID')";
-  mysqli_query($conn,$sql);
+$sql = "INSERT INTO `users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0')";
+mysqli_query($conn,$sql);
 
   $UserID = "SELECT ID FROM `users` WHERE Email = '$email'";
   $result = mysqli_query($conn, $UserID);
@@ -190,21 +189,17 @@ else {
     while($row = mysqli_fetch_assoc($result)){
     $usersID = $row['ID'];
   }
-  echo "<p>Submission for User was succesful, please wait up to 48hrs for approval.</p>";
+  echo "<p>Submission for your User account was succesful, please wait up to 48hrs for approval or contact us.</p>";
 }
 else {
-  echo "<p>Error With User Registration</p>";
+  echo "<p>Error With User Registration 2</p>";
   echo("Error description: " . mysqli_error($conn));
   mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
-
 }
-
-
 }
 if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != ""){
 
-  $UserCompanyID = "SELECT ID FROM `Company` WHERE Company_Code = '$Ccode'";
+  $UserCompanyID = "SELECT ID FROM `company` WHERE Company_Code = '$Ccode'";
   $result = mysqli_query($conn, $UserCompanyID);
 
   $resultCheck = mysqli_num_rows($result);
@@ -215,8 +210,8 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
 }
 
 
-  $sql = "INSERT INTO `users`(Company_ID, Fname, Lname, Phone, Email, Password, DoB, Approved, Type_Of_User, Company_Code) VALUES ('$compID', '$fname','$lname','$phone','$email','$password','$birth','0','$role','$Ccode')";
-  mysqli_query($conn,$sql);
+$sql = "INSERT INTO `users`(Fname, Lname, Phone, Email, Password, DoB, Approved, Company_Code) VALUES ( '$fname','$lname','$phone','$email','$password','$birth','0','$Ccode')";
+mysqli_query($conn,$sql);
 
   $EmpID = "SELECT ID FROM `users` WHERE Email = '$email'";
   $result = mysqli_query($conn, $EmpID);
@@ -226,13 +221,15 @@ if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $p
     while($row = mysqli_fetch_assoc($result)){
     $employID = $row['ID'];
   }
-  echo "<p>Submission was succesful, please wait up to 48hrs for approval.</p>";
+  echo "<p>Submission was succesful, please wait up to 48hrs for approval or contact us.</p>";
 }
 else {
-  echo "<p>Error With User Registration</p>";
+  echo "<p>Error With User Registration 3</p>";
+  echo("Error description: " . mysqli_error($conn));
+  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 }
 
-
+///// EMPLOYEES //////////////////
   $sql = "INSERT INTO `employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Employee')";
   mysqli_query($conn,$sql);
 

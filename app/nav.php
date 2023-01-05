@@ -19,7 +19,7 @@ if (!isset($_SESSION)){
   </div>
   <div class="column">
     <?php
-    echo "<h1 class='header-bn'>". $_SESSION['Business_Name'].
+    echo "<h1 class='header-bn'>". $_SESSION['position'].
      "</h1>";
      ?>
   </div>
@@ -83,7 +83,7 @@ if (!isset($_SESSION)){
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <li>
     <?php
-        $Auth= $_SESSION['Authorization'];
+        $Auth= $_SESSION['role'];
         if ($Auth == 'Admin'){
           echo "<h3><a style='color: white;' href=\"/app/myprofile.php\">
           <img src='images/".$_SESSION['image'] ."' class='img-responsive' alt='Default'>My Profile
