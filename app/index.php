@@ -44,7 +44,7 @@ if (isset($_GET["login"])) {
                     if ($row[5] == "Admin") {
                         header("Location: Admin.php");
                     } else {
-                        header("Location: myprofile.php");
+                        header('Location: /app/myprofile.php');
                     }
                     break;
                 }
