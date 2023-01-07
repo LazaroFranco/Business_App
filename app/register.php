@@ -230,8 +230,9 @@ else {
 }
 
 ///// EMPLOYEES //////////////////
-  $sql = "INSERT INTO `employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Employee')";
-  mysqli_query($conn,$sql);
+$sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Employee')";
+mysqli_query($conn,$sql);
+
 
   ?>
 
