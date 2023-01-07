@@ -153,8 +153,7 @@ if(isset($_GET['submit'])){
   $state = $_GET['State'];
   $bphone = $_GET['BPhone'];
   $Ccode = $_GET['Ccode'];
-  $compID = true;
-
+  $employID = "SELECT ID FROM users;";
 
   if(($role == "0" & $fname != "" & $lname != "" & $email != "" & $phone != ""
 & $password != "" & $birth != "" & $compName != "" & $baddress != "" & $city != "" & $state != "" & $bphone != "" & $Ccode != "")){
@@ -169,10 +168,10 @@ if(isset($_GET['submit'])){
     while($row = mysqli_fetch_assoc($result)){
     $compID = $row['ID'];
   }
-  echo "<p>Submission for your Company account was succesful, please wait up to 48hrs for approval or contact us.</p>";
+  echo "<p>Submission for your company was succesful, please wait up to 48hrs for approval.</p>";
 }
 else {
-  echo "<p>Error With Company Registration</p>";
+  echo "<p>Error With your company's registration</p>";
   echo("Error description: " . mysqli_error($conn));
   mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
@@ -181,7 +180,10 @@ else {
 $sql = "INSERT INTO `users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0')";
 mysqli_query($conn,$sql);
 
-  $UserID = "SELECT ID FROM `users` WHERE Email = '$email'";
+  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0')";
+  mysqli_query($conn,$sql);
+
+  $UserID = "SELECT ID FROM `Users` WHERE Email = '$email'";
   $result = mysqli_query($conn, $UserID);
 
   $resultCheck = mysqli_num_rows($result);
@@ -189,29 +191,23 @@ mysqli_query($conn,$sql);
     while($row = mysqli_fetch_assoc($result)){
     $usersID = $row['ID'];
   }
-  echo "<p>Submission for your User account was succesful, please wait up to 48hrs for approval or contact us.</p>";
+  echo "<p>Submission for Your account was succesful, please wait up to 48hrs for approval.</p>";
 }
 else {
-  echo "<p>Error With User Registration 2</p>";
+  echo "<p>Error With your account's Registration</p>";
   echo("Error description: " . mysqli_error($conn));
   mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 }
 }
+
+$sql = "INSERT INTO `Employees`(Company_Code, Emp_ID, Position) VALUES ('$Ccode', '$employID', 'Owner')";
+mysqli_query($conn,$sql);
+
 if($role == "1" & $fname != "" & $lname != "" & $email != "" & $phone != "" & $password != "" & $birth != ""){
 
-  $UserCompanyID = "SELECT ID FROM `company` WHERE Company_Code = '$Ccode'";
-  $result = mysqli_query($conn, $UserCompanyID);
 
-  $resultCheck = mysqli_num_rows($result);
-  if($resultCheck > 0){
-    while($row = mysqli_fetch_assoc($result)){
-    $compID = $row['ID'];
-  }
-}
-
-
-$sql = "INSERT INTO `users`(Fname, Lname, Phone, Email, Password, DoB, Approved, Company_Code) VALUES ( '$fname','$lname','$phone','$email','$password','$birth','0','$Ccode')";
-mysqli_query($conn,$sql);
+  $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Approved, Company_Code) VALUES ( '$fname','$lname','$phone','$email','$password','$birth','0','$Ccode')";
+  mysqli_query($conn,$sql);
 
   $EmpID = "SELECT ID FROM `users` WHERE Email = '$email'";
   $result = mysqli_query($conn, $EmpID);
@@ -224,25 +220,24 @@ mysqli_query($conn,$sql);
   echo "<p>Submission was succesful, please wait up to 48hrs for approval or contact us.</p>";
 }
 else {
-  echo "<p>Error With User Registration 3</p>";
-  echo("Error description: " . mysqli_error($conn));
-  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+  echo "<p>Error With employee account Registration</p>";
 }
 
 ///// EMPLOYEES //////////////////
 $sql = "INSERT INTO `Employees`(Company_ID, Emp_ID, Authorization) VALUES ('$compID', '$employID', 'Employee')";
 mysqli_query($conn,$sql);
 
+///// EMPLOYEES //////////////////
+$sql = "INSERT INTO `Employees`(Company_Code, Emp_ID, Position) VALUES ('$Ccode', '$employID', 'Employee')";
+mysqli_query($conn,$sql);
 
   ?>
 
   <?php
 
 }
-
-
-
 }
+
 ?>
 <script>
   function myFunction(id) {

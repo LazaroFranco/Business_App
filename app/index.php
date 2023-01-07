@@ -1,6 +1,8 @@
+
+
 <?php
 
-require "db.php";
+require 'db.php';
 session_start();
 //echo $_SESSION['type_of_User'];
 
@@ -63,13 +65,8 @@ if (isset($_GET["logout"])) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="keywords" content="Tech by Laz, Techbylaz, Techbylazllc, Man-a-biz, lazaro franco, laz franco, Lazaro Franco Valdes, Laz, Lazaro, Franco, Valdes, Florida, Pennsylvania, git"/>
-
-  <meta name="description" content="Business Management APP. Tech by Laz, LLC." />
-  <meta name="author" content="Tech by Laz, LLC." />
-  <link rel="apple-touch-icon" sizes="128x128" href="manabizlogo.jpg"/>
-  <link rel="icon" sizes="192x192" href="nice-manabizlogo.jpg"/>
-  <link rel="shortcut icon" type="image/jpeg" href="manabizlogo.jpg"/>
+  <meta name="description" content="" />
+  <meta name="author" content="" />
   <title>Man-a-Biz</title>
   <!-- Favicon-->
 
@@ -96,15 +93,15 @@ if (isset($_GET["logout"])) {
     </div>
     <section class="sign">
 
-      <form class="formnav" style="margin-top: 50%;">
+      <form style="margin-top: 50%;">
         <div id="Demo1" class="w3-container w3-hide">
           <div>
           <label for="uname"><b>Username</b></label>
-          <input class="navi" type="text" placeholder="Enter Username" name="uname" required="">
+          <input type="text" placeholder="Enter Username" name="uname" required="">
         </div>
         <div>
           <label for="psw"><b>Password</b></label>
-          <input class="navi" type="password" placeholder="Enter Password" name="psw" required="">
+          <input type="password" placeholder="Enter Password" name="psw" required="">
         </div>
           <button type="submit" onclick="myFunction('Demo1')" id="login" name="login">Login</button>
           <button onClick="history.go(0);">Cancel</button>
@@ -124,41 +121,34 @@ if (isset($_GET["logout"])) {
   </header>
   <!-- Services-->
   <section class="page-section" id="services">
+    <div class="container px-4 px-lg-5">
       <h2 class="text-center mt-0">At Your Service</h2>
-  <hr class="divider">
-      <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5">
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="mt-5">
-              <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
-              <h3 class="h4 mb-2">Connect</h3>
-              <p class="text-muted mb-0">A Connection will be the first step to any system! From company administrator to contractors, you will be able to keep everyone in touch.</p>
-            </div>
+      <hr class="divider" />
+      <div class="row gx-4 gx-lg-5">
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
+            <h3 class="h4 mb-2">Connect</h3>
+            <p class="text-muted mb-0">A Connection will be the first step to any system! From company administrator to contractors, you will be able to keep everyone in touch.</p>
           </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="mt-5">
-              <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
-              <h3 class="h4 mb-2">Manage</h3>
-              <p class="text-muted mb-0">Manage your team with a click of a button! Our graphical user interface(GUI) will allow you to use every feature without a problem.</p>
-            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
+            <h3 class="h4 mb-2">Manage</h3>
+            <p class="text-muted mb-0">Manage your team with a click of a button! Our graphical user interface(GUI) will allow you to use every feature without a problem.</p>
           </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="mt-5">
-              <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
-              <h3 class="h4 mb-2">Personalize</h3>
-              <p class="text-muted mb-0">See what you want to see! With this application you will be able to add or remove any operating system that will help you run your business!</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="mt-5">
-              <div class="mb-2"><i class="bi-lock fs-1 text-primary"></i></div>
-              <h3 class="h4 mb-2">All in one</h3>
-              <p class="text-muted mb-0">Store documents online for quick access. Capture bills and receipts via email, or scan files from your mobile.</p>
-            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="mt-5">
+            <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
+            <h3 class="h4 mb-2">Personalize</h3>
+            <p class="text-muted mb-0">See what you want to see! With this application you will be able to add or remove any operating system that will help you run your business!</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   <!-- Contact-->
   <section class="page-section" id="contact">
     <div class="container px-4 px-lg-5">
@@ -206,7 +196,7 @@ if (isset($_GET["logout"])) {
     </div>
   </section>
   <!-- Footer-->
-  <footer>
+  <footer class="bg-light py-5">
     <div class="container px-4 px-lg-5">
       <div>&copy;<script>document.write(new Date().getFullYear());</script>, Man-A-Biz. Property of Tech by Laz, LLC.
       </div>
