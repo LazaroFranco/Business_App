@@ -177,9 +177,6 @@ else {
 
 }
 
-$sql = "INSERT INTO `users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0')";
-mysqli_query($conn,$sql);
-
   $sql = "INSERT INTO `Users`(Fname, Lname, Phone, Email, Password, DoB, Company_Code, Approved) VALUES ('$fname','$lname','$phone','$email','$password','$birth', '$Ccode', '0')";
   mysqli_query($conn,$sql);
 
