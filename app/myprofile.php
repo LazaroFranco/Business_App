@@ -1,5 +1,5 @@
 <?php
-  include_once 'db.php';
+  require 'db.php';
   session_start();
   if($_SESSION['loggedIn'] != TRUE){
       header('Location: myprofile.php');
